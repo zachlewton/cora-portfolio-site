@@ -1,62 +1,48 @@
-import Nav from "./Components/nav/Nav";
-import style from "./App.module.css";
-import Burger from "react-css-burger";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Logo from "./Components/logo/Logo";
+//components
+import Nav from './Components/nav/Nav';
+import style from './App.module.css';
+import Logo from './Components/logo/Logo';
+import Project from './Components/project/Project';
+import Medium from './Components/medium/Medium';
+import ProjectGallery from './Components/projectGallery/ProjectGallery';
+import ErrorPage from './Components/errorPage/ErrorPage';
 
-import Project from "./Components/project/Project";
-import Medium from "./Components/medium/Medium";
-import axios from "axios";
+//imports
+import React, { Component, useEffect } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import Burger from 'react-css-burger';
+import {
+	BrowserRouter as Router,
+	Routes,
+	Route,
+	Link,
+	Outlet,
+	useParams,
+	useLocation,
+} from 'react-router-dom';
+import ReactDOM from 'react-dom';
 
-// import DigitalInstallations from "./Components/digitalInstallations/DigitalInstallations";
+export default function App() {
+	return (
+		<div className={style.container}>
+			<div className={style.logoContainer}>
+				<Logo />
+			</div>
+			<div className={style.navBar}>
+				<Nav />
+			</div>
 
-import { Transition, animated } from "react-spring/renderprops";
-import { CssTransition, TransitionGroup } from "react-transition-group";
+			<div className={style.contentContainer}>
+				<Routes>
+					<Route path="/" element={<Medium />} />
+					<Route path="/project/:slug" element={<Project />} />
 
-import React, { Component } from "react";
-import Axios from "axios";
+					<Route path="gallery/:gallery" element={<ProjectGallery />} />
 
-export default class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      projects: [],
-    };
-  }
-
-  componentDidMount() {
-    axios
-      .get(`/wp-json/wp/v2/project`)
-      .then((res) => {
-        res.data.map((project) => {
-          this.state.projects.push(project);
-        });
-      })
-      .catch((err) => console.log(err));
-  }
-
-  render() {
-    return (
-      <Router>
-        <div className={style.container}>
-          <div className={style.logoContainer}>
-            <Logo />
-          </div>
-
-          <div className={style.navBar}>
-            {/* <Nav projects={this.state.projects} /> */}
-          </div>
-
-          <Switch>
-            {/* <Route path="/projects" exact component={Projects} /> */}
-            <Route exact path="/:slug" component={Medium} />
-            <Route exact path="/project/:slug" component={Project} />
-            {/* <Route path="/:slug" component={Medium} /> */}
-          </Switch>
-
-          <div className={style.contentContainer}></div>
-        </div>
-      </Router>
-    );
-  }
+					<Route path="project/:slug/:subProject" element={<Project />} />
+					<Route path="*" element={<ErrorPage />} />
+				</Routes>
+			</div>
+		</div>
+	);
 }
