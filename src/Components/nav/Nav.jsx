@@ -15,10 +15,10 @@ const Nav = (props) => {
 
 	useEffect(() => {
 		axios
-			.get(`http://localhost:8000/wp-json/custom-api/v1/projects`)
+			.get(`http://localhost:8000/wp-json/custom-api/v1/get_nav_items`)
 			.then((res) => {
-				console.log(res.data);
-				setProjects(res.data);
+				console.log(res.data[0].projects);
+				setProjects(res.data[0].projects);
 			})
 			.then(() => setLoaded(true));
 	}, []);

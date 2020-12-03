@@ -6,25 +6,39 @@ html,
 body {
 	padding: 0;
 	margin: 0;
-	/* overflow: hidden; */
-	/* min-height: 100vh; */
+}
+
+header {
+	grid-area: header;
+	background-color: blue;
 }
 
 .container {
-	/* display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  padding: 0;
-  margin: 0;
-  height: 100vh;
-  width: 100vw;
-  justify-content: flex-start;
-  overflow: auto; */
-	height: 100vh;
-	width: 100vw;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
+	display: grid;
+	grid-template-columns: 1f 3f 1f;
+	grid-template-rows: 11.154vw 13.299vw 100vw;
+	grid-template-areas:
+		'header header header header header'
+		'nav main main main main '
+		'nav main main main main';
+}
+
+.mobileContainer {
+	display: grid;
+	grid-template-columns: 3f;
+	grid-template-rows: 17vw 100vh;
+	grid-template-areas:
+		'header header header'
+		'main main main';
+}
+
+.burger {
+	width: 10vw;
+}
+
+.hide {
+	visibility: hidden;
+	display: none !important;
 }
 
 .logoContainer {
@@ -35,18 +49,13 @@ body {
 }
 
 .navBar {
-	/* 
-
-  min-height: 100vh; */
-
-	min-height: 100%;
-	width: 16.344086021505376vw;
-
 	background-color: lightpink;
+	grid-area: nav;
 }
 
 .contentContainer {
 	background-color: rebeccapurple;
-	width: 83.6559139785vw;
-	height: auto;
+	max-width: 100%;
+
+	grid-area: main;
 }

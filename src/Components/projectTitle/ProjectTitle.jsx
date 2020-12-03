@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import {
 	BrowserRouter as Router,
 	Routes,
@@ -13,17 +14,27 @@ import SubProjectLinks from '../subProjectLinks/SubProjectLinks';
 
 const ProjectTitle = (props) => {
 	const project = props.project;
+	const [subProjects, setSubProjects] = useState({});
 
-	// const handleProjectClick = (slug) => {
-	// 	props.projectClick(slug.target.value);
-	// };
+	useEffect(() => {
+		axios
+			.get(
+				`http://localhost:8000/wp-json/custom-api/v1/sub_projects?slug=${project.slug}`
+			)
+			.then((res) => {
+				console.log(res.data);
+				setSubProjects(res.data);
+			});
+		// .then(() => setCurrentSubProjectId(id))
+		// .then(() => setSubProjectOpen(true));
+	}, []);
 
 	return (
 		<div>
 			<NavLink to={`/project/${project.slug}/`} onClick={props.handleClick}>
 				<div
 					onClick={() => {
-						props.projectClick(project.slug, project.id);
+						props.projectClick(project.id);
 					}}
 				>
 					{project.title}
@@ -31,10 +42,7 @@ const ProjectTitle = (props) => {
 			</NavLink>
 
 			{props.open ? (
-				<SubProjectLinks
-					projectSlug={project.slug}
-					subProjects={props.subProjects}
-				/>
+				<SubProjectLinks projectSlug={project.slug} subProjects={subProjects} />
 			) : null}
 		</div>
 	);

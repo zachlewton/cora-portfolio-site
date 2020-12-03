@@ -1,2 +1,27 @@
 .projectContainer {
+	display: flex;
+	flex-direction: column;
+	padding: 0 0 0 2.231vw;
+	justify-content: flex-start;
+	max-width: 100%;
+}
+
+.galleriesContainer {
+	display: flex;
+	flex-wrap: wrap;
+	width: 46.246vw;
+
+	background-color: red;
+}
+
+h1 {
+	width: 46.246vw;
+	height: 1.802vw;
+	margin: 0 0 1.416vw 0;
+}
+
+h2 {
+	margin: 0 0 2.574vw 0;
+	height: auto;
+	width: 46.246vw;
 }

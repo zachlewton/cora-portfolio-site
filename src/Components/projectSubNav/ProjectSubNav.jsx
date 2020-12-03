@@ -15,21 +15,12 @@ import axios from 'axios';
 const ProjectSubNav = (props) => {
 	let projects = props.projects;
 
-	const [subProjects, setSubProjects] = useState({});
 	const [subProjectOpen, setSubProjectOpen] = useState(false);
 	const [currentSubProjectId, setCurrentSubProjectId] = useState(null);
 
-	const projectClick = (slug, id) => {
-		axios
-			.get(
-				`http://localhost:8000/wp-json/custom-api/v1/sub_projects?slug=${slug}`
-			)
-			.then((res) => {
-				console.log(res.data);
-				setSubProjects(res.data);
-			})
-			.then(() => setCurrentSubProjectId(id))
-			.then(() => setSubProjectOpen(true));
+	const projectClick = (id) => {
+		setCurrentSubProjectId(id);
+		setSubProjectOpen(true);
 	};
 
 	return (
@@ -42,7 +33,6 @@ const ProjectSubNav = (props) => {
 								open={true}
 								projectClick={projectClick}
 								project={project}
-								subProjects={subProjects}
 							/>
 						) : (
 							<ProjectTitle

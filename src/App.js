@@ -6,11 +6,13 @@ import Project from './Components/project/Project';
 import Medium from './Components/medium/Medium';
 import ProjectGallery from './Components/projectGallery/ProjectGallery';
 import ErrorPage from './Components/errorPage/ErrorPage';
+import MobileNav from './Components/mobileNav/MobileNav';
 
 //imports
-import React, { Component, useEffect } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import Burger from 'react-css-burger';
+import { useMediaQuery } from 'react-responsive';
 import {
 	BrowserRouter as Router,
 	Routes,
@@ -23,16 +25,36 @@ import {
 import ReactDOM from 'react-dom';
 
 export default function App() {
+	const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1024px)' });
+
+	const [active, setActive] = useState(false);
+
+	console.log(isTabletOrMobile);
+
 	return (
-		<div className={style.container}>
-			<div className={style.logoContainer}>
-				<Logo />
-			</div>
-			<div className={style.navBar}>
-				<Nav />
-			</div>
+		<div
+			className={!isTabletOrMobile ? style.container : style.mobileContainer}
+		>
+			{!isTabletOrMobile && (
+				<>
+					<header>{/* <Logo /> */}header</header>
+					<div className={style.navBar}>{/* <Nav /> */} nav</div>
+				</>
+			)}
+
+			{isTabletOrMobile && (
+				<div className={style.burger}>
+					<Burger onClick={() => setActive(!active)} active={active} />
+				</div>
+			)}
 
 			<div className={style.contentContainer}>
+				{isTabletOrMobile && (
+					<div style={{ display: !active && 'none' }}>
+						<MobileNav />
+					</div>
+				)}
+
 				<Routes>
 					<Route path="/" element={<Medium />} />
 					<Route path="/project/:slug" element={<Project />} />
