@@ -83,23 +83,24 @@ const Project = (props) => {
 		console.log(projectGalleries);
 
 		return (
-			<>
-				<div className={style.projectContainer}>
-					<h1>{projectTitle}</h1>
-					<h2>{projectDescription}</h2>
+			<div className={style.projectContainer}>
+				<h1>{projectTitle}</h1>
+				<h2>{projectDescription}</h2>
 
-					<div className={style.galleriesContainer}>
-						{projectGalleries.map((gallery) => (
-							<NavLink to={`/gallery/${gallery.gallery_slug}`}>
-								<ProjectGalleryThumbnail
-									gallery={gallery}
-									isSubProject={!params.subProject ? false : true}
-								/>
-							</NavLink>
-						))}
-					</div>
+				<div className={style.galleriesContainer}>
+					{projectGalleries.map((gallery) => (
+						<NavLink
+							to={`/gallery/${gallery.gallery_slug}`}
+							galleryName={gallery.title}
+						>
+							<ProjectGalleryThumbnail
+								gallery={gallery}
+								isSubProject={!params.subProject ? false : true}
+							/>
+						</NavLink>
+					))}
 				</div>
-			</>
+			</div>
 		);
 	}
 

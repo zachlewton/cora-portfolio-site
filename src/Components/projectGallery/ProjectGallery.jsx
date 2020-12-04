@@ -3,13 +3,16 @@ import ProjectImage from '../projectImage/ProjectImage';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Gallery from '../gallery/Gallery';
+import style from './ProjectGallery.module.css';
 
 const ProjectGallery = (props) => {
 	const params = useParams().gallery;
 
 	const [images, setimages] = useState([]);
+	const [galleryTitle, setGalleryTitle] = useState('');
 	const [galleryView, toggleGalleryView] = useState(false);
-	const [imageRef, setImageRef] = useState('');
+
+	const [imageRef, setImageRef] = useState(null);
 
 	console.log(props);
 
@@ -20,6 +23,7 @@ const ProjectGallery = (props) => {
 			)
 			.then((res) => {
 				setimages(res.data[0].images);
+				setGalleryTitle(res.data[0].title);
 				console.log(res.data);
 			});
 	}, [params]);
@@ -31,15 +35,18 @@ const ProjectGallery = (props) => {
 
 	if (!galleryView) {
 		return (
-			<>
-				{images.map((image) => (
-					<ProjectImage
-						onClick={() => raiseClick(image.id)}
-						image={image}
-						key={image.id}
-					/>
-				))}
-			</>
+			<div className={style.container}>
+				<h1>{galleryTitle}</h1>
+				<div className={style.imagesContainer}>
+					{images.map((image) => (
+						<ProjectImage
+							onClick={() => raiseClick(image.id)}
+							image={image}
+							key={image.id}
+						/>
+					))}
+				</div>
+			</div>
 		);
 	}
 

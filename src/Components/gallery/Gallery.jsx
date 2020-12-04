@@ -8,6 +8,8 @@ const Gallery = (props) => {
 	// 	if (image.id == imageRef) return true;
 	// });
 	//
+
+	console.log(images);
 	let index = images.findIndex((image) => image.id === imageRef);
 	const [currentIndex, setIndex] = useState(index);
 	let image = images[currentIndex];
@@ -32,7 +34,7 @@ const Gallery = (props) => {
 
 	return (
 		<>
-			<img src={image.sizes.medium} />
+			<img src={image.src} />
 			<button onClick={handlePrev}>prev</button>
 			<button onClick={handleNext}>next</button>
 			<div onClick={props.onClick}>exit</div>

@@ -32,39 +32,42 @@ export default function App() {
 	console.log(isTabletOrMobile);
 
 	return (
-		<div
-			className={!isTabletOrMobile ? style.container : style.mobileContainer}
-		>
-			{!isTabletOrMobile && (
-				<>
-					<header>{/* <Logo /> */}header</header>
-					<div className={style.navBar}>{/* <Nav /> */} nav</div>
-				</>
-			)}
-
-			{isTabletOrMobile && (
-				<div className={style.burger}>
-					<Burger onClick={() => setActive(!active)} active={active} />
-				</div>
-			)}
-
-			<div className={style.contentContainer}>
+		<>
+			<div
+				className={!isTabletOrMobile ? style.container : style.mobileContainer}
+			>
+				{!isTabletOrMobile && (
+					<>
+						<header>header</header>
+						<div className={style.navBar}>
+							<Nav />
+						</div>
+					</>
+				)}
 				{isTabletOrMobile && (
-					<div style={{ display: !active && 'none' }}>
-						<MobileNav />
+					<div className={style.burger}>
+						<Burger onClick={() => setActive(!active)} active={active} />
 					</div>
 				)}
 
-				<Routes>
-					<Route path="/" element={<Medium />} />
-					<Route path="/project/:slug" element={<Project />} />
+				<div className={style.contentContainer}>
+					{isTabletOrMobile && (
+						<div style={{ display: !active && 'none' }}>
+							<MobileNav />
+						</div>
+					)}
 
-					<Route path="gallery/:gallery" element={<ProjectGallery />} />
+					<Routes>
+						<Route path="/" element={<Medium />} />
+						<Route path="/project/:slug" element={<Project />} />
 
-					<Route path="project/:slug/:subProject" element={<Project />} />
-					<Route path="*" element={<ErrorPage />} />
-				</Routes>
+						<Route path="gallery/:gallery" element={<ProjectGallery />} />
+
+						<Route path="project/:slug/:subProject" element={<Project />} />
+						<Route path="*" element={<ErrorPage />} />
+					</Routes>
+				</div>
 			</div>
-		</div>
+		</>
 	);
 }

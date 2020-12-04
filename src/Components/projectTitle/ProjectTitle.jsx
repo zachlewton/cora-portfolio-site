@@ -11,6 +11,7 @@ import {
 } from 'react-router-dom';
 
 import SubProjectLinks from '../subProjectLinks/SubProjectLinks';
+import style from './ProjectTitle.module.css';
 
 const ProjectTitle = (props) => {
 	const project = props.project;

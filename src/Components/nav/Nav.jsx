@@ -31,12 +31,7 @@ const Nav = (props) => {
 
 	return (
 		<nav className={style.sideNav}>
-			<div className={style.logo}> logo</div>
-
 			<ul className={style.navList}>
-				<NavLink to="/">
-					<li>Home</li>
-				</NavLink>
 				<li
 					onClick={
 						projectHidden
@@ -46,15 +41,6 @@ const Nav = (props) => {
 				>
 					Projects
 				</li>
-
-				{!projectHidden && (
-					<ProjectSubNav
-						projects={projects}
-						onClick={() => raiseClick}
-						subProjectOpen={subProjectOpen}
-						subProjects={subProjects}
-					/>
-				)}
 
 				<li
 					onClick={
@@ -110,6 +96,15 @@ const Nav = (props) => {
 					</div>
 				)}
 			</ul>
+
+			{!projectHidden && (
+				<ProjectSubNav
+					projects={projects}
+					onClick={() => raiseClick}
+					subProjectOpen={subProjectOpen}
+					subProjects={subProjects}
+				/>
+			)}
 		</nav>
 	);
 };

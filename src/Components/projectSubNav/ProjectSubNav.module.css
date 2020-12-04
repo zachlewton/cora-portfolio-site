@@ -1,3 +1,7 @@
-.projectTab img {
-  max-width: 5vw;
+.container {
+	margin: 0 0 0 0.772vw;
+}
+
+.subNavItem {
+	margin: 0 0 0.601vw 0;
 }

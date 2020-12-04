@@ -10,17 +10,18 @@ body {
 
 header {
 	grid-area: header;
+
 	background-color: blue;
 }
 
 .container {
 	display: grid;
-	grid-template-columns: 1f 3f 1f;
-	grid-template-rows: 11.154vw 13.299vw 100vw;
+
+	grid-template-columns: 23.295vw 17.804vw 17.804vw 17.804vw 23.295vw;
+	grid-template-rows: 11.154vw calc(100vh - 11.154vw);
 	grid-template-areas:
 		'header header header header header'
-		'nav main main main main '
-		'nav main main main main';
+		'nav main main main main ';
 }
 
 .mobileContainer {
@@ -55,7 +56,9 @@ header {
 
 .contentContainer {
 	background-color: rebeccapurple;
-	max-width: 100%;
+	padding-left: 2.231vw;
 
 	grid-area: main;
+	height: auto;
+	overflow: auto;
 }

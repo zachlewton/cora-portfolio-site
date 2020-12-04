@@ -24,26 +24,28 @@ const ProjectSubNav = (props) => {
 	};
 
 	return (
-		<div>
-			<div>
-				{projects.map((project) => (
-					<div key={project.id}>
-						{project.id === currentSubProjectId ? (
+		<div className={style.container}>
+			{projects.map((project) => (
+				<div key={project.id}>
+					{project.id === currentSubProjectId ? (
+						<div className={style.subNavItem}>
 							<ProjectTitle
 								open={true}
 								projectClick={projectClick}
 								project={project}
 							/>
-						) : (
+						</div>
+					) : (
+						<div className={style.subNavItem}>
 							<ProjectTitle
 								open={false}
 								projectClick={projectClick}
 								project={project}
 							/>
-						)}
-					</div>
-				))}
-			</div>
+						</div>
+					)}
+				</div>
+			))}
 		</div>
 	);
 };

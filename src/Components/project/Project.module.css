@@ -1,17 +1,12 @@
 .projectContainer {
 	display: flex;
 	flex-direction: column;
-	padding: 0 0 0 2.231vw;
-	justify-content: flex-start;
-	max-width: 100%;
 }
 
 .galleriesContainer {
 	display: flex;
 	flex-wrap: wrap;
-	width: 46.246vw;
-
-	background-color: red;
+	width: 50vw;
 }
 
 h1 {

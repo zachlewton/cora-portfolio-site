@@ -1,0 +1,17 @@
+.container {
+	margin: 0 3.604vw 2.531vw 0;
+	width: 13.042vw;
+	height: auto;
+}
+
+img {
+	width: 13.042vw;
+	height: 8.151vw;
+	object-fit: cover;
+}
+
+h1 {
+	width: auto;
+	height: auto;
+	font-size: small;
+}
