@@ -18,7 +18,7 @@ import {
 } from 'react-router-dom';
 
 import ProjectGalleryThumbnail from '../projectGalleryThumbnail/ProjectGalleryThumbnail';
-import ProjectGallery from '../projectGallery/ProjectGallery';
+import ProjectGallery from '../galleryContainer/GalleryContainer';
 import ErrorPage from '../errorPage/ErrorPage';
 
 const Project = (props) => {

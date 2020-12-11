@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import ProjectSubNav from '../projectSubNav/ProjectSubNav';
+import SubNav from '../subNav/SubNav';
 import { NavLink } from 'react-router-dom';
 
 const MobileNav = () => {
@@ -46,7 +46,7 @@ const MobileNav = () => {
 				</li>
 
 				{!projectHidden && (
-					<ProjectSubNav
+					<SubNav
 						projects={projects}
 						onClick={() => raiseClick}
 						subProjectOpen={subProjectOpen}

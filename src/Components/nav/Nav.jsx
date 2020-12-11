@@ -1,108 +1,47 @@
 import React, { Component, useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import style from './Nav.module.css';
-import ProjectSubNav from '../projectSubNav/ProjectSubNav';
+import SubNav from '../subNav/SubNav';
 import axios from 'axios';
 
 const Nav = (props) => {
-	const [hidden, sethidden] = useState(true);
-	const [mediumHidden, setMediumHidden] = useState(true);
-	const [projectHidden, setProjectHidden] = useState(true);
+	const [subNavActive, setSubNavActive] = useState(false);
+	const [subNavType, setSubNavType] = useState('');
 	const [loaded, setLoaded] = useState(false);
-	const [projects, setProjects] = useState({});
-	const [subProjects, setSubProjects] = useState({});
-	const [subProjectOpen, setSubProjectOpen] = useState(false);
+	const [projects, setProjects] = useState([]);
+	const [works, setWorks] = useState([]);
 
 	useEffect(() => {
 		axios
 			.get(`http://localhost:8000/wp-json/custom-api/v1/get_nav_items`)
 			.then((res) => {
-				console.log(res.data[0].projects);
-				setProjects(res.data[0].projects);
+				console.log(res.data);
+				setProjects(res.data.projects);
+				setWorks(res.data.works);
 			})
 			.then(() => setLoaded(true));
 	}, []);
 
-	// const navProjects = data;
-
-	const raiseClick = () => {
-		setProjectHidden(true);
+	const subNav = (type) => {
+		setSubNavActive(true);
+		setSubNavType(type);
 	};
 
 	return (
 		<nav className={style.sideNav}>
 			<ul className={style.navList}>
-				<li
-					onClick={
-						projectHidden
-							? () => setProjectHidden(false)
-							: () => setProjectHidden(true)
-					}
-				>
-					Projects
-				</li>
-
-				<li
-					onClick={
-						mediumHidden
-							? () => setMediumHidden(false)
-							: () => setMediumHidden(true)
-					}
-				>
-					Works
-				</li>
-				{!mediumHidden && (
-					<div className={style.infoSubNav}>
-						<NavLink to="/exhibitions">
-							<li>Exhibitions</li>
-						</NavLink>
-						<NavLink to="/sculpture">
-							<li>Sculpture</li>
-						</NavLink>
-						<NavLink to="/digital-installations">
-							<li>Digital Installations</li>
-						</NavLink>
-						<NavLink to="/paintings">
-							<li>Painting</li>
-						</NavLink>
-						<NavLink to="/photography">
-							<li>Photography</li>
-						</NavLink>
-						<NavLink to="/print">
-							<li>Print</li>
-						</NavLink>
-					</div>
-				)}
-				<li onClick={hidden ? () => sethidden(false) : () => sethidden(true)}>
-					Info
-				</li>
-				{!hidden && (
-					<div className={style.infoSubNav}>
-						<NavLink to="/">
-							<li>Resume CV</li>
-						</NavLink>
-						<NavLink to="/">
-							<li>Bio</li>
-						</NavLink>
-						<NavLink to="/">
-							<li>Statement</li>
-						</NavLink>
-						<NavLink to="/">
-							<li>News</li>
-						</NavLink>
-						<NavLink to="/">
-							<li>Architecture</li>
-						</NavLink>
-					</div>
-				)}
+				<NavLink to="/projects">
+					<li onClick={() => subNav('projects')}>Projects</li>
+				</NavLink>
+				<NavLink to="/works">
+					<li onClick={() => subNav('works')}>Works</li>
+				</NavLink>
 			</ul>
 
-			{!projectHidden && (
-				<ProjectSubNav
-					projects={projects}
-					onClick={() => raiseClick}
-					subProjectOpen={subProjectOpen}
-					subProjects={subProjects}
+			{subNavActive && (
+				<SubNav
+					navItems={subNavType === 'projects' ? projects : works}
+					type={subNavType}
 				/>
 			)}
 		</nav>

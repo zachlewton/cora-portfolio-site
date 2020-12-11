@@ -4,9 +4,11 @@ import style from './App.module.css';
 import Logo from './Components/logo/Logo';
 import Project from './Components/project/Project';
 import Medium from './Components/medium/Medium';
-import ProjectGallery from './Components/projectGallery/ProjectGallery';
+import GalleryContainer from './Components/galleryContainer/GalleryContainer';
 import ErrorPage from './Components/errorPage/ErrorPage';
 import MobileNav from './Components/mobileNav/MobileNav';
+import Level1 from './Components/level1/Level1';
+import Level2 from './Components/level2/Level2';
 
 //imports
 import React, { Component, useEffect, useState } from 'react';
@@ -28,8 +30,6 @@ export default function App() {
 	const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1024px)' });
 
 	const [active, setActive] = useState(false);
-
-	console.log(isTabletOrMobile);
 
 	return (
 		<>
@@ -59,11 +59,19 @@ export default function App() {
 
 					<Routes>
 						<Route path="/" element={<Medium />} />
-						<Route path="/project/:slug" element={<Project />} />
+						<Route path="/:type" element={<Level1 />} />
+						<Route path="/:type/:slug" element={<Level2 />} />
+						{/* <Route path="/:type/:slug/:ig-slug" element={<IgGallery />} /> */}
+						<Route
+							path="gallery/:gallery-slug"
+							element={<GalleryContainer />}
+						/>
+
+						{/* <Route path="/project/:slug" element={<Project />} />
 
 						<Route path="gallery/:gallery" element={<ProjectGallery />} />
 
-						<Route path="project/:slug/:subProject" element={<Project />} />
+						<Route path="project/:slug/:subProject" element={<Project />} />*/}
 						<Route path="*" element={<ErrorPage />} />
 					</Routes>
 				</div>
