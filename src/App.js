@@ -67,11 +67,6 @@ export default function App() {
 							element={<GalleryContainer />}
 						/>
 
-						{/* <Route path="/project/:slug" element={<Project />} />
-
-						<Route path="gallery/:gallery" element={<ProjectGallery />} />
-
-						<Route path="project/:slug/:subProject" element={<Project />} />*/}
 						<Route path="*" element={<ErrorPage />} />
 					</Routes>
 				</div>

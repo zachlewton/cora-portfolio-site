@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import L2ContentCard from '../l2ContentCard/L2ContentCard';
 import {
 	BrowserRouter,
 	Routes,
@@ -28,9 +29,20 @@ const Level2 = () => {
 			})
 			.then(setLoaded(true));
 	}, [params.slug]);
+
 	return (
 		<div>
-			{Object.keys(content).map((contentItem) => console.log(contentItem))}
+			{content.map((contentItem) =>
+				contentItem.galleries.length > 1 ? ( ////if navigate to ig
+					<div>
+						<L2ContentCard content={contentItem} />
+					</div>
+				) : (
+					<div>
+						<L2ContentCard content={contentItem} />
+					</div> /////if navigate straight to gallery
+				)
+			)}
 		</div>
 	);
 };
