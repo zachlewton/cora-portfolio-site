@@ -35,11 +35,11 @@ const Level2 = () => {
 			{content.map((contentItem) =>
 				contentItem.galleries.length > 1 ? ( ////if navigate to ig
 					<div>
-						<L2ContentCard content={contentItem} />
+						<L2ContentCard ig={true} content={contentItem} />
 					</div>
 				) : (
 					<div>
-						<L2ContentCard content={contentItem} />
+						<L2ContentCard ig={false} content={contentItem} />
 					</div> /////if navigate straight to gallery
 				)
 			)}

@@ -5,7 +5,7 @@ import axios from 'axios';
 import Gallery from '../gallery/Gallery';
 import style from './GalleryContainer.module.css';
 
-const ProjectGallery = (props) => {
+const GalleryContainer = (props) => {
 	const params = useParams().gallery;
 
 	const [galleryView, toggleGalleryView] = useState(false);
@@ -49,4 +49,4 @@ const ProjectGallery = (props) => {
 	}
 };
 
-export default ProjectGallery;
+export default GalleryContainer;

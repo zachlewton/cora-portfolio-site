@@ -2,14 +2,29 @@ import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 
 const SubNavChildNav = (props) => {
-	const { subs, type, slug } = props.subItems;
+	const { subs, slug } = props.subItems;
+	const active = {
+		color: 'red',
+	};
 	return (
 		<div>
 			{subs.map((sub) =>
 				sub.galleries.length > 1 ? (
-					<NavLink to={`/${type}/${slug}/${sub.slug}`}>hi</NavLink>
+					<NavLink
+						exact
+						activeStyle={active}
+						to={`/${props.type}/${slug}/${sub.slug}`}
+					>
+						{sub.title}
+					</NavLink>
 				) : (
-					<NavLink to={`/gallery/${sub.slug}`}>hi</NavLink>
+					<NavLink
+						exact
+						activeStyle={active}
+						to={`/${props.type}/${slug}/${sub.slug}/${sub.slug}`}
+					>
+						{sub.title}
+					</NavLink>
 				)
 			)}
 		</div>

@@ -9,6 +9,7 @@ import ErrorPage from './Components/errorPage/ErrorPage';
 import MobileNav from './Components/mobileNav/MobileNav';
 import Level1 from './Components/level1/Level1';
 import Level2 from './Components/level2/Level2';
+import IgContainer from './Components/igContainer/IgContainer';
 
 //imports
 import React, { Component, useEffect, useState } from 'react';
@@ -61,9 +62,9 @@ export default function App() {
 						<Route path="/" element={<Medium />} />
 						<Route path="/:type" element={<Level1 />} />
 						<Route path="/:type/:slug" element={<Level2 />} />
-						{/* <Route path="/:type/:slug/:ig-slug" element={<IgGallery />} /> */}
+						<Route path="/:type/:slug/:igSlug" element={<IgContainer />} />
 						<Route
-							path="gallery/:gallery-slug"
+							path="/:type/:slug/:igSlug/:gallerySlug"
 							element={<GalleryContainer />}
 						/>
 

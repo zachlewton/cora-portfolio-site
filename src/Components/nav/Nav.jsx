@@ -3,13 +3,19 @@ import { NavLink } from 'react-router-dom';
 import style from './Nav.module.css';
 import SubNav from '../subNav/SubNav';
 import axios from 'axios';
-
+import SubNavChildNav from '../subNavChildNav/SubNavChildNav';
 const Nav = (props) => {
 	const [subNavActive, setSubNavActive] = useState(false);
 	const [subNavType, setSubNavType] = useState('');
+	const [subNavChildActive, setSubNavChildActive] = useState(false);
+	const [subNavChildType, setSubNavChildType] = useState('');
+	const [subItems, setSubItems] = useState({});
 	const [loaded, setLoaded] = useState(false);
 	const [projects, setProjects] = useState([]);
 	const [works, setWorks] = useState([]);
+
+	console.log('subNavType:' + subNavType);
+	console.log('subNavChildType:' + subNavChildType);
 
 	useEffect(() => {
 		axios
@@ -22,18 +28,31 @@ const Nav = (props) => {
 			.then(() => setLoaded(true));
 	}, []);
 
+	const active = {
+		color: 'red',
+	};
+
 	const subNav = (type) => {
 		setSubNavActive(true);
 		setSubNavType(type);
+
+		setSubNavChildActive(false);
+		setSubNavChildType('');
+	};
+
+	const subNavChild = (type, subs) => {
+		setSubNavChildActive(true);
+		setSubNavChildType(type);
+		setSubItems(subs);
 	};
 
 	return (
 		<nav className={style.sideNav}>
 			<ul className={style.navList}>
-				<NavLink to="/projects">
+				<NavLink exact activeStyle={active} to="/projects">
 					<li onClick={() => subNav('projects')}>Projects</li>
 				</NavLink>
-				<NavLink to="/works">
+				<NavLink exact activeStyle={active} to="/works">
 					<li onClick={() => subNav('works')}>Works</li>
 				</NavLink>
 			</ul>
@@ -42,7 +61,12 @@ const Nav = (props) => {
 				<SubNav
 					navItems={subNavType === 'projects' ? projects : works}
 					type={subNavType}
+					subNavChild={subNavChild}
 				/>
+			)}
+
+			{subNavChildActive && (
+				<SubNavChildNav type={subNavType} subItems={subItems} />
 			)}
 		</nav>
 	);

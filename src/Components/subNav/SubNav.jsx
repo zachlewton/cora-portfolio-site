@@ -27,23 +27,31 @@ const SubNav = (props) => {
 		setSubItems(subs);
 	};
 
+	const active = {
+		color: 'red',
+	};
+
 	return (
 		<div className={style.container}>
 			<ul>
 				{navItems.map((navItem) =>
 					!navItem.gallery ? (
-						<NavLink to={`/${type}/${navItem.slug}`}>
-							<li onClick={() => subNav(type, navItem)}>{navItem.title}</li>
+						<NavLink exact activeStyle={active} to={`/${type}/${navItem.slug}`}>
+							<li onClick={() => props.subNavChild(type, navItem)}>
+								{navItem.title}
+							</li>
 						</NavLink>
 					) : (
-						<NavLink to={`/gallery/${navItem.slug}`}>
+						<NavLink
+							exact
+							activeStyle={active}
+							to={`/${type}/${navItem.slug}/${navItem.slug}/${navItem.slug}`}
+						>
 							<li>{navItem.title}</li>
 						</NavLink>
 					)
 				)}
 			</ul>
-			{subNavActive && <SubNavChildNav type={type} subItems={subItems} />}{' '}
-			//////// try to put this in nav component
 		</div>
 	);
 };
