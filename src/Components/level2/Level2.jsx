@@ -28,7 +28,7 @@ const Level2 = () => {
 				console.log(res.data);
 			})
 			.then(setLoaded(true));
-	}, [params.slug]);
+	}, []);
 
 	return (
 		<div>

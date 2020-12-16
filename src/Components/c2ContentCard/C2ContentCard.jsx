@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import CaptionLines from '../captionLines/CaptionLines';
+import MainCaption from '../mainCaption/MainCaption';
 
 const C2ContentCard = (props) => {
-	const { caption, src } = props.image;
+	const { main_caption, caption, src } = props.image;
 
 	const captionLines = (
 		<div>
@@ -14,7 +16,8 @@ const C2ContentCard = (props) => {
 	return (
 		<div>
 			<img src={src} />
-			{captionLines}
+			<MainCaption content={main_caption} />
+			<CaptionLines content={caption} />
 		</div>
 	);
 };

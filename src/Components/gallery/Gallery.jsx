@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import CaptionLines from '../captionLines/CaptionLines';
+import MainCaption from '../mainCaption/MainCaption';
 
 const Gallery = (props) => {
 	const images = props.images;
@@ -35,6 +37,8 @@ const Gallery = (props) => {
 	return (
 		<>
 			<img src={image.src} />
+			<MainCaption content={image.main_caption} />
+			<CaptionLines content={image.caption} />
 			<button onClick={handlePrev}>prev</button>
 			<button onClick={handleNext}>next</button>
 			<div onClick={props.onClick}>exit</div>
