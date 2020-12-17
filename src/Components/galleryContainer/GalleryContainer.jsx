@@ -1,34 +1,66 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import ProjectImage from '../projectImage/ProjectImage';
-import { useParams } from 'react-router-dom';
+
 import axios from 'axios';
 import Gallery from '../gallery/Gallery';
 import style from './GalleryContainer.module.css';
 import MainHeader from '../mainHeader/MainHeader';
+import topNavContext from '../../topNavContext';
+import {
+	BrowserRouter,
+	Routes,
+	Route,
+	NavLink,
+	Outlet,
+	useParams,
+	useLocation,
+	usePrompt,
+	useHistory,
+} from 'react-router-dom';
+import TopNav from '../topNav/TopNav';
 
 const GalleryContainer = (props) => {
-	const { type, slug, gallerySlug } = useParams();
+	const { type, slug, gallerySlug, igSlug } = useParams();
 	const [galleryView, toggleGalleryView] = useState(false);
 	const [content, setContent] = useState([]);
 	const [loaded, setLoaded] = useState(false);
-
 	const [imageRef, setImageRef] = useState(null);
+	const [topNavItems, setTopNavItems] = useState([]);
+
+	const location = useLocation();
+
+	const imagesRequest = axios.get(
+		`http://localhost:8000/wp-json/custom-api/v1/gallery_images?type=${type}&slug=${slug}&gallery_slug=${gallerySlug}`
+	);
+	const topNavRequest = axios.get(
+		`http://localhost:8000/wp-json/custom-api/v1/ig?type=${type}&slug=${slug}&gallery_slug=${igSlug}`
+	);
 
 	useEffect(() => {
 		setLoaded(false);
 		setContent([]);
 		axios
-			.get(
-				`http://localhost:8000/wp-json/custom-api/v1/gallery_images?type=${type}&slug=${slug}&gallery_slug=${gallerySlug}`
+			.all([imagesRequest, topNavRequest])
+			.then(
+				axios.spread((...responses) => {
+					const imagesResponse = responses[0].data;
+					const topNavResponse = responses[1].data;
+
+					setContent(imagesResponse);
+
+					topNavResponse.galleries.length < 2
+						? setTopNavItems()
+						: setTopNavItems(topNavResponse);
+				})
 			)
-			.then((res) => {
-				console.log(res.data);
-				setContent(res.data);
-			})
 			.then(() => setLoaded(true));
 	}, [gallerySlug]);
 
-	console.log(props);
+	// const { topNavItems, setTopNavItems } = useContext(topNavContext);
+
+	const active = {
+		color: 'red',
+	};
 
 	const raiseClick = (id) => {
 		setImageRef(id);
@@ -43,6 +75,17 @@ const GalleryContainer = (props) => {
 			return (
 				<div className={style.container}>
 					<MainHeader content={content.title} />
+					{topNavItems
+						? topNavItems.galleries.map((navItem) => (
+								<NavLink
+									exact
+									activeStyle={active}
+									to={`/${type}/${slug}/${igSlug}/${navItem.gallery_slug}`}
+								>
+									<TopNav content={navItem.title} />
+								</NavLink>
+						  ))
+						: null}
 					<div className={style.imagesContainer}>
 						{content.images.map((image) => (
 							<ProjectImage

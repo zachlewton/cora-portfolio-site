@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import {
 	BrowserRouter,
@@ -14,12 +14,16 @@ import {
 
 import MainHeader from '../mainHeader/MainHeader';
 import Paragraph from '../paragraph/Paragraph';
+import topNavContext from '../../topNavContext';
+import TopNav from '../topNav/TopNav';
 
 const IgContainer = (props) => {
 	const { type, slug, igSlug } = useParams();
 	const [loaded, setLoaded] = useState(false);
 	const [content, setContent] = useState({});
 	const location = useLocation();
+
+	const { topNavItems, setTopNavItems } = useContext(topNavContext);
 
 	useEffect(() => {
 		axios
@@ -30,7 +34,9 @@ const IgContainer = (props) => {
 				console.log(res.data);
 				setContent(res.data);
 			})
-			.then(() => setLoaded(true));
+			.then(() => {
+				setLoaded(true);
+			});
 	}, []);
 
 	if (!loaded) {
@@ -38,9 +44,15 @@ const IgContainer = (props) => {
 	}
 
 	if (loaded) {
+		setTopNavItems(content.galleries);
 		return (
 			<div>
-				<MainHeader title={content.title} />
+				<MainHeader content={content.title} />
+				{content.galleries.map((gallery) => (
+					<NavLink to={`${location.pathname}/${gallery.gallery_slug}`}>
+						<TopNav content={gallery.title} />
+					</NavLink>
+				))}
 				<Paragraph content={content.description} />
 				<div>
 					{content.galleries.map((gallery) => (

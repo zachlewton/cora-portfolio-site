@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import L1ContentCard from '../l1ContentCard/L1ContentCard';
 import {
@@ -12,6 +12,8 @@ import {
 	usePrompt,
 	useHistory,
 } from 'react-router-dom';
+import TopNav from '../topNav/TopNav';
+import topNavContext from '../../topNavContext';
 
 const Level1 = (props) => {
 	const params = useParams();
@@ -20,7 +22,8 @@ const Level1 = (props) => {
 	const [loaded, setLoaded] = useState(false);
 	const [content, setContent] = useState([]);
 	const location = useLocation();
-	console.log(location);
+
+	const { topNavItems, setTopNavItems } = useContext(topNavContext);
 
 	useEffect(() => {
 		axios
@@ -32,24 +35,45 @@ const Level1 = (props) => {
 			.then(() => setLoaded(true));
 	}, [type]);
 
-	return (
-		<div>
-			<h1>{type}</h1>
+	if (!loaded) {
+		return <div>loading....</div>;
+	}
+
+	if (loaded) {
+		return (
 			<div>
-				{content.map((contentItem) =>
-					!contentItem.gallery ? (
-						<NavLink to={`/${type}/${contentItem.slug}`}>
-							<L1ContentCard content={contentItem} />
+				<h1>{type}</h1>
+
+				{content.map((navItem) =>
+					!navItem.gallery ? (
+						<NavLink to={`/${type}/${navItem.slug}`}>
+							<TopNav content={navItem.title} />
 						</NavLink>
 					) : (
-						<NavLink to={`/gallery/${contentItem.slug}`}>
-							<L1ContentCard content={contentItem} />
+						<NavLink
+							to={`/${type}/${navItem.slug}/${navItem.slug}/${navItem.slug}`}
+						>
+							<TopNav content={navItem.title} />
 						</NavLink>
 					)
 				)}
+
+				<div>
+					{content.map((contentItem) =>
+						!contentItem.gallery ? (
+							<NavLink to={`/${type}/${contentItem.slug}`}>
+								<L1ContentCard content={contentItem} />
+							</NavLink>
+						) : (
+							<NavLink to={`/gallery/${contentItem.slug}`}>
+								<L1ContentCard content={contentItem} />
+							</NavLink>
+						)
+					)}
+				</div>
 			</div>
-		</div>
-	);
+		);
+	}
 };
 
 export default Level1;

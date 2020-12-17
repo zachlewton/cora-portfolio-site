@@ -1,8 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
+import topNavContext from '../../topNavContext';
 
 const SubNavChildNav = (props) => {
+	const { topNavItems, setTopNavItems } = useContext(topNavContext);
+
 	const { subs, slug } = props.subItems;
+
+	// setTopNavItems(subs);
+
 	const active = {
 		color: 'red',
 	};

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import {
 	BrowserRouter as Router,
 	Routes,
@@ -12,6 +12,7 @@ import style from './SubNav.module.css';
 import ProjectTitle from '../projectTitle/ProjectTitle';
 import axios from 'axios';
 import SubNavChildNav from '../subNavChildNav/SubNavChildNav';
+import topNavContext from '../../topNavContext';
 
 const SubNav = (props) => {
 	const type = props.type;
@@ -20,6 +21,8 @@ const SubNav = (props) => {
 	const [subNavActive, setSubNavActive] = useState(false);
 	const [subNavType, setSubNavType] = useState('');
 	const [subItems, setSubItems] = useState({});
+	const { topNavItems, setTopNavItems } = useContext(topNavContext);
+	// setTopNavItems(navItems);
 
 	const subNav = (type, subs) => {
 		setSubNavActive(true);
