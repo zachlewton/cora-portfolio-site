@@ -3,29 +3,22 @@ import Nav from './Components/nav/Nav';
 import style from './App.module.css';
 import Logo from './Components/logo/Logo';
 import Project from './Components/project/Project';
-import Medium from './Components/medium/Medium';
+import HomePage from './Components/homePage/HomePage';
 import GalleryContainer from './Components/galleryContainer/GalleryContainer';
 import ErrorPage from './Components/errorPage/ErrorPage';
 import MobileNav from './Components/mobileNav/MobileNav';
 import Level1 from './Components/level1/Level1';
 import Level2 from './Components/level2/Level2';
 import IgContainer from './Components/igContainer/IgContainer';
+import Landing from './Components/landing/Landing';
 
 //imports
 import React, { Component, useEffect, useState, createContext } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import Burger from 'react-css-burger';
 import { useMediaQuery } from 'react-responsive';
-import {
-	BrowserRouter as Router,
-	Routes,
-	Route,
-	Link,
-	Outlet,
-	useParams,
-	useLocation,
-} from 'react-router-dom';
-import ReactDOM from 'react-dom';
+import { Switch, Route, useLocation } from 'react-router-dom';
+
 import topNavContext from './topNavContext';
 import TopNav from './Components/topNav/TopNav';
 
@@ -65,18 +58,30 @@ export default function App() {
 							</div>
 						)}
 
-						<Routes>
-							<Route path="/" element={<Medium />} />
-							<Route path="/:type" element={<Level1 />} />
-							<Route path="/:type/:slug" element={<Level2 />} />
-							<Route path="/:type/:slug/:igSlug" element={<IgContainer />} />
-							<Route
-								path="/:type/:slug/:igSlug/:gallerySlug"
-								element={<GalleryContainer />}
-							/>
+						<Switch>
+							<Route exact path="/">
+								<Landing />
+							</Route>
+							<Route exact path="/home">
+								<HomePage />
+							</Route>
+							<Route exact path="/:type">
+								<Level1 />
+							</Route>
+							<Route exact path="/:type/:slug">
+								<Level2 />
+							</Route>
+							<Route exact path="/:type/:slug/:igSlug">
+								<IgContainer />
+							</Route>
+							<Route exact path="/:type/:slug/:igSlug/:gallerySlug">
+								<GalleryContainer />
+							</Route>
 
-							<Route path="*" element={<ErrorPage />} />
-						</Routes>
+							<Route path="*">
+								<ErrorPage />
+							</Route>
+						</Switch>
 					</div>
 				</div>
 			</topNavContext.Provider>

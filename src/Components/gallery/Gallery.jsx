@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { location, useLocation } from 'react-router-dom';
 import CaptionLines from '../captionLines/CaptionLines';
 import MainCaption from '../mainCaption/MainCaption';
 
 const Gallery = (props) => {
 	const images = props.images;
 	const imageRef = props.imageRef;
+	const location = useLocation();
 
 	// let image = images.find((image) => {
 	// 	if (image.id == imageRef) return true;
@@ -41,7 +43,9 @@ const Gallery = (props) => {
 			<CaptionLines content={image.caption} />
 			<button onClick={handlePrev}>prev</button>
 			<button onClick={handleNext}>next</button>
-			<div onClick={props.onClick}>exit</div>
+			{location.pathname != '/home' ? (
+				<div onClick={props.onClick}>exit</div>
+			) : null}
 		</>
 	);
 };
