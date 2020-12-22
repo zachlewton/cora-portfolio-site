@@ -24,39 +24,58 @@ const SubNav = (props) => {
 	const { topNavItems, setTopNavItems } = useContext(topNavContext);
 	// setTopNavItems(navItems);
 
-	const subNav = (type, subs) => {
-		setSubNavActive(true);
-		setSubNavType(type);
-		setSubItems(subs);
-	};
+	// const subNav = (type, subs) => {
+	// 	setSubNavActive(true);
+	// 	setSubNavType(type);
+	// 	setSubItems(subs);
+	// };
 
 	const active = {
 		color: 'red',
 	};
 
-	return (
-		<div className={style.container}>
-			<ul>
-				{navItems.map((navItem) =>
-					!navItem.gallery ? (
-						<NavLink exact activeStyle={active} to={`/${type}/${navItem.slug}`}>
-							<li onClick={() => props.subNavChild(type, navItem)}>
-								{navItem.title}
-							</li>
-						</NavLink>
-					) : (
-						<NavLink
-							exact
-							activeStyle={active}
-							to={`/${type}/${navItem.slug}/${navItem.slug}/${navItem.slug}`}
-						>
+	if (type != 'info') {
+		return (
+			<div className={style.container}>
+				<ul>
+					{navItems.map((navItem) =>
+						!navItem.gallery ? (
+							<NavLink
+								exact
+								activeStyle={active}
+								to={`/${type}/${navItem.slug}`}
+							>
+								<li onClick={() => props.subNavChild(type, navItem)}>
+									{navItem.title}
+								</li>
+							</NavLink>
+						) : (
+							<NavLink
+								exact
+								activeStyle={active}
+								to={`/${type}/${navItem.slug}/${navItem.slug}/${navItem.slug}`}
+							>
+								<li>{navItem.title}</li>
+							</NavLink>
+						)
+					)}
+				</ul>
+			</div>
+		);
+	}
+	if (type === 'info') {
+		return (
+			<div className={style.container}>
+				<ul>
+					{navItems.map((navItem) => (
+						<NavLink exact activeStyle={active} to={`/info/${navItem.slug}`}>
 							<li>{navItem.title}</li>
 						</NavLink>
-					)
-				)}
-			</ul>
-		</div>
-	);
+					))}
+				</ul>
+			</div>
+		);
+	}
 };
 
 export default SubNav;

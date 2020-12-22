@@ -12,7 +12,7 @@ const L2ContentCard = (props) => {
 	return (
 		<div>
 			<NavLink to={url}>
-				<C1Card title={title} description={description} />
+				<C1Card title={title} paragraph={description} />
 			</NavLink>
 			{galleries.map((gallery) => (
 				<NavLink to={`${location.pathname}/${slug}/${gallery.gallery_slug}`}>

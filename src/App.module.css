@@ -6,6 +6,8 @@ html,
 body {
 	padding: 0;
 	margin: 0;
+	width: 100vw;
+	height: 100vh;
 }
 
 header {
@@ -14,11 +16,15 @@ header {
 	background-color: blue;
 }
 
+li {
+	list-style: none;
+}
+
 .container {
 	display: grid;
 
 	grid-template-columns: 23.295vw 17.804vw 17.804vw 17.804vw 23.295vw;
-	grid-template-rows: 11.154vw calc(100vh - 11.154vw);
+	grid-template-rows: 8.366vw calc(100vh - 8.366vw);
 	grid-template-areas:
 		'header header header header header'
 		'nav main main main main ';
@@ -56,7 +62,6 @@ header {
 
 .contentContainer {
 	background-color: rebeccapurple;
-	padding-left: 2.231vw;
 
 	grid-area: main;
 	height: auto;

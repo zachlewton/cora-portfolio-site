@@ -11,6 +11,7 @@ import Level1 from './Components/level1/Level1';
 import Level2 from './Components/level2/Level2';
 import IgContainer from './Components/igContainer/IgContainer';
 import Landing from './Components/landing/Landing';
+import InfoContainer from './Components/infoContainer/InfoContainer';
 
 //imports
 import React, { Component, useEffect, useState, createContext } from 'react';
@@ -64,6 +65,9 @@ export default function App() {
 							</Route>
 							<Route exact path="/home">
 								<HomePage />
+							</Route>
+							<Route exact path="/info/:slug">
+								<InfoContainer />
 							</Route>
 							<Route exact path="/:type">
 								<Level1 />

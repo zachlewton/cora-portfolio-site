@@ -13,6 +13,7 @@ const Nav = (props) => {
 	const [loaded, setLoaded] = useState(false);
 	const [projects, setProjects] = useState([]);
 	const [works, setWorks] = useState([]);
+	const [info, setInfo] = useState([]);
 
 	console.log('subNavType:' + subNavType);
 	console.log('subNavChildType:' + subNavChildType);
@@ -24,6 +25,7 @@ const Nav = (props) => {
 				console.log(res.data);
 				setProjects(res.data.projects);
 				setWorks(res.data.works);
+				setInfo(res.data.info);
 			})
 			.then(() => setLoaded(true));
 	}, []);
@@ -49,6 +51,8 @@ const Nav = (props) => {
 	return (
 		<nav className={style.sideNav}>
 			<ul className={style.navList}>
+				<li onClick={() => subNav('info')}>Info</li>
+
 				<NavLink exact activeStyle={active} to="/projects">
 					<li onClick={() => subNav('projects')}>Projects</li>
 				</NavLink>
@@ -59,7 +63,13 @@ const Nav = (props) => {
 
 			{subNavActive && (
 				<SubNav
-					navItems={subNavType === 'projects' ? projects : works}
+					navItems={
+						subNavType === 'projects'
+							? projects
+							: subNavType === 'info'
+							? info
+							: works
+					}
 					type={subNavType}
 					subNavChild={subNavChild}
 				/>

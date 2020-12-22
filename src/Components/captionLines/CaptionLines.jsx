@@ -1,10 +1,10 @@
 import React from 'react';
-
+import style from './CaptionLines.module.css';
 const CaptionLines = (props) => {
 	return (
-		<div>
+		<div className={style.container}>
 			{props.content.map((line) => (
-				<h3>{line}</h3>
+				<li>{line}</li>
 			))}
 		</div>
 	);

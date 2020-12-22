@@ -5,7 +5,7 @@ const C1Card = (props) => {
 	return (
 		<div>
 			<h2>{props.title}</h2>
-			<Paragraph content={props.description} />
+			<Paragraph content={props.paragraph} />
 		</div>
 	);
 };
