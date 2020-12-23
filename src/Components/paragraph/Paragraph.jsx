@@ -1,7 +1,8 @@
 import React from 'react';
+import style from './Paragraph.module.css';
 
 const Paragraph = (props) => {
-	return <div>{props.content}</div>;
+	return <div className={style.container}>{props.content}</div>;
 };
 
 export default Paragraph;

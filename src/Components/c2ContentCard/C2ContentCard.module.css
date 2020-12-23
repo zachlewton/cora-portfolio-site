@@ -1,0 +1,19 @@
+.container {
+	display: flex;
+	margin: 0 0 3.1587697423108896vh 0;
+}
+
+.container img {
+	width: 100%;
+	max-width: 28.228vw;
+	height: auto;
+}
+
+.captionContainer {
+	display: flex;
+	height: 100%;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-self: flex-end;
+	margin: 0 0 0 1.845vw;
+}

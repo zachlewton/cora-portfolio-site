@@ -1,6 +1,7 @@
 nav {
-	margin: 0 0.772vw 0 3.818vw;
+	margin: 3.408146300914381vh 0.815vw 0 3.818vw;
 	display: flex;
+	font-size: small;
 }
 
 ul {
@@ -8,10 +9,12 @@ ul {
 	text-decoration: none;
 	margin: 0;
 	padding: 0;
+	display: flex;
+	flex-direction: column;
 }
 
 li {
-	margin: 0 0 1.33vw 0;
+	margin: 0 0 1.5793848711554448vh 0;
 }
 
 a {

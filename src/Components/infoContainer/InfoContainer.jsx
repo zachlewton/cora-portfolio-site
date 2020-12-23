@@ -5,6 +5,7 @@ import { useParams, useLocation } from 'react-router-dom';
 import MainHeader from '../mainHeader/MainHeader';
 import Paragraph from '../paragraph/Paragraph';
 import C2ContentCard from '../c2ContentCard/C2ContentCard';
+import style from './InfoContainer.module.css';
 
 const InfoContainer = (props) => {
 	const { slug } = useParams();
@@ -28,7 +29,7 @@ const InfoContainer = (props) => {
 
 	if (loaded) {
 		return (
-			<div>
+			<div className={style.container}>
 				<MainHeader content={content.title} />
 				{content.content_blocks.map((block) => (
 					<div>

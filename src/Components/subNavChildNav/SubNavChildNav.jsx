@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import topNavContext from '../../topNavContext';
+import style from './SubNavChild.module.css';
 
 const SubNavChildNav = (props) => {
 	const { topNavItems, setTopNavItems } = useContext(topNavContext);
@@ -13,26 +14,28 @@ const SubNavChildNav = (props) => {
 		color: 'red',
 	};
 	return (
-		<div>
-			{subs.map((sub) =>
-				sub.galleries.length > 1 ? (
-					<NavLink
-						exact
-						activeStyle={active}
-						to={`/${props.type}/${slug}/${sub.slug}`}
-					>
-						{sub.title}
-					</NavLink>
-				) : (
-					<NavLink
-						exact
-						activeStyle={active}
-						to={`/${props.type}/${slug}/${sub.slug}/${sub.slug}`}
-					>
-						{sub.title}
-					</NavLink>
-				)
-			)}
+		<div className={style.container}>
+			<ul>
+				{subs.map((sub) =>
+					sub.galleries.length > 1 ? (
+						<NavLink
+							exact
+							activeStyle={active}
+							to={`/${props.type}/${slug}/${sub.slug}`}
+						>
+							<li>{sub.title}</li>
+						</NavLink>
+					) : (
+						<NavLink
+							exact
+							activeStyle={active}
+							to={`/${props.type}/${slug}/${sub.slug}/${sub.slug}`}
+						>
+							<li>{sub.title}</li>
+						</NavLink>
+					)
+				)}
+			</ul>
 		</div>
 	);
 };

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import CaptionLines from '../captionLines/CaptionLines';
 import MainCaption from '../mainCaption/MainCaption';
+import style from './C2ContentCard.module.css';
 
 const C2ContentCard = (props) => {
 	const { main_caption, caption, src } = props.image;
@@ -14,10 +15,12 @@ const C2ContentCard = (props) => {
 	);
 
 	return (
-		<div>
+		<div className={style.container}>
 			<img src={src} />
-			<MainCaption content={main_caption} />
-			<CaptionLines content={caption} />
+			<div className={style.captionContainer}>
+				<MainCaption content={main_caption} />
+				<CaptionLines content={caption} />
+			</div>
 		</div>
 	);
 };

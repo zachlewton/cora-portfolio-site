@@ -1,16 +1,22 @@
-img {
-	max-width: 54.783vw;
-	width: 100%;
+.container img {
+	object-fit: contain;
+	width: 54.783vw;
+	height: 71.23857024106401vh;
+
 	/* height: 71.23857024106401vh; */
-	height: auto;
+}
+
+.imageContainer {
 	margin: 0 1.716vw 0 1.716vw;
+	width: 54.783vw;
+	height: 71.23857024106401vh;
 }
 
 .container {
 	display: flex;
 	height: 71.23857024106401vh;
 	padding: 0 0 0 0;
-	margin: 3.7406483790523692vh 7.979vw auto 0.901vw;
+	margin: 3.7406483790523692vh 7.979vw 0 0.901vw;
 }
 
 .rightContainer {

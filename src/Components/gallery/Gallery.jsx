@@ -50,7 +50,10 @@ const Gallery = (props) => {
 				size={iconSize}
 				style={{ marginTop: '32.02161263507897vh' }}
 			/>
-			<img src={image.src} />
+			<div className={style.imageContainer}>
+				<img src={image.src} />
+			</div>
+
 			<div className={style.rightContainer}>
 				<FontAwesomeIcon
 					onClick={handleNext}
