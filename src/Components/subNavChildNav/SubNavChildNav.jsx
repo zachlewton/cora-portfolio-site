@@ -11,7 +11,7 @@ const SubNavChildNav = (props) => {
 	// setTopNavItems(subs);
 
 	const active = {
-		color: 'red',
+		color: '#925223',
 	};
 	return (
 		<div className={style.container}>

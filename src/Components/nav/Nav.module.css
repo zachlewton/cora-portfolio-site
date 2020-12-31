@@ -1,7 +1,8 @@
 nav {
-	margin: 3.408146300914381vh 0.815vw 0 3.818vw;
+	margin: 0 0.815vw 0 3.818vw;
 	display: flex;
 	font-size: small;
+	font-size: 12pt;
 }
 
 ul {

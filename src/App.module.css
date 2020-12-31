@@ -6,12 +6,12 @@ html,
 body {
 	padding: 0;
 	margin: 0;
+	/* font-size: 62.5%; */
 }
 
-header {
+.header {
 	grid-area: header;
-
-	background-color: blue;
+	height: 8.366vw;
 }
 
 li {
@@ -49,19 +49,30 @@ li {
 .logoContainer {
 	min-width: 100vw;
 	height: 9.376344086021506vw;
-
-	background-color: lightblue;
 }
 
 .navBar {
-	background-color: lightpink;
 	grid-area: nav;
+	margin-top: 3.408146300914381vh;
+	border-right: 1px solid black;
 }
 
 .contentContainer {
-	background-color: rebeccapurple;
-
 	grid-area: main;
 	height: auto;
 	overflow: auto;
+}
+
+.contentContainer:before {
+	content: ''; /* This is necessary for the pseudo element to work. */
+	display: block; /* This will put the pseudo element on its own line. */
+	padding: 0 2vw 0 0; /* This will center the border. */
+	width: 75vw; /* Change this to whatever width you want. */
+	position: absolute;
+	width: 90vw;
+	margin-right: 3vw;
+	right: 1.2vw;
+
+	/* This creates some space between the element and the border. */
+	border-bottom: 1px solid black; /* This creates the border. Replace black with whatever color you want. */
 }

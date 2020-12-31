@@ -31,7 +31,7 @@ const SubNav = (props) => {
 	// };
 
 	const active = {
-		color: 'red',
+		color: '#925223',
 	};
 
 	if (type != 'info') {

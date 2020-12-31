@@ -31,7 +31,7 @@ const Nav = (props) => {
 	}, []);
 
 	const active = {
-		color: 'red',
+		color: '#925223',
 	};
 
 	const subNav = (type) => {

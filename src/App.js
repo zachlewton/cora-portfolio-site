@@ -24,7 +24,7 @@ import topNavContext from './topNavContext';
 import TopNav from './Components/topNav/TopNav';
 
 export default function App() {
-	const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1024px)' });
+	const isTabletOrMobile = useMediaQuery({ query: '(max-width: 768px)' });
 	const [topNavItems, setTopNavItems] = useState({});
 	const [active, setActive] = useState(false);
 	const value = { topNavItems, setTopNavItems };
@@ -40,9 +40,11 @@ export default function App() {
 				>
 					{!isTabletOrMobile && (
 						<>
-							<header>header</header>
+							<div className={style.header}></div>
+
 							<div className={style.navBar}>
 								<Nav />
+								<div className={style.navBorder}></div>
 							</div>
 						</>
 					)}
