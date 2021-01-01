@@ -12,6 +12,7 @@ const SubNavChildNav = (props) => {
 
 	const active = {
 		color: '#925223',
+		fontFamily: 'MYRIADPRO-BOLD',
 	};
 	return (
 		<div className={style.container}>

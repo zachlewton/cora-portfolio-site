@@ -1,5 +1,8 @@
 .container {
 	margin: 0 0.815vw 0 2.231vw;
+	font-family: MYRIADPRO-REGULAR;
+	font-size: 12pt;
+	color: #9f9f9d;
 }
 
 /* .subNavItem {

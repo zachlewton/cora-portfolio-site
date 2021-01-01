@@ -14,6 +14,8 @@ import {
 } from 'react-router-dom';
 import TopNav from '../topNav/TopNav';
 import topNavContext from '../../topNavContext';
+import MainHeader from '../mainHeader/MainHeader';
+import style from './Level1.module.css';
 
 const Level1 = (props) => {
 	const params = useParams();
@@ -41,22 +43,24 @@ const Level1 = (props) => {
 
 	if (loaded) {
 		return (
-			<div>
-				<h1>{type}</h1>
+			<div className={style.container}>
+				<MainHeader content={type} />
 
-				{content.map((navItem) =>
-					!navItem.gallery ? (
-						<NavLink to={`/${type}/${navItem.slug}`}>
-							<TopNav content={navItem.title} />
-						</NavLink>
-					) : (
-						<NavLink
-							to={`/${type}/${navItem.slug}/${navItem.slug}/${navItem.slug}`}
-						>
-							<TopNav content={navItem.title} />
-						</NavLink>
-					)
-				)}
+				<div className={style.topNavContainer}>
+					{content.map((navItem) =>
+						!navItem.gallery ? (
+							<NavLink to={`/${type}/${navItem.slug}`}>
+								<TopNav content={navItem.title} />
+							</NavLink>
+						) : (
+							<NavLink
+								to={`/${type}/${navItem.slug}/${navItem.slug}/${navItem.slug}`}
+							>
+								<TopNav content={navItem.title} />
+							</NavLink>
+						)
+					)}
+				</div>
 
 				<div>
 					{content.map((contentItem) =>

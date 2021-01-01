@@ -32,6 +32,7 @@ const Nav = (props) => {
 
 	const active = {
 		color: '#925223',
+		fontFamily: 'MYRIADPRO-BOLD',
 	};
 
 	const subNav = (type) => {

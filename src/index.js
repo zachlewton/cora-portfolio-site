@@ -1,6 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
+import './index.css';
+
+// import './Fonts/Avenir.ttc';
+// import './Fonts/HelveticaNeue.ttc';
+// import './Fonts/Iowan Old Style.ttc';
+// import './Fonts/MYRIADPRO-BOLD.OTF';
+// import './Fonts/MyriadPro-Light.otf';
+// import './Fonts/MYRIADPRO-REGULAR.OTF';
 
 import App from './App';
 

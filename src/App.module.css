@@ -2,6 +2,23 @@
   width: device-width;
 } */
 
+@font-face {
+	font-family: 'IowanOldStyle';
+	src: local('IowanOldStyle'), url(./Fonts/IowanOldStyle.ttc) format('truetype');
+}
+
+@font-face {
+	font-family: 'MYRIADPRO-REGULAR';
+	src: local('MYRIADPRO-REGULAR'),
+		url(./Fonts/MYRIADPRO-REGULAR.OTF) format('opentype');
+}
+
+@font-face {
+	font-family: 'MYRIADPRO-BOLD';
+	src: local('MYRIADPRO-BOLD'),
+		url(./Fonts/MYRIADPRO-BOLD.OTF) format('opentype');
+}
+
 html,
 body {
 	padding: 0;
@@ -54,7 +71,7 @@ li {
 .navBar {
 	grid-area: nav;
 	margin-top: 3.408146300914381vh;
-	border-right: 1px solid black;
+	border-right: 1px solid #231f20;
 }
 
 .contentContainer {
@@ -74,5 +91,5 @@ li {
 	right: 1.2vw;
 
 	/* This creates some space between the element and the border. */
-	border-bottom: 1px solid black; /* This creates the border. Replace black with whatever color you want. */
+	border-bottom: 1px solid #231f20; /* This creates the border. Replace black with whatever color you want. */
 }
