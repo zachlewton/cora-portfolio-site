@@ -8,7 +8,7 @@ const ProjectImage = (props) => {
 	return (
 		<div className={style.container}>
 			<img onClick={props.onClick} src={image.src} />
-			<h1>{image.title}</h1>
+			{/* <h1>{image.title}</h1> */}
 			<CaptionLines content={image.caption} />
 		</div>
 	);

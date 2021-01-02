@@ -1,12 +1,38 @@
 .container {
-	display: flex;
-	flex-direction: column;
-	padding: 0 0 0 0;
-	overflow-y: scroll;
+	margin: 5.7356608478802995vh 28.271vw 5vh 2.231vw;
 }
 
-.imagesContainer {
+.topNavContainer {
+	display: flex;
+	margin: 0 0 1.99501246882793vh 0;
+}
+
+.topNavContainer li {
+	display: flex;
+	font-family: MYRIADPRO-REGULAR;
+	font-size: 12pt;
+	color: #9f9f9d;
+	/* letter-spacing: ; */
+}
+
+.images {
 	display: flex;
 	flex-wrap: wrap;
-	width: 50vw;
+	margin: 2.992518703241895vh 0 0 0;
+}
+
+.images img {
+	width: 13.085vw;
+	height: 15.710723192019948vh;
+	margin: 0 0 2.327514546965918vh 0;
+
+	/* object-fit: contain; */
+}
+
+.image {
+	margin: 0 3.3vw 4.821280133000831vh 0;
+}
+
+.image:nth-child(3n) {
+	margin-right: 0;
 }

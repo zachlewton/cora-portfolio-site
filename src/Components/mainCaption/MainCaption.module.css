@@ -1,4 +1,12 @@
 h3 {
 	margin: 0 0 0.914380714879468vh 0;
+	font-size: 13pt;
+	font-family: IowanOldStyle;
+	color: #925223;
+}
+
+h3::first-letter {
 	font-size: 17pt;
+	text-transform: capitalize;
+	font-weight: bold;
 }

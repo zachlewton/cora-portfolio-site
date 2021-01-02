@@ -1,0 +1,28 @@
+.paragraphContainer {
+	margin: 0 0 4.7381546134663335vh 0;
+}
+
+.container {
+	margin: 0 0 0.8vh 0;
+}
+
+.images {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.images img {
+	width: 13.085vw;
+	height: 15.710723192019948vh;
+	margin: 0 0 6.899418121363258vh 0;
+
+	/* object-fit: contain; */
+}
+
+.image {
+	margin: 0 3.3vw 0 0;
+}
+
+.image:nth-child(3n) {
+	margin-right: 0;
+}

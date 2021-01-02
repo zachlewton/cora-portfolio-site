@@ -22,7 +22,7 @@ import { Switch, Route, useLocation } from 'react-router-dom';
 
 import topNavContext from './topNavContext';
 import TopNav from './Components/topNav/TopNav';
-
+import logo from './images/logo.png';
 export default function App() {
 	const isTabletOrMobile = useMediaQuery({ query: '(max-width: 768px)' });
 	const [topNavItems, setTopNavItems] = useState({});
@@ -40,7 +40,11 @@ export default function App() {
 				>
 					{!isTabletOrMobile && (
 						<>
-							<div className={style.header}></div>
+							<div className={style.header}>
+								<a href={'/'}>
+									<img src={logo} />
+								</a>
+							</div>
 
 							<div className={style.navBar}>
 								<Nav />
@@ -55,39 +59,41 @@ export default function App() {
 					)}
 
 					<div className={style.contentContainer}>
-						{isTabletOrMobile && (
-							<div style={{ display: !active && 'none' }}>
-								<MobileNav />
-							</div>
-						)}
+						<div className={style.flipped}>
+							{isTabletOrMobile && (
+								<div style={{ display: !active && 'none' }}>
+									<MobileNav />
+								</div>
+							)}
 
-						<Switch>
-							<Route exact path="/">
-								<Landing />
-							</Route>
-							<Route exact path="/home">
-								<HomePage />
-							</Route>
-							<Route exact path="/info/:slug">
-								<InfoContainer />
-							</Route>
-							<Route exact path="/:type">
-								<Level1 />
-							</Route>
-							<Route exact path="/:type/:slug">
-								<Level2 />
-							</Route>
-							<Route exact path="/:type/:slug/:igSlug">
-								<IgContainer />
-							</Route>
-							<Route exact path="/:type/:slug/:igSlug/:gallerySlug">
-								<GalleryContainer />
-							</Route>
+							<Switch>
+								<Route exact path="/">
+									<Landing />
+								</Route>
+								<Route exact path="/home">
+									<HomePage />
+								</Route>
+								<Route exact path="/info/:slug">
+									<InfoContainer />
+								</Route>
+								<Route exact path="/:type">
+									<Level1 />
+								</Route>
+								<Route exact path="/:type/:slug">
+									<Level2 />
+								</Route>
+								<Route exact path="/:type/:slug/:igSlug">
+									<IgContainer />
+								</Route>
+								<Route exact path="/:type/:slug/:igSlug/:gallerySlug">
+									<GalleryContainer />
+								</Route>
 
-							<Route path="*">
-								<ErrorPage />
-							</Route>
-						</Switch>
+								<Route path="*">
+									<ErrorPage />
+								</Route>
+							</Switch>
+						</div>
 					</div>
 				</div>
 			</topNavContext.Provider>

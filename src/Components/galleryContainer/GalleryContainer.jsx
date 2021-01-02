@@ -75,24 +75,29 @@ const GalleryContainer = (props) => {
 			return (
 				<div className={style.container}>
 					<MainHeader content={content.title} />
-					{topNavItems
-						? topNavItems.galleries.map((navItem) => (
-								<NavLink
-									exact
-									activeStyle={active}
-									to={`/${type}/${slug}/${igSlug}/${navItem.gallery_slug}`}
-								>
-									<TopNav content={navItem.title} />
-								</NavLink>
-						  ))
-						: null}
-					<div className={style.imagesContainer}>
+					<div className={style.topNavContainer}>
+						{topNavItems
+							? topNavItems.galleries.map((navItem) => (
+									<NavLink
+										exact
+										activeStyle={active}
+										to={`/${type}/${slug}/${igSlug}/${navItem.gallery_slug}`}
+									>
+										<TopNav content={navItem.title} />
+									</NavLink>
+							  ))
+							: null}
+					</div>
+
+					<div className={style.images}>
 						{content.images.map((image) => (
-							<ProjectImage
-								onClick={() => raiseClick(image.id)}
-								image={image}
-								key={image.id}
-							/>
+							<div className={style.image}>
+								<ProjectImage
+									onClick={() => raiseClick(image.id)}
+									image={image}
+									key={image.id}
+								/>
+							</div>
 						))}
 					</div>
 				</div>

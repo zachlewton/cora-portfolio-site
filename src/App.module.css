@@ -8,6 +8,11 @@
 }
 
 @font-face {
+	font-family: 'IowanOldStyle';
+	src: local('IowanOldStyle'), url(./Fonts/IowanOldStyle.ttc) format('truetype');
+}
+
+@font-face {
 	font-family: 'MYRIADPRO-REGULAR';
 	src: local('MYRIADPRO-REGULAR'),
 		url(./Fonts/MYRIADPRO-REGULAR.OTF) format('opentype');
@@ -17,6 +22,11 @@
 	font-family: 'MYRIADPRO-BOLD';
 	src: local('MYRIADPRO-BOLD'),
 		url(./Fonts/MYRIADPRO-BOLD.OTF) format('opentype');
+}
+
+@font-face {
+	font-family: 'HelveticaNeue';
+	src: local('HelveticaNeue'), url(./Fonts/HelveticaNeue.ttc) format('truetype');
 }
 
 html,
@@ -77,7 +87,11 @@ li {
 .contentContainer {
 	grid-area: main;
 	height: auto;
-	overflow: auto;
+	overflow-y: auto;
+	direction: rtl;
+}
+.flipped {
+	direction: ltr;
 }
 
 .contentContainer:before {
@@ -92,4 +106,15 @@ li {
 
 	/* This creates some space between the element and the border. */
 	border-bottom: 1px solid #231f20; /* This creates the border. Replace black with whatever color you want. */
+}
+
+::-webkit-scrollbar {
+	width: 5px;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+	/* background: #925223;
+	height: 5px;
+	width: 5px;
+	border-radius: 100px; */
 }

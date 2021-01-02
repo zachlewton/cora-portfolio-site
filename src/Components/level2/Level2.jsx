@@ -15,6 +15,7 @@ import {
 import TopNav from '../topNav/TopNav';
 import MainHeader from '../mainHeader/MainHeader';
 import topNavContext from '../../topNavContext';
+import style from './Level2.module.css';
 
 const Level2 = () => {
 	const params = useParams();
@@ -43,28 +44,32 @@ const Level2 = () => {
 		console.log(content.subs);
 
 		return (
-			<div>
+			<div className={style.container}>
 				<MainHeader content={content.title} />
-				{subs.map((sub) =>
-					sub.galleries.length > 1 ? (
-						<NavLink to={`/${params.type}/${params.slug}/${sub.slug}`}>
-							<TopNav content={sub.title} />
-						</NavLink>
-					) : (
-						<NavLink
-							to={`/${params.type}/${params.slug}/${sub.slug}/${sub.slug}`}
-						>
-							<TopNav content={sub.title} />
-						</NavLink>
-					)
-				)}
+
+				<div className={style.topNavContainer}>
+					{subs.map((sub) =>
+						sub.galleries.length > 1 ? (
+							<NavLink to={`/${params.type}/${params.slug}/${sub.slug}`}>
+								<TopNav content={sub.title} />
+							</NavLink>
+						) : (
+							<NavLink
+								to={`/${params.type}/${params.slug}/${sub.slug}/${sub.slug}`}
+							>
+								<TopNav content={sub.title} />
+							</NavLink>
+						)
+					)}
+				</div>
+
 				{subs.map((contentItem) =>
 					contentItem.galleries.length > 1 ? ( ////if navigate to ig
-						<div>
+						<div className={style.L2CardContainer}>
 							<L2ContentCard ig={true} content={contentItem} />
 						</div>
 					) : (
-						<div>
+						<div className={style.L2CardContainer}>
 							<L2ContentCard ig={false} content={contentItem} />
 						</div> /////if navigate straight to gallery
 					)
