@@ -1,7 +1,12 @@
 .container {
 	display: flex;
 	flex-direction: column;
-	font-family: MYRIADPRO-REGULAR;
+	/* font-family: MYRIADPRO-REGULAR;
 	font-size: 12pt;
-	color: #9f9f9d;
+	color: #9f9f9d; */
+}
+
+.active {
+	color: #925223;
+	font-family: MYRIADPRO-BOLD;
 }

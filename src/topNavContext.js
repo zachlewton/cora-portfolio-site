@@ -1,7 +1,10 @@
 import React, { createContext } from 'react';
 
 const topNavContext = createContext({
-	topNavitems: 'hi',
+	type: '',
+	slug: '',
+	igSlug: '',
+	gallerySlug: '',
 	setTopNavitems: () => {},
 });
 

@@ -16,6 +16,7 @@ import TopNav from '../topNav/TopNav';
 import topNavContext from '../../topNavContext';
 import MainHeader from '../mainHeader/MainHeader';
 import style from './Level1.module.css';
+import Level2 from '../level2/Level2';
 
 const Level1 = (props) => {
 	const params = useParams();

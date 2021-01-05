@@ -2,7 +2,7 @@ nav {
 	margin: 0 0.815vw 0 3.818vw;
 	display: flex;
 	font-family: MYRIADPRO-REGULAR;
-	font-size: 12pt;
+	font-size: clamp(12px, 0.686vw, 12pt);
 	color: #9f9f9d;
 }
 
@@ -26,4 +26,9 @@ a {
 a:visited {
 	text-decoration: none;
 	color: inherit;
+}
+
+.active {
+	color: #925223;
+	font-family: MYRIADPRO-BOLD;
 }

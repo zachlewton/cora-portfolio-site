@@ -27,6 +27,11 @@ const IgContainer = (props) => {
 
 	const { topNavItems, setTopNavItems } = useContext(topNavContext);
 
+	const active = {
+		color: '#925223',
+		fontFamily: 'MYRIADPRO-BOLD',
+	};
+
 	useEffect(() => {
 		axios
 			.get(
@@ -52,7 +57,11 @@ const IgContainer = (props) => {
 				<MainHeader content={content.title} />
 				<div className={style.topNavContainer}>
 					{content.galleries.map((gallery) => (
-						<NavLink to={`${location.pathname}/${gallery.gallery_slug}`}>
+						<NavLink
+							exact
+							activeStyle={active}
+							to={`${location.pathname}/${gallery.gallery_slug}`}
+						>
 							<TopNav content={gallery.title} />
 						</NavLink>
 					))}

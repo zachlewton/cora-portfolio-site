@@ -1,10 +1,15 @@
 .container {
 	margin: 0 0.815vw 0 2.231vw;
-	font-family: MYRIADPRO-REGULAR;
+	/* font-family: MYRIADPRO-REGULAR;
 	font-size: 12pt;
-	color: #9f9f9d;
+	color: #9f9f9d; */
 }
 
 /* .subNavItem {
 	margin: 0 0 0.601vw 0;
 } */
+
+.active {
+	color: #925223;
+	font-family: MYRIADPRO-BOLD;
+}

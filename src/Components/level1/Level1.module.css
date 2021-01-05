@@ -1,5 +1,6 @@
 .container {
-	margin: 5.7356608478802995vh 28.271vw 0 2.231vw;
+	margin: 5.7356608478802995vh 0 0 0;
+	/* min-width: 1420px; */
 }
 
 .topNavContainer {
@@ -20,6 +21,6 @@
 
 .container img {
 	width: 28.271vw;
-	height: 35.74397339983375vh;
+	height: 18.447vw;
 	/* object-fit: contain; */
 }

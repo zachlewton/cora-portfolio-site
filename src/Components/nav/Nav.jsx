@@ -1,5 +1,5 @@
 import React, { Component, useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useParams, useLocation } from 'react-router-dom';
 import style from './Nav.module.css';
 import SubNav from '../subNav/SubNav';
 import axios from 'axios';
@@ -14,9 +14,15 @@ const Nav = (props) => {
 	const [projects, setProjects] = useState([]);
 	const [works, setWorks] = useState([]);
 	const [info, setInfo] = useState([]);
+	const [activeLink, setActiveLink] = useState('');
 
 	console.log('subNavType:' + subNavType);
 	console.log('subNavChildType:' + subNavChildType);
+
+	const location = useLocation();
+	const params = useParams();
+
+	location.pathname == '/works' && console.log('true');
 
 	useEffect(() => {
 		axios
@@ -30,10 +36,10 @@ const Nav = (props) => {
 			.then(() => setLoaded(true));
 	}, []);
 
-	const active = {
-		color: '#925223',
-		fontFamily: 'MYRIADPRO-BOLD',
-	};
+	// const active = {
+	// 	color: '#925223',
+	// 	fontFamily: 'MYRIADPRO-BOLD',
+	// };
 
 	const subNav = (type) => {
 		setSubNavActive(true);
@@ -41,6 +47,7 @@ const Nav = (props) => {
 
 		setSubNavChildActive(false);
 		setSubNavChildType('');
+		setActiveLink(type);
 	};
 
 	const subNavChild = (type, subs) => {
@@ -54,11 +61,30 @@ const Nav = (props) => {
 			<ul className={style.navList}>
 				<li onClick={() => subNav('info')}>Info</li>
 
-				<NavLink exact activeStyle={active} to="/projects">
+				{/* <NavLink exact activeStyle={active} to="/projects">
 					<li onClick={() => subNav('projects')}>Projects</li>
 				</NavLink>
 				<NavLink exact activeStyle={active} to="/works">
 					<li onClick={() => subNav('works')}>Works</li>
+				</NavLink> */}
+
+				<NavLink exact activeClassName={style.active} to="/projects">
+					<li
+						className={
+							location.pathname.startsWith('/projects') && style.active
+						}
+						onClick={() => subNav('projects')}
+					>
+						Projects
+					</li>
+				</NavLink>
+				<NavLink activeClassName={style.active} to="/works">
+					<li
+						className={location.pathname.startsWith('/works') && style.active}
+						onClick={() => subNav('works')}
+					>
+						Works
+					</li>
 				</NavLink>
 			</ul>
 
@@ -73,6 +99,7 @@ const Nav = (props) => {
 					}
 					type={subNavType}
 					subNavChild={subNavChild}
+					setSubNavChildActive={setSubNavChildActive}
 				/>
 			)}
 

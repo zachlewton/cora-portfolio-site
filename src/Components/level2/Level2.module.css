@@ -1,5 +1,6 @@
 .container {
-	margin: 5.7356608478802995vh 28.271vw 0 2.231vw;
+	margin: 5.7356608478802995vh 0 0 0;
+	/* min-width: 1420px; */
 }
 
 .topNavContainer {

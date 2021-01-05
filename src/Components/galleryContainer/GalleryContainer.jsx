@@ -59,7 +59,8 @@ const GalleryContainer = (props) => {
 	// const { topNavItems, setTopNavItems } = useContext(topNavContext);
 
 	const active = {
-		color: 'red',
+		color: '#925223',
+		fontFamily: 'MYRIADPRO-BOLD',
 	};
 
 	const raiseClick = (id) => {

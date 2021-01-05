@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import topNavContext from '../../topNavContext';
 import style from './SubNavChild.module.css';
 
@@ -7,6 +7,8 @@ const SubNavChildNav = (props) => {
 	const { topNavItems, setTopNavItems } = useContext(topNavContext);
 
 	const { subs, slug } = props.subItems;
+
+	const location = useLocation();
 
 	// setTopNavItems(subs);
 

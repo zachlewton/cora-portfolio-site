@@ -18,7 +18,7 @@ import React, { Component, useEffect, useState, createContext } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import Burger from 'react-css-burger';
 import { useMediaQuery } from 'react-responsive';
-import { Switch, Route, useLocation } from 'react-router-dom';
+import { Switch, Route, useLocation, useParams } from 'react-router-dom';
 
 import topNavContext from './topNavContext';
 import TopNav from './Components/topNav/TopNav';

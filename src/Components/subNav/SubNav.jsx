@@ -22,6 +22,8 @@ const SubNav = (props) => {
 	const [subNavType, setSubNavType] = useState('');
 	const [subItems, setSubItems] = useState({});
 	const { topNavItems, setTopNavItems } = useContext(topNavContext);
+
+	const location = useLocation();
 	// setTopNavItems(navItems);
 
 	// const subNav = (type, subs) => {
@@ -41,22 +43,31 @@ const SubNav = (props) => {
 				<ul>
 					{navItems.map((navItem) =>
 						!navItem.gallery ? (
-							<NavLink
-								exact
-								activeStyle={active}
-								to={`/${type}/${navItem.slug}`}
-							>
-								<li onClick={() => props.subNavChild(type, navItem)}>
+							<NavLink exact to={`/${type}/${navItem.slug}`}>
+								<li
+									className={
+										location.pathname.startsWith(`/${type}/${navItem.slug}`) &&
+										style.active
+									}
+									onClick={() => props.subNavChild(type, navItem)}
+								>
 									{navItem.title}
 								</li>
 							</NavLink>
 						) : (
 							<NavLink
 								exact
-								activeStyle={active}
 								to={`/${type}/${navItem.slug}/${navItem.slug}/${navItem.slug}`}
 							>
-								<li>{navItem.title}</li>
+								<li
+									className={
+										location.pathname.startsWith(`/${type}/${navItem.slug}`) &&
+										style.active
+									}
+									onClick={() => props.setSubNavChildActive(false)}
+								>
+									{navItem.title}
+								</li>
 							</NavLink>
 						)
 					)}
