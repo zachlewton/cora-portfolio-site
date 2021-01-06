@@ -1,32 +1,36 @@
 .container {
 	margin: 5.7356608478802995vh 0 5vh 0;
+	/* max-width: 1099.02px; */
+	padding-right: 15vw;
 }
 
 .topNavContainer {
 	display: flex;
 	margin: 0 0 1.99501246882793vh 0;
-}
 
-.topNavContainer li {
-	display: flex;
 	font-family: MYRIADPRO-REGULAR;
 	font-size: 12pt;
 	color: #9f9f9d;
-	/* letter-spacing: ; */
 }
+
+/* .topNavContainer li {
+} */
 
 .images {
 	display: flex;
 	flex-wrap: wrap;
 	margin: 2.992518703241895vh 0 0 0;
+	flex-basis: 33.33%;
+	min-width: 567.703px;
 }
 
 .images img {
 	width: 13.085vw;
 	height: auto;
 	margin: 0 0 2.327514546965918vh 0;
-	min-width: 193px;
-	max-width: 301px;
+	min-width: 150.406px;
+	/* min-width: 193px;
+	max-width: 301px; */
 
 	/* object-fit: contain; */
 }

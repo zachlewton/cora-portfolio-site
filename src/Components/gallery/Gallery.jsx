@@ -6,6 +6,7 @@ import style from './Gallery.module.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const Gallery = (props) => {
 	const images = props.images;
@@ -68,7 +69,7 @@ const Gallery = (props) => {
 			</div>
 
 			{location.pathname != '/home' ? (
-				<div onClick={props.onClick}>exit</div>
+				<FontAwesomeIcon icon={faTimes} onClick={props.onClick} />
 			) : null}
 		</div>
 	);

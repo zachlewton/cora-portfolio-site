@@ -10,31 +10,44 @@ const SubNavChildNav = (props) => {
 
 	const location = useLocation();
 
+	const [activeSubNavChild, setActiveSubNavChild] = useState('');
+
 	// setTopNavItems(subs);
 
 	const active = {
 		color: '#925223',
 		fontFamily: 'MYRIADPRO-BOLD',
 	};
+
+	function testLink(slug) {
+		const exp = new RegExp(`\/${slug}.*`);
+		const path = location.pathname;
+
+		return exp.test(path);
+	}
+
 	return (
 		<div className={style.container}>
 			<ul>
 				{subs.map((sub) =>
 					sub.galleries.length > 1 ? (
-						<NavLink
-							exact
-							activeStyle={active}
-							to={`/${props.type}/${slug}/${sub.slug}`}
-						>
-							<li>{sub.title}</li>
+						<NavLink to={`/${props.type}/${slug}/${sub.slug}`}>
+							<li
+								className={testLink(sub.slug) && style.active}
+								// className={activeSubNavChild == sub.slug && style.active}
+								onClick={() => setActiveSubNavChild(sub.slug)}
+							>
+								{sub.title}
+							</li>
 						</NavLink>
 					) : (
-						<NavLink
-							exact
-							activeStyle={active}
-							to={`/${props.type}/${slug}/${sub.slug}/${sub.slug}`}
-						>
-							<li>{sub.title}</li>
+						<NavLink to={`/${props.type}/${slug}/${sub.slug}/${sub.slug}`}>
+							<li
+								className={location.pathname.endsWith(sub.slug) && style.active}
+								onClick={() => setActiveSubNavChild(sub.slug)}
+							>
+								{sub.title}
+							</li>
 						</NavLink>
 					)
 				)}

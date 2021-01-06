@@ -1,7 +1,8 @@
 .container {
 	margin: 0 0 3.1587697423108896vh 0;
-	line-height: 19pt;
-	font-size: clamp(11pt, 0.729vw, 13pt);
+	line-height: clamp(15pt, 1.073vw, 19pt);
+	font-size: clamp(9pt, 0.729vw, 13pt);
+	max-width: 45.989vw;
 	font-family: MYRIADPRO-REGULAR;
 	color: #6c7069;
 }

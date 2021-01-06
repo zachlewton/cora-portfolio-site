@@ -84,7 +84,10 @@ const GalleryContainer = (props) => {
 										activeStyle={active}
 										to={`/${type}/${slug}/${igSlug}/${navItem.gallery_slug}`}
 									>
-										<TopNav content={navItem.title} />
+										<TopNav
+											slug={navItem.gallery_slug}
+											content={navItem.title}
+										/>
 									</NavLink>
 							  ))
 							: null}

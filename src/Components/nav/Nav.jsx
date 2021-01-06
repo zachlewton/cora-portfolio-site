@@ -5,8 +5,8 @@ import SubNav from '../subNav/SubNav';
 import axios from 'axios';
 import SubNavChildNav from '../subNavChildNav/SubNavChildNav';
 const Nav = (props) => {
-	const [subNavActive, setSubNavActive] = useState(false);
 	const [subNavType, setSubNavType] = useState('');
+	const [subNavActive, setSubNavActive] = useState(false);
 	const [subNavChildActive, setSubNavChildActive] = useState(false);
 	const [subNavChildType, setSubNavChildType] = useState('');
 	const [subItems, setSubItems] = useState({});
@@ -20,9 +20,26 @@ const Nav = (props) => {
 	console.log('subNavChildType:' + subNavChildType);
 
 	const location = useLocation();
+
+	console.log(location.pathname.match('/').length);
+
 	const params = useParams();
 
 	location.pathname == '/works' && console.log('true');
+
+	// function setNavs() {
+	// 	if (location.pathname.match('/' || []).length >= 1) {
+	// 		setSubNavActive(true);
+
+	// 		// if (location.pathname.match('/' || []).length >= 2) {
+	// 		// 	setSubNavChildActive(true);
+	// 		// } else {
+	// 		// 	setSubNavChildActive(true);
+	// 		// }
+	// 	} else {
+	// 		setSubNavActive(false);
+	// 	}
+	// }
 
 	useEffect(() => {
 		axios
@@ -33,7 +50,9 @@ const Nav = (props) => {
 				setWorks(res.data.works);
 				setInfo(res.data.info);
 			})
-			.then(() => setLoaded(true));
+			.then(() => {
+				setLoaded(true);
+			});
 	}, []);
 
 	// const active = {

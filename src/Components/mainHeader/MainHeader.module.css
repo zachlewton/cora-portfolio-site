@@ -1,13 +1,13 @@
 h1 {
 	margin: 0 0 2.9925187032418954vh 0;
-	font-size: 24pt;
+	font-size: clamp(21pt, 1.373vw, 24pt);
 
 	font-family: IowanOldStyle;
 	color: #925223;
 }
 
 h1::first-letter {
-	font-size: 32pt;
+	font-size: clamp(29pt, 1.845vw, 32pt);
 	text-transform: capitalize;
 	font-weight: bold;
 }
