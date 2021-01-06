@@ -25,3 +25,15 @@
 	height: 18.447vw;
 	/* object-fit: contain; */
 }
+
+@media only screen and (max-width: 768px) {
+	.container {
+		margin: 5.7356608478802995vh 0 0 6vw;
+	}
+
+	.container img {
+		width: 100%;
+		height: auto;
+		/* object-fit: contain; */
+	}
+}

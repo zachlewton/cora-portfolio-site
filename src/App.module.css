@@ -62,11 +62,11 @@ li {
 
 .mobileContainer {
 	display: grid;
-	grid-template-columns: 3f;
-	grid-template-rows: 17vw 100vh;
+	grid-template-columns: 100vw;
+	grid-template-rows: 9vw 100vh;
 	grid-template-areas:
-		'header header header'
-		'main main main';
+		'header'
+		'main';
 }
 
 .burger {
@@ -129,19 +129,10 @@ li {
 	border-radius: 100px; */
 }
 
-/* @media only screen and (max-width: 1800px) {
-	.container {
-		display: grid;
-
-		grid-template-columns: max(23.295vw, 422.266px) auto;
-		grid-template-rows: 8.366vw calc(100vh - 8.366vw);
-		grid-template-areas:
-			'header header '
-			'nav main  ';
+@media only screen and (max-width: 768px) {
+	.contentContainer {
+		width: 100vw;
+		margin: 5vh 0 0 0;
+		padding: 0;
 	}
-
-	.flipped {
-		direction: ltr;
-		min-width: 651.109px;
-	}
-} */
+}

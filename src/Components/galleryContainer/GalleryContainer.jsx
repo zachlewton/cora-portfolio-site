@@ -18,6 +18,7 @@ import {
 	useHistory,
 } from 'react-router-dom';
 import TopNav from '../topNav/TopNav';
+import { useMediaQuery } from 'react-responsive';
 
 const GalleryContainer = (props) => {
 	const { type, slug, gallerySlug, igSlug } = useParams();
@@ -26,6 +27,7 @@ const GalleryContainer = (props) => {
 	const [loaded, setLoaded] = useState(false);
 	const [imageRef, setImageRef] = useState(null);
 	const [topNavItems, setTopNavItems] = useState([]);
+	const isTabletOrMobile = useMediaQuery({ query: '(max-width: 768px)' });
 
 	const location = useLocation();
 
@@ -64,6 +66,7 @@ const GalleryContainer = (props) => {
 	};
 
 	const raiseClick = (id) => {
+		console.log(id);
 		setImageRef(id);
 		toggleGalleryView(true);
 	};
@@ -72,50 +75,100 @@ const GalleryContainer = (props) => {
 	}
 
 	if (loaded) {
-		if (!galleryView) {
-			return (
-				<div className={style.container}>
-					<MainHeader content={content.title} />
-					<div className={style.topNavContainer}>
-						{topNavItems
-							? topNavItems.galleries.map((navItem) => (
-									<NavLink
-										exact
-										activeStyle={active}
-										to={`/${type}/${slug}/${igSlug}/${navItem.gallery_slug}`}
-									>
-										<TopNav
-											slug={navItem.gallery_slug}
-											content={navItem.title}
-										/>
-									</NavLink>
-							  ))
-							: null}
-					</div>
+		if (!isTabletOrMobile) {
+			if (!galleryView) {
+				return (
+					<div className={style.container}>
+						<MainHeader content={content.title} />
+						<div className={style.topNavContainer}>
+							{topNavItems
+								? topNavItems.galleries.map((navItem) => (
+										<NavLink
+											exact
+											activeStyle={active}
+											to={`/${type}/${slug}/${igSlug}/${navItem.gallery_slug}`}
+										>
+											<TopNav
+												slug={navItem.gallery_slug}
+												content={navItem.title}
+											/>
+										</NavLink>
+								  ))
+								: null}
+						</div>
 
-					<div className={style.images}>
-						{content.images.map((image) => (
-							<div className={style.image}>
-								<ProjectImage
-									onClick={() => raiseClick(image.id)}
-									image={image}
-									key={image.id}
-								/>
-							</div>
-						))}
+						<div className={style.images}>
+							{content.images.map((image) => (
+								<div className={style.image}>
+									<ProjectImage
+										onClick={() => raiseClick(image.id)}
+										image={image}
+										key={image.id}
+									/>
+								</div>
+							))}
+						</div>
 					</div>
-				</div>
-			);
+				);
+			}
+
+			if (galleryView) {
+				return (
+					<Gallery
+						onClick={() => toggleGalleryView(false)}
+						images={content.images}
+						imageRef={imageRef}
+					/>
+				);
+			}
 		}
 
-		if (galleryView) {
-			return (
-				<Gallery
-					onClick={() => toggleGalleryView(false)}
-					images={content.images}
-					imageRef={imageRef}
-				/>
-			);
+		if (isTabletOrMobile) {
+			if (!galleryView) {
+				return (
+					<div className={style.container}>
+						<MainHeader content={content.title} />
+						<div className={style.topNavContainer}>
+							{topNavItems
+								? topNavItems.galleries.map((navItem) => (
+										<NavLink
+											exact
+											activeStyle={active}
+											to={`/${type}/${slug}/${igSlug}/${navItem.gallery_slug}`}
+										>
+											<TopNav
+												slug={navItem.gallery_slug}
+												content={navItem.title}
+											/>
+										</NavLink>
+								  ))
+								: null}
+						</div>
+
+						<div className={style.images}>
+							{content.images.map((image) => (
+								<div className={style.image}>
+									<ProjectImage
+										onClick={() => raiseClick(image.id)}
+										image={image}
+										key={image.id}
+									/>
+								</div>
+							))}
+						</div>
+					</div>
+				);
+			}
+
+			if (galleryView) {
+				return (
+					<Gallery
+						onClick={() => toggleGalleryView(false)}
+						images={content.images}
+						imageRef={imageRef}
+					/>
+				);
+			}
 		}
 	}
 };

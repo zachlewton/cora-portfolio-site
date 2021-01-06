@@ -10,7 +10,7 @@ import MobileNav from './Components/mobileNav/MobileNav';
 import Level1 from './Components/level1/Level1';
 import Level2 from './Components/level2/Level2';
 import IgContainer from './Components/igContainer/IgContainer';
-import Landing from './Components/landing/Landing';
+
 import InfoContainer from './Components/infoContainer/InfoContainer';
 
 //imports
@@ -41,7 +41,7 @@ export default function App() {
 					{!isTabletOrMobile && (
 						<>
 							<div className={style.header}>
-								<a href={'/'}>
+								<a href={'/home'}>
 									<img src={logo} />
 								</a>
 							</div>
@@ -67,12 +67,10 @@ export default function App() {
 							)}
 
 							<Switch>
-								<Route exact path="/">
-									<Landing />
-								</Route>
 								<Route exact path="/home">
 									<HomePage />
 								</Route>
+
 								<Route exact path="/info/:slug">
 									<InfoContainer />
 								</Route>

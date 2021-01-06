@@ -1,113 +1,131 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-
+import React, { Component, useState, useEffect } from 'react';
+import { NavLink, useParams, useLocation } from 'react-router-dom';
+import style from '../nav/Nav.module.css';
 import SubNav from '../subNav/SubNav';
-import { NavLink } from 'react-router-dom';
+import axios from 'axios';
+import SubNavChildNav from '../subNavChildNav/SubNavChildNav';
 
 const MobileNav = () => {
-	const [hidden, sethidden] = useState(true);
-	const [mediumHidden, setMediumHidden] = useState(true);
-	const [projectHidden, setProjectHidden] = useState(true);
+	const [subNavType, setSubNavType] = useState('');
+	const [subNavActive, setSubNavActive] = useState(false);
+	const [subNavChildActive, setSubNavChildActive] = useState(false);
+	const [subNavChildType, setSubNavChildType] = useState('');
+	const [subItems, setSubItems] = useState({});
 	const [loaded, setLoaded] = useState(false);
-	const [projects, setProjects] = useState({});
-	const [medium, setMedium] = useState({});
-	const [subProjects, setSubProjects] = useState({});
-	const [subProjectOpen, setSubProjectOpen] = useState(false);
+	const [projects, setProjects] = useState([]);
+	const [works, setWorks] = useState([]);
+	const [info, setInfo] = useState([]);
+	const [activeLink, setActiveLink] = useState('');
+
+	console.log('subNavType:' + subNavType);
+	console.log('subNavChildType:' + subNavChildType);
+
+	const location = useLocation();
+
+	console.log(location.pathname.match('/').length);
+
+	const params = useParams();
+
+	location.pathname == '/works' && console.log('true');
+
+	// function setNavs() {
+	// 	if (location.pathname.match('/' || []).length >= 1) {
+	// 		setSubNavActive(true);
+
+	// 		// if (location.pathname.match('/' || []).length >= 2) {
+	// 		// 	setSubNavChildActive(true);
+	// 		// } else {
+	// 		// 	setSubNavChildActive(true);
+	// 		// }
+	// 	} else {
+	// 		setSubNavActive(false);
+	// 	}
+	// }
 
 	useEffect(() => {
 		axios
 			.get(`http://localhost:8000/wp-json/custom-api/v1/get_nav_items`)
 			.then((res) => {
 				console.log(res.data);
-				setMedium(res.data[1].works);
-				setProjects(res.data[0].projects);
+				setProjects(res.data.projects);
+				setWorks(res.data.works);
+				setInfo(res.data.info);
 			})
-			.then(() => setLoaded(true));
+			.then(() => {
+				setLoaded(true);
+			});
 	}, []);
 
-	const raiseClick = () => {
-		setProjectHidden(true);
+	// const active = {
+	// 	color: '#925223',
+	// 	fontFamily: 'MYRIADPRO-BOLD',
+	// };
+
+	const subNav = (type) => {
+		setSubNavActive(true);
+		setSubNavType(type);
+
+		setSubNavChildActive(false);
+		setSubNavChildType('');
+		setActiveLink(type);
+	};
+
+	const subNavChild = (type, subs) => {
+		setSubNavChildActive(true);
+		setSubNavChildType(type);
+		setSubItems(subs);
 	};
 
 	return (
-		<nav>
-			<ul>
-				<NavLink to="/">
-					<li>Home</li>
+		<nav className={style.sideNav}>
+			<ul className={style.navList}>
+				<li onClick={() => subNav('info')}>Info</li>
+
+				{/* <NavLink exact activeStyle={active} to="/projects">
+					<li onClick={() => subNav('projects')}>Projects</li>
 				</NavLink>
-				<li
-					onClick={
-						projectHidden
-							? () => setProjectHidden(false)
-							: () => setProjectHidden(true)
-					}
-				>
-					Projects
-				</li>
+				<NavLink exact activeStyle={active} to="/works">
+					<li onClick={() => subNav('works')}>Works</li>
+				</NavLink> */}
 
-				{!projectHidden && (
-					<SubNav
-						projects={projects}
-						onClick={() => raiseClick}
-						subProjectOpen={subProjectOpen}
-						subProjects={subProjects}
-					/>
-				)}
-
-				<li
-					onClick={
-						mediumHidden
-							? () => setMediumHidden(false)
-							: () => setMediumHidden(true)
-					}
-				>
-					Works
-				</li>
-				{!mediumHidden && (
-					<div>
-						<NavLink to="/exhibitions">
-							<li>Exhibitions</li>
-						</NavLink>
-						<NavLink to="/sculpture">
-							<li>Sculpture</li>
-						</NavLink>
-						<NavLink to="/digital-installations">
-							<li>Digital Installations</li>
-						</NavLink>
-						<NavLink to="/paintings">
-							<li>Painting</li>
-						</NavLink>
-						<NavLink to="/photography">
-							<li>Photography</li>
-						</NavLink>
-						<NavLink to="/print">
-							<li>Print</li>
-						</NavLink>
-					</div>
-				)}
-				<li onClick={hidden ? () => sethidden(false) : () => sethidden(true)}>
-					Info
-				</li>
-				{!hidden && (
-					<div>
-						<NavLink to="/">
-							<li>Resume CV</li>
-						</NavLink>
-						<NavLink to="/">
-							<li>Bio</li>
-						</NavLink>
-						<NavLink to="/">
-							<li>Statement</li>
-						</NavLink>
-						<NavLink to="/">
-							<li>News</li>
-						</NavLink>
-						<NavLink to="/">
-							<li>Architecture</li>
-						</NavLink>
-					</div>
-				)}
+				<NavLink exact activeClassName={style.active} to="/projects">
+					<li
+						className={
+							location.pathname.startsWith('/projects') && style.active
+						}
+						onClick={() => subNav('projects')}
+					>
+						Projects
+					</li>
+				</NavLink>
+				<NavLink activeClassName={style.active} to="/works">
+					<li
+						className={location.pathname.startsWith('/works') && style.active}
+						onClick={() => subNav('works')}
+					>
+						Works
+					</li>
+				</NavLink>
 			</ul>
+
+			{subNavActive && (
+				<SubNav
+					navItems={
+						subNavType === 'projects'
+							? projects
+							: subNavType === 'info'
+							? info
+							: works
+					}
+					type={subNavType}
+					subNavChild={subNavChild}
+					setSubNavChildActive={setSubNavChildActive}
+				/>
+			)}
+
+			{subNavChildActive && (
+				<SubNavChildNav type={subNavType} subItems={subItems} />
+			)}
 		</nav>
 	);
 };

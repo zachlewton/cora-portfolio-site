@@ -18,7 +18,7 @@ const HomePage = () => {
 	if (loaded) {
 		return (
 			<div>
-				<Gallery images={images} />
+				<Gallery imageRef={images[0].id} images={images} />
 			</div>
 		);
 	} else return <div>Loading... </div>;
