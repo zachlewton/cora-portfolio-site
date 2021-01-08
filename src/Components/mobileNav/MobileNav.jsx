@@ -5,7 +5,7 @@ import SubNav from '../subNav/SubNav';
 import axios from 'axios';
 import SubNavChildNav from '../subNavChildNav/SubNavChildNav';
 
-const MobileNav = () => {
+const MobileNav = (props) => {
 	const [subNavType, setSubNavType] = useState('');
 	const [subNavActive, setSubNavActive] = useState(false);
 	const [subNavChildActive, setSubNavChildActive] = useState(false);
@@ -68,12 +68,14 @@ const MobileNav = () => {
 		setSubNavChildActive(false);
 		setSubNavChildType('');
 		setActiveLink(type);
+		props.hideNav();
 	};
 
 	const subNavChild = (type, subs) => {
 		setSubNavChildActive(true);
 		setSubNavChildType(type);
 		setSubItems(subs);
+		props.hideNav();
 	};
 
 	return (
@@ -124,7 +126,11 @@ const MobileNav = () => {
 			)}
 
 			{subNavChildActive && (
-				<SubNavChildNav type={subNavType} subItems={subItems} />
+				<SubNavChildNav
+					raiseClick={() => props.hideNav()}
+					type={subNavType}
+					subItems={subItems}
+				/>
 			)}
 		</nav>
 	);

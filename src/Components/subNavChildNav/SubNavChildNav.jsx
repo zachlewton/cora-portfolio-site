@@ -35,7 +35,10 @@ const SubNavChildNav = (props) => {
 							<li
 								className={testLink(sub.slug) && style.active}
 								// className={activeSubNavChild == sub.slug && style.active}
-								onClick={() => setActiveSubNavChild(sub.slug)}
+								onClick={() => {
+									props.raiseClick();
+									setActiveSubNavChild(sub.slug);
+								}}
 							>
 								{sub.title}
 							</li>
@@ -44,7 +47,10 @@ const SubNavChildNav = (props) => {
 						<NavLink to={`/${props.type}/${slug}/${sub.slug}/${sub.slug}`}>
 							<li
 								className={location.pathname.endsWith(sub.slug) && style.active}
-								onClick={() => setActiveSubNavChild(sub.slug)}
+								onClick={() => {
+									setActiveSubNavChild(sub.slug);
+									props.raiseClick();
+								}}
 							>
 								{sub.title}
 							</li>

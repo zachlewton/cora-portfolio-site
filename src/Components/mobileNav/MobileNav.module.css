@@ -1,0 +1,36 @@
+nav {
+	min-width: 100vw;
+	min-height: 100vh;
+	margin: 7vh 0.815vw 0 3.818vw;
+	display: flex;
+	font-family: MYRIADPRO-REGULAR;
+	font-size: clamp(12px, 0.686vw, 12pt);
+	color: #9f9f9d;
+}
+
+ul {
+	list-style: none;
+	text-decoration: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+}
+
+.sideNav li {
+	margin: 0 0 1.5793848711554448vh 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:visited {
+	text-decoration: none;
+	color: inherit;
+}
+
+.active {
+	color: #925223;
+	font-family: MYRIADPRO-BOLD;
+}

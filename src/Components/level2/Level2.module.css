@@ -20,4 +20,11 @@
 	.container {
 		margin: 5.7356608478802995vh 0 0 6vw;
 	}
+
+	.topNavContainer li {
+		display: flex;
+		font-family: MYRIADPRO-REGULAR;
+		font-size: clamp(9pt, 0.686vw, 12pt);
+		color: #9f9f9d;
+	}
 }

@@ -33,64 +33,68 @@ export default function App() {
 	return (
 		<>
 			<topNavContext.Provider value={value}>
-				<div
-					className={
-						!isTabletOrMobile ? style.container : style.mobileContainer
-					}
-				>
-					{!isTabletOrMobile && (
-						<>
-							<div className={style.header}>
-								<a href={'/home'}>
-									<img src={logo} />
-								</a>
-							</div>
-
-							<div className={style.navBar}>
-								<Nav />
-								<div className={style.navBorder}></div>
-							</div>
-						</>
-					)}
+				<div className={style.noScroll}>
 					{isTabletOrMobile && (
-						<div className={style.burger}>
-							<Burger onClick={() => setActive(!active)} active={active} />
+						<div
+							className={style.mobileNavContainer}
+							style={{ display: !active && 'none' }}
+						>
+							<MobileNav hideNav={() => setActive(false)} />
 						</div>
 					)}
-
-					<div className={style.contentContainer}>
-						<div className={style.flipped}>
-							{isTabletOrMobile && (
-								<div style={{ display: !active && 'none' }}>
-									<MobileNav />
+					<div
+						className={
+							!isTabletOrMobile ? style.container : style.mobileContainer
+						}
+					>
+						{!isTabletOrMobile && (
+							<>
+								<div className={style.header}>
+									<a href={'/home'}>
+										<img src={logo} />
+									</a>
 								</div>
-							)}
 
-							<Switch>
-								<Route exact path="/home">
-									<HomePage />
-								</Route>
+								<div className={style.navBar}>
+									<Nav />
+									<div className={style.navBorder}></div>
+								</div>
+							</>
+						)}
+						{isTabletOrMobile && (
+							<div className={style.burger}>
+								<Burger onClick={() => setActive(!active)} active={active} />
+							</div>
+						)}
 
-								<Route exact path="/info/:slug">
-									<InfoContainer />
-								</Route>
-								<Route exact path="/:type">
-									<Level1 />
-								</Route>
-								<Route exact path="/:type/:slug">
-									<Level2 />
-								</Route>
-								<Route exact path="/:type/:slug/:igSlug">
-									<IgContainer />
-								</Route>
-								<Route exact path="/:type/:slug/:igSlug/:gallerySlug">
-									<GalleryContainer />
-								</Route>
+						<div className={style.contentContainer}>
+							<div className={style.flipped}>
+								<Switch>
+									<Route exact path="/home">
+										<HomePage />
+									</Route>
 
-								<Route path="*">
-									<ErrorPage />
-								</Route>
-							</Switch>
+									<Route exact path="/info/:slug">
+										<InfoContainer />
+									</Route>
+									<Route exact path="/:type">
+										<Level1 />
+									</Route>
+									<Route exact path="/:type/:slug">
+										<Level2 />
+									</Route>
+									<Route exact path="/:type/:slug/:igSlug">
+										<IgContainer />
+									</Route>
+									<Route exact path="/:type/:slug/:igSlug/:gallerySlug">
+										<GalleryContainer />
+									</Route>
+
+									<Route path="*">
+										<ErrorPage />
+									</Route>
+								</Switch>
+							</div>
 						</div>
 					</div>
 				</div>
