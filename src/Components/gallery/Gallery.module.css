@@ -11,6 +11,18 @@
 	width: 54.783vw;
 	height: 71.23857024106401vh;
 }
+/* .exit svg {
+	float: right;
+	width: 100%;
+	font-size: 30px;
+} */
+.exit {
+	transition: all 1s;
+	transform-origin: 50% 50%;
+}
+.exit :hover {
+	transform: scale(1.2);
+}
 
 .container {
 	display: flex;
@@ -44,7 +56,7 @@
 		flex-direction: column;
 	}
 
-	.exit {
+	.exit svg {
 		align-self: flex-end;
 	}
 

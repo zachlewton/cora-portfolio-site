@@ -13,6 +13,7 @@ import ProjectTitle from '../projectTitle/ProjectTitle';
 import axios from 'axios';
 import SubNavChildNav from '../subNavChildNav/SubNavChildNav';
 import topNavContext from '../../topNavContext';
+import { useMediaQuery } from 'react-responsive';
 
 const SubNav = (props) => {
 	const type = props.type;
@@ -22,6 +23,7 @@ const SubNav = (props) => {
 	const [subNavType, setSubNavType] = useState('');
 	const [subItems, setSubItems] = useState({});
 	const { topNavItems, setTopNavItems } = useContext(topNavContext);
+	const isTabletOrMobile = useMediaQuery({ query: '(max-width: 768px)' });
 
 	const location = useLocation();
 	// setTopNavItems(navItems);
@@ -81,7 +83,11 @@ const SubNav = (props) => {
 				<ul>
 					{navItems.map((navItem) => (
 						<NavLink exact activeStyle={active} to={`/info/${navItem.slug}`}>
-							<li>{navItem.title}</li>
+							{isTabletOrMobile ? (
+								<li onClick={() => props.closeNav()}>{navItem.title}</li>
+							) : (
+								<li>{navItem.title}</li>
+							)}
 						</NavLink>
 					))}
 				</ul>

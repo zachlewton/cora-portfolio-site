@@ -11,9 +11,9 @@ const TopNav = (props) => {
 		<div className={style.topNavItemBox}>
 			<div>
 				<li
-					classname={
-						location.pathname.endsWith(`/${props.slug}`) && style.active
-					}
+				// classname={
+				// 	location.pathname.endsWith(`/${props.slug}`) && style.active
+				// }
 				>
 					{props.content}
 				</li>

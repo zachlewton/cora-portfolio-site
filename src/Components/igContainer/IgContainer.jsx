@@ -16,7 +16,8 @@ import MainHeader from '../mainHeader/MainHeader';
 import Paragraph from '../paragraph/Paragraph';
 import topNavContext from '../../topNavContext';
 import TopNav from '../topNav/TopNav';
-
+import Loading from '../loading/Loading';
+import { motion } from 'framer-motion';
 import style from './IgContainer.module.css';
 
 const IgContainer = (props) => {
@@ -33,6 +34,7 @@ const IgContainer = (props) => {
 	};
 
 	useEffect(() => {
+		setLoaded(false);
 		axios
 			.get(
 				`http://localhost:8000/wp-json/custom-api/v1/ig?type=${type}&slug=${slug}&gallery_slug=${igSlug}`
@@ -47,13 +49,19 @@ const IgContainer = (props) => {
 	}, []);
 
 	if (!loaded) {
-		return <div>loading...</div>;
+		return <Loading />;
 	}
 
 	if (loaded) {
 		setTopNavItems(content.galleries);
 		return (
-			<div className={style.container}>
+			<motion.div
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 1 }}
+				transition={{ duration: 0.5 }}
+				exit={{ opacity: 0 }}
+				className={style.container}
+			>
 				<MainHeader content={content.title} />
 				<div className={style.topNavContainer}>
 					{content.galleries.map((gallery) => (
@@ -78,7 +86,7 @@ const IgContainer = (props) => {
 						</div>
 					))}
 				</div>
-			</div>
+			</motion.div>
 		);
 	}
 };

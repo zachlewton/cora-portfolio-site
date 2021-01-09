@@ -68,13 +68,18 @@ const MobileNav = (props) => {
 		setSubNavChildActive(false);
 		setSubNavChildType('');
 		setActiveLink(type);
-		props.hideNav();
+		type != 'info' && props.hideNav();
 	};
 
 	const subNavChild = (type, subs) => {
 		setSubNavChildActive(true);
 		setSubNavChildType(type);
 		setSubItems(subs);
+
+		props.hideNav();
+	};
+
+	const hideNav = () => {
 		props.hideNav();
 	};
 
@@ -122,6 +127,7 @@ const MobileNav = (props) => {
 					type={subNavType}
 					subNavChild={subNavChild}
 					setSubNavChildActive={setSubNavChildActive}
+					closeNav={hideNav}
 				/>
 			)}
 

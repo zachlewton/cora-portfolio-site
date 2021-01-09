@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Gallery from '../gallery/Gallery';
+import { motion } from 'framer-motion';
+import Loading from '../loading/Loading';
 
 const HomePage = () => {
 	const [images, setImages] = useState();
@@ -17,11 +19,16 @@ const HomePage = () => {
 
 	if (loaded) {
 		return (
-			<div>
+			<motion.div
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 1 }}
+				transition={{ duration: 0.5 }}
+				exit={{ opacity: 0 }}
+			>
 				<Gallery imageRef={images[0].id} images={images} />
-			</div>
+			</motion.div>
 		);
-	} else return <div>Loading... </div>;
+	} else return <Loading />;
 };
 
 export default HomePage;

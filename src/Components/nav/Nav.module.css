@@ -37,7 +37,7 @@ a:visited {
 	nav {
 		min-width: 100vw;
 		min-height: 100vh;
-		margin: 7vh 0 0 3.818vw;
+		margin: 0 0 0 0;
 		display: flex;
 		justify-content: center;
 		align-items: center;

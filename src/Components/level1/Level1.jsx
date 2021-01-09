@@ -17,6 +17,8 @@ import topNavContext from '../../topNavContext';
 import MainHeader from '../mainHeader/MainHeader';
 import style from './Level1.module.css';
 import Level2 from '../level2/Level2';
+import Loading from '../loading/Loading';
+import { motion } from 'framer-motion';
 
 const Level1 = (props) => {
 	const params = useParams();
@@ -29,6 +31,7 @@ const Level1 = (props) => {
 	const { topNavItems, setTopNavItems } = useContext(topNavContext);
 
 	useEffect(() => {
+		setLoaded(false);
 		axios
 			.get(`http://localhost:8000/wp-json/custom-api/v1/get_${type}`)
 			.then((res) => {
@@ -39,12 +42,18 @@ const Level1 = (props) => {
 	}, [type]);
 
 	if (!loaded) {
-		return <div>loading....</div>;
+		return <Loading />;
 	}
 
 	if (loaded) {
 		return (
-			<div className={style.container}>
+			<motion.div
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 1 }}
+				transition={{ duration: 0.5 }}
+				exit={{ opacity: 0 }}
+				className={style.container}
+			>
 				<MainHeader content={type} />
 
 				<div className={style.topNavContainer}>
@@ -76,7 +85,7 @@ const Level1 = (props) => {
 						)
 					)}
 				</div>
-			</div>
+			</motion.div>
 		);
 	}
 };

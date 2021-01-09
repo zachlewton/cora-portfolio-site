@@ -36,6 +36,10 @@ body {
 	/* font-size: 62.5%; */
 }
 
+svg {
+	cursor: pointer;
+}
+
 .header {
 	grid-area: header;
 	height: 8.366vw;
@@ -54,7 +58,7 @@ li {
 	display: grid;
 
 	grid-template-columns: max(23.295vw, 300px) auto 23.295vw;
-	grid-template-rows: 8.366vw auto;
+	grid-template-rows: 8.366vw calc(100vh - 8.366vw);
 	grid-template-areas:
 		'header header header'
 		'nav main main ';
@@ -98,7 +102,7 @@ li {
 .contentContainer {
 	grid-area: main;
 	height: auto;
-	overflow-y: auto;
+	overflow: auto;
 	direction: rtl;
 	min-width: 700px;
 	/* max-width: 1072.02px; */
@@ -106,6 +110,7 @@ li {
 }
 .flipped {
 	direction: ltr;
+	overflow: auto;
 }
 
 .contentContainer:before {
@@ -162,5 +167,14 @@ li {
 		left: 0;
 
 		height: 100%;
+	}
+
+	.exitButton {
+		align-content: flex-start;
+		width: 100vw;
+	}
+	.exitButton svg {
+		transform: scale(3);
+		padding: 5vw 0 0 5vw;
 	}
 }

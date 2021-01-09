@@ -16,6 +16,9 @@ import TopNav from '../topNav/TopNav';
 import MainHeader from '../mainHeader/MainHeader';
 import topNavContext from '../../topNavContext';
 import style from './Level2.module.css';
+import Loading from '../loading/Loading';
+
+import { motion } from 'framer-motion';
 
 const Level2 = () => {
 	const params = useParams();
@@ -37,14 +40,18 @@ const Level2 = () => {
 	}, []);
 
 	if (!loaded) {
-		return <div>loading ....</div>;
+		return <Loading />;
 	}
 
 	if (loaded) {
-		console.log(content.subs);
-
 		return (
-			<div className={style.container}>
+			<motion.div
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 1 }}
+				transition={{ duration: 0.5 }}
+				exit={{ opacity: 0 }}
+				className={style.container}
+			>
 				<MainHeader content={content.title} />
 
 				<div className={style.topNavContainer}>
@@ -74,7 +81,7 @@ const Level2 = () => {
 						</div> /////if navigate straight to gallery
 					)
 				)}
-			</div>
+			</motion.div>
 		);
 	}
 };

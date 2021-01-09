@@ -19,7 +19,8 @@ import { AnimatePresence, motion } from 'framer-motion';
 import Burger from 'react-css-burger';
 import { useMediaQuery } from 'react-responsive';
 import { Switch, Route, useLocation, useParams } from 'react-router-dom';
-
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import topNavContext from './topNavContext';
 import TopNav from './Components/topNav/TopNav';
 import logo from './images/logo.png';
@@ -39,6 +40,12 @@ export default function App() {
 							className={style.mobileNavContainer}
 							style={{ display: !active && 'none' }}
 						>
+							<div className={style.exitButton}>
+								<FontAwesomeIcon
+									icon={faTimes}
+									onClick={() => setActive(false)}
+								/>
+							</div>
 							<MobileNav hideNav={() => setActive(false)} />
 						</div>
 					)}
@@ -66,36 +73,37 @@ export default function App() {
 								<Burger onClick={() => setActive(!active)} active={active} />
 							</div>
 						)}
+						<AnimatePresence exitBeforeEnter>
+							<div className={style.contentContainer}>
+								<div className={style.flipped}>
+									<Switch>
+										<Route exact path="/home">
+											<HomePage />
+										</Route>
 
-						<div className={style.contentContainer}>
-							<div className={style.flipped}>
-								<Switch>
-									<Route exact path="/home">
-										<HomePage />
-									</Route>
+										<Route exact path="/info/:slug">
+											<InfoContainer />
+										</Route>
+										<Route exact path="/:type">
+											<Level1 />
+										</Route>
+										<Route exact path="/:type/:slug">
+											<Level2 />
+										</Route>
+										<Route exact path="/:type/:slug/:igSlug">
+											<IgContainer />
+										</Route>
+										<Route exact path="/:type/:slug/:igSlug/:gallerySlug">
+											<GalleryContainer />
+										</Route>
 
-									<Route exact path="/info/:slug">
-										<InfoContainer />
-									</Route>
-									<Route exact path="/:type">
-										<Level1 />
-									</Route>
-									<Route exact path="/:type/:slug">
-										<Level2 />
-									</Route>
-									<Route exact path="/:type/:slug/:igSlug">
-										<IgContainer />
-									</Route>
-									<Route exact path="/:type/:slug/:igSlug/:gallerySlug">
-										<GalleryContainer />
-									</Route>
-
-									<Route path="*">
-										<ErrorPage />
-									</Route>
-								</Switch>
+										<Route path="*">
+											<ErrorPage />
+										</Route>
+									</Switch>
+								</div>
 							</div>
-						</div>
+						</AnimatePresence>
 					</div>
 				</div>
 			</topNavContext.Provider>

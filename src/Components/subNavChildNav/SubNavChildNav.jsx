@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import topNavContext from '../../topNavContext';
 import style from './SubNavChild.module.css';
+import { useMediaQuery } from 'react-responsive';
 
 const SubNavChildNav = (props) => {
 	const { topNavItems, setTopNavItems } = useContext(topNavContext);
@@ -13,6 +14,7 @@ const SubNavChildNav = (props) => {
 	const [activeSubNavChild, setActiveSubNavChild] = useState('');
 
 	// setTopNavItems(subs);
+	const isTabletOrMobile = useMediaQuery({ query: '(max-width: 768px)' });
 
 	const active = {
 		color: '#925223',
@@ -36,7 +38,7 @@ const SubNavChildNav = (props) => {
 								className={testLink(sub.slug) && style.active}
 								// className={activeSubNavChild == sub.slug && style.active}
 								onClick={() => {
-									props.raiseClick();
+									isTabletOrMobile && props.raiseClick();
 									setActiveSubNavChild(sub.slug);
 								}}
 							>
@@ -49,7 +51,7 @@ const SubNavChildNav = (props) => {
 								className={location.pathname.endsWith(sub.slug) && style.active}
 								onClick={() => {
 									setActiveSubNavChild(sub.slug);
-									props.raiseClick();
+									isTabletOrMobile && props.raiseClick();
 								}}
 							>
 								{sub.title}

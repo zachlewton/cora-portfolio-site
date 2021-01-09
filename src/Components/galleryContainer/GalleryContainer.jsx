@@ -19,6 +19,8 @@ import {
 } from 'react-router-dom';
 import TopNav from '../topNav/TopNav';
 import { useMediaQuery } from 'react-responsive';
+import Loading from '../loading/Loading';
+import { motion } from 'framer-motion';
 
 const GalleryContainer = (props) => {
 	const { type, slug, gallerySlug, igSlug } = useParams();
@@ -71,14 +73,20 @@ const GalleryContainer = (props) => {
 		toggleGalleryView(true);
 	};
 	if (!loaded) {
-		return <div>loading...</div>;
+		return <Loading />;
 	}
 
 	if (loaded) {
 		if (!isTabletOrMobile) {
 			if (!galleryView) {
 				return (
-					<div className={style.container}>
+					<motion.div
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						transition={{ duration: 0.5 }}
+						exit={{ opacity: 0 }}
+						className={style.container}
+					>
 						<MainHeader content={content.title} />
 						<div className={style.topNavContainer}>
 							{topNavItems
@@ -108,7 +116,7 @@ const GalleryContainer = (props) => {
 								</div>
 							))}
 						</div>
-					</div>
+					</motion.div>
 				);
 			}
 
@@ -126,7 +134,13 @@ const GalleryContainer = (props) => {
 		if (isTabletOrMobile) {
 			if (!galleryView) {
 				return (
-					<div className={style.container}>
+					<motion.div
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						transition={{ duration: 0.5 }}
+						exit={{ opacity: 0 }}
+						className={style.container}
+					>
 						<MainHeader content={content.title} />
 						<div className={style.topNavContainer}>
 							{topNavItems
@@ -156,7 +170,7 @@ const GalleryContainer = (props) => {
 								</div>
 							))}
 						</div>
-					</div>
+					</motion.div>
 				);
 			}
 

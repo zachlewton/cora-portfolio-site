@@ -78,7 +78,12 @@ const Nav = (props) => {
 	return (
 		<nav className={style.sideNav}>
 			<ul className={style.navList}>
-				<li onClick={() => subNav('info')}>Info</li>
+				<li
+					className={location.pathname.startsWith('/info') && style.active}
+					onClick={() => subNav('info')}
+				>
+					Info
+				</li>
 
 				{/* <NavLink exact activeStyle={active} to="/projects">
 					<li onClick={() => subNav('projects')}>Projects</li>
