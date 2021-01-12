@@ -38,7 +38,7 @@ const MobileNav = (props) => {
 
 	useEffect(() => {
 		axios
-			.get(`https://artportfoliocora/wp-json/custom-api/v1/get_nav_items`)
+			.get(`https://artportfoliocora.com/wp-json/custom-api/v1/get_nav_items`)
 			.then((res) => {
 				setProjects(res.data.projects);
 				setWorks(res.data.works);

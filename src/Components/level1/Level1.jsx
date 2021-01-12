@@ -81,7 +81,9 @@ const Level1 = (props) => {
 								<L1ContentCard content={contentItem} />
 							</NavLink>
 						) : (
-							<NavLink to={`/gallery/${contentItem.slug}`}>
+							<NavLink
+								to={`/${type}/${contentItem.slug}/${contentItem.slug}/${contentItem.slug}`}
+							>
 								<L1ContentCard content={contentItem} />
 							</NavLink>
 						)

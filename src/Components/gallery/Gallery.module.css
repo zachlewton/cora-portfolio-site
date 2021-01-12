@@ -1,15 +1,17 @@
 .container img {
-	object-fit: contain;
+	/* object-fit: fill; */
+	/* width: 100%; */
 	width: 54.783vw;
-	height: 71.23857024106401vh;
 
-	/* height: 71.23857024106401vh; */
+	height: auto;
+
+	height: 71.23857024106401vh;
 }
 
 .imageContainer {
 	margin: 0 1.716vw 0 1.716vw;
-	width: 54.783vw;
-	height: 71.23857024106401vh;
+	/* width: 54.783vw;
+	height: 71.23857024106401vh; */
 }
 /* .exit svg {
 	float: right;
@@ -26,15 +28,25 @@
 
 .container {
 	display: flex;
-	height: 71.23857024106401vh;
+	/* height: 71.23857024106401vh; */
+
 	padding: 0 0 0 0;
 	margin: 3.7406483790523692vh 7.979vw auto 0.901vw;
 }
 
+.container svg {
+	color: #6c7069;
+}
+
+/* @media only screen and (max-width: 1329px) {
+	.container {
+		margin: 3.7406483790523692vh 0 auto 0.901vw;
+	}
+} */
+
 .rightContainer {
 	display: flex;
 	flex-direction: column;
-	height: 100%;
 }
 
 .captionContainer {
@@ -46,7 +58,7 @@
 
 @media only screen and (max-width: 768px) {
 	.container {
-		margin: 20vh 5vw auto 5vw;
+		margin: 10vh 5vw auto 5vw;
 		width: 90vw;
 		height: 100%;
 		justify-content: center;
@@ -54,6 +66,11 @@
 		justify-self: center;
 		display: flex;
 		flex-direction: column;
+	}
+
+	.exit {
+		display: flex;
+		justify-content: flex-end;
 	}
 
 	.exit svg {

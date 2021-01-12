@@ -74,15 +74,18 @@ const Gallery = (props) => {
 	if (!isTabletOrMobile) {
 		return (
 			<div className={style.container}>
-				<FontAwesomeIcon
-					onClick={() => {
-						handlePrev();
-						setDirection(-1);
-					}}
-					icon={faAngleLeft}
-					size={iconSize}
-					style={{ marginTop: '32.02161263507897vh' }}
-				/>
+				<div>
+					<FontAwesomeIcon
+						onClick={() => {
+							handlePrev();
+							setDirection(-1);
+						}}
+						icon={faAngleLeft}
+						size={iconSize}
+						style={{ top: '50%', position: 'relative' }}
+					/>
+				</div>
+
 				<div className={style.imageContainer}>
 					<AnimatePresence initial={false} custom={direction} exitBeforeEnter>
 						<motion.img
@@ -113,7 +116,7 @@ const Gallery = (props) => {
 						}}
 						icon={faAngleRight}
 						size={iconSize}
-						style={{ marginTop: '32.02161263507897vh' }}
+						style={{ top: '50%', position: 'relative' }}
 					/>
 					<div className={style.captionContainer}>
 						<MainCaption content={image.main_caption} />
@@ -147,12 +150,15 @@ const Gallery = (props) => {
 					</div>
 				) : null}
 				<div className={style.galleryContainer}>
-					<FontAwesomeIcon
-						onClick={handlePrev}
-						icon={faAngleLeft}
-						size={iconSize}
-						style={{ marginTop: '50%' }}
-					/>
+					<div>
+						<FontAwesomeIcon
+							onClick={handlePrev}
+							icon={faAngleLeft}
+							size={iconSize}
+							style={{ top: '50%', position: 'relative' }}
+						/>
+					</div>
+
 					<div className={style.imageContainer}>
 						<AnimatePresence initial={false} custom={direction} exitBeforeEnter>
 							<motion.img
@@ -175,12 +181,14 @@ const Gallery = (props) => {
 						</AnimatePresence>
 					</div>
 
-					<FontAwesomeIcon
-						onClick={handleNext}
-						icon={faAngleRight}
-						size={iconSize}
-						style={{ marginTop: '50%' }}
-					/>
+					<div>
+						<FontAwesomeIcon
+							onClick={handleNext}
+							icon={faAngleRight}
+							size={iconSize}
+							style={{ top: '50%', position: 'relative' }}
+						/>
+					</div>
 				</div>
 
 				<div className={style.captionContainer}>

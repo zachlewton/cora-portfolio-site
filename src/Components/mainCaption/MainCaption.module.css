@@ -10,3 +10,18 @@ h3::first-letter {
 	text-transform: capitalize;
 	font-weight: bold;
 }
+
+@media only screen and (max-width: 950px) {
+	h3 {
+		margin: 0 0 0.914380714879468vh 0;
+		font-size: 11pt;
+		font-family: IowanOldStyle;
+		color: #925223;
+	}
+
+	h3::first-letter {
+		font-size: 15pt;
+		text-transform: capitalize;
+		font-weight: bold;
+	}
+}

@@ -1,13 +1,31 @@
 .container {
 	display: flex;
 	flex-direction: column;
+	flex-wrap: nowrap;
 	/* justify-content: space-between; */
 }
 
 .container li {
 	margin: 0 0 0 0;
 	line-height: 14pt;
+	display: flex;
+	flex-wrap: nowrap;
+	/* font-size: 0.558vw; */
 	font-size: 10pt;
 	font-family: HelveticaNeue;
 	color: #6c7069;
+	display: flex;
 }
+
+/* @media only screen and (max-width: 950px) {
+	.container li {
+		margin: 0 0 0 0;
+		line-height: 14pt;
+		display: flex;
+		flex-wrap: nowrap;
+		font-size: 0.558vw;
+		font-family: HelveticaNeue;
+		color: #6c7069;
+		display: flex;
+	}
+} */
