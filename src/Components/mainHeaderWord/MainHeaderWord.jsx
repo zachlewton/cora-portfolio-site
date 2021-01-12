@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import style from './MainHeaderWord.module.css';
 const MainHeaderWord = (props) => {
-	return props.word.length == 1 ? (
+	return props.word.length <= 2 ? (
 		<div className={style.lower}>{props.word}</div>
 	) : (
-		<div className={style.upper}>{props.word}</div>
+		`<div className={style.upper}>{props.word}</div>`
 	);
 };
 

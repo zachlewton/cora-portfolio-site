@@ -62,6 +62,14 @@ svg {
 
 li {
 	list-style: none;
+	text-decoration: none;
+}
+
+li :visited {
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
 }
 
 .container {
