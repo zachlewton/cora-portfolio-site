@@ -1,6 +1,7 @@
 .c2Header {
-	font-size: minmax(16pt, 0.729vw);
+	font-size: 13pt;
 	line-height: 19pt;
 	font-family: MYRIADPRO-BOLD;
+	font-style: bold;
 	color: #6c7069;
 }

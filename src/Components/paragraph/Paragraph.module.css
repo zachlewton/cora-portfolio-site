@@ -1,7 +1,7 @@
 .container {
 	margin: 0 0 3.1587697423108896vh 0;
-	line-height: minmax(15pt, 1.073vw);
-	font-size: minmax(9pt, 0.729vw);
+	line-height: 19pt;
+	font-size: 13pt;
 	max-width: 45.989vw;
 	font-family: MYRIADPRO-REGULAR;
 	color: #6c7069;
