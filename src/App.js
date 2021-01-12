@@ -18,7 +18,13 @@ import React, { Component, useEffect, useState, createContext } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import Burger from 'react-css-burger';
 import { useMediaQuery } from 'react-responsive';
-import { Switch, Route, useLocation, useParams } from 'react-router-dom';
+import {
+	Switch,
+	Route,
+	useLocation,
+	useParams,
+	NavLink,
+} from 'react-router-dom';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import topNavContext from './topNavContext';
@@ -83,9 +89,9 @@ export default function App() {
 						{!isTabletOrMobile && (
 							<>
 								<div className={style.header}>
-									<a href={'/home'}>
+									<NavLink to="/home">
 										<img src={logo} />
-									</a>
+									</NavLink>
 								</div>
 
 								<div className={style.navBar}>
