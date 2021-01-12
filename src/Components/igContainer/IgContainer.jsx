@@ -25,6 +25,7 @@ const IgContainer = (props) => {
 	const [loaded, setLoaded] = useState(false);
 	const [content, setContent] = useState({});
 	const location = useLocation();
+	const history = useHistory();
 
 	const { topNavItems, setTopNavItems } = useContext(topNavContext);
 
@@ -37,11 +38,12 @@ const IgContainer = (props) => {
 		setLoaded(false);
 		axios
 			.get(
-				`http://localhost:8000/wp-json/custom-api/v1/ig?type=${type}&slug=${slug}&gallery_slug=${igSlug}`
+				`https://artportfoliocora.com/wp-json/custom-api/v1/ig?type=${type}&slug=${slug}&gallery_slug=${igSlug}`
 			)
 			.then((res) => {
-				console.log(res.data);
-				setContent(res.data);
+				if (res.data.length > 0) {
+					setContent(res.data);
+				} else history.push('/error');
 			})
 			.then(() => {
 				setLoaded(true);

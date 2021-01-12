@@ -11,6 +11,7 @@ import {
 	useLocation,
 	usePrompt,
 	useHistory,
+	Redirect,
 } from 'react-router-dom';
 import TopNav from '../topNav/TopNav';
 import MainHeader from '../mainHeader/MainHeader';
@@ -22,21 +23,27 @@ import { motion } from 'framer-motion';
 
 const Level2 = () => {
 	const params = useParams();
+	const history = useHistory();
 	const [loaded, setLoaded] = useState(false);
 	const [content, setContent] = useState({});
 	const [subs, setSubs] = useState([]);
-	const { topNavItems, setTopNavItems } = useContext(topNavContext);
 
 	useEffect(() => {
 		axios
 			.get(
-				`http://localhost:8000/wp-json/custom-api/v1/sub_${params.type}?slug=${params.slug}`
+				`https://artportfoliocora.com/wp-json/custom-api/v1/sub_${params.type}?slug=${params.slug}`
 			)
 			.then((res) => {
-				setContent(res.data);
-				setSubs(res.data.subs);
+				if (res.data.length > 0) {
+					setContent(res.data);
+					setSubs(res.data.subs);
+				} else history.push('/error');
 			})
-			.then(setLoaded(true));
+			.then(() => {
+				setLoaded(true);
+				console.log('loaded');
+			})
+			.catch((error) => <Redirect to="dfhkdsjfsjdkfskj" />);
 	}, []);
 
 	if (!loaded) {

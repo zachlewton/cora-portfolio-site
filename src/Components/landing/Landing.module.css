@@ -16,4 +16,14 @@
 .contianer img {
 	align-self: center;
 	justify-self: center;
+	width: 20vw;
+	height: 10vh;
+	position: relative;
+	z-index: 99999;
+}
+
+.loadingContainer {
+	width: 100%;
+	display: flex;
+	justify-content: center;
 }

@@ -42,7 +42,7 @@ const Gallery = (props) => {
 			};
 		},
 		center: {
-			zIndex: 1,
+			// zIndex: 1,
 			x: 0,
 			opacity: 1,
 		},
@@ -93,8 +93,12 @@ const Gallery = (props) => {
 							animate="center"
 							exit="exit"
 							transition={{
-								x: { type: 'spring', stiffness: 300, damping: 30 },
-								opacity: { duration: 0.1 },
+								x: {
+									type: 'spring',
+									stiffness: 300,
+									damping: 30,
+								},
+								opacity: { duration: 0.5 },
 							}}
 							src={image.src}
 						/>
@@ -147,17 +151,35 @@ const Gallery = (props) => {
 						onClick={handlePrev}
 						icon={faAngleLeft}
 						size={iconSize}
-						style={{ marginTop: '32.02161263507897vh' }}
+						style={{ marginTop: '50%' }}
 					/>
 					<div className={style.imageContainer}>
-						<img src={image.src} />
+						<AnimatePresence initial={false} custom={direction} exitBeforeEnter>
+							<motion.img
+								key={image.src}
+								variants={variants}
+								custom={direction}
+								initial="enter"
+								animate="center"
+								exit="exit"
+								transition={{
+									x: {
+										type: 'spring',
+										stiffness: 300,
+										damping: 30,
+									},
+									opacity: { duration: 0.5 },
+								}}
+								src={image.src}
+							/>
+						</AnimatePresence>
 					</div>
 
 					<FontAwesomeIcon
 						onClick={handleNext}
 						icon={faAngleRight}
 						size={iconSize}
-						style={{ marginTop: '32.02161263507897vh' }}
+						style={{ marginTop: '50%' }}
 					/>
 				</div>
 

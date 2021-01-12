@@ -3,14 +3,13 @@ import React, { Component } from 'react';
 import { motion } from 'framer-motion';
 
 const containerStyle = {
-	position: 'relative',
-
 	boxSizing: 'border-box',
 	display: 'flex',
 	justifyContent: 'center',
+	paddingTop: '40vh',
 
-	minHeight: '100vh',
-	minWidth: '100vw',
+	height: '100%',
+	width: '100%',
 };
 
 const circleStyle = {
@@ -20,11 +19,11 @@ const circleStyle = {
 	border: '0.5rem solid #e9e9e9',
 	borderTop: '0.5rem solid #3498db',
 	borderRadius: '50%',
-	position: 'absolute',
+	// position: 'absolute',
 	boxSizing: 'border-box',
 
-	top: '40vh',
-	left: '30vw',
+	// top: '40vh',
+	// left: '30vw',
 };
 
 const spinTransition = {

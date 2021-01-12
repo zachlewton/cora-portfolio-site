@@ -1,12 +1,21 @@
-h1 {
+.container {
+	display: flex;
+	flex-wrap: nowrap;
+	/* font-size: clamp(21pt, 1.373vw, 24pt);
+	margin-right: 0.472vw;
+	font-family: IowanOldStyle;
+	color: #925223; */
+}
+
+.header {
 	margin: 0 0 2.9925187032418954vh 0;
 	font-size: clamp(21pt, 1.373vw, 24pt);
-
+	font-weight: bold;
 	font-family: IowanOldStyle;
 	color: #925223;
 }
 
-h1::first-letter {
+.capital {
 	font-size: clamp(29pt, 1.845vw, 32pt);
 	text-transform: capitalize;
 	font-weight: bold;

@@ -30,14 +30,15 @@ const GalleryContainer = (props) => {
 	const [imageRef, setImageRef] = useState(null);
 	const [topNavItems, setTopNavItems] = useState([]);
 	const isTabletOrMobile = useMediaQuery({ query: '(max-width: 768px)' });
+	const history = useHistory();
 
 	const location = useLocation();
 
 	const imagesRequest = axios.get(
-		`http://localhost:8000/wp-json/custom-api/v1/gallery_images?type=${type}&slug=${slug}&gallery_slug=${gallerySlug}`
+		`https://artportfoliocora.com/wp-json/custom-api/v1/gallery_images?type=${type}&slug=${slug}&gallery_slug=${gallerySlug}`
 	);
 	const topNavRequest = axios.get(
-		`http://localhost:8000/wp-json/custom-api/v1/ig?type=${type}&slug=${slug}&gallery_slug=${igSlug}`
+		`https://artportfoliocora.com/wp-json/custom-api/v1/ig?type=${type}&slug=${slug}&gallery_slug=${igSlug}`
 	);
 
 	useEffect(() => {
@@ -50,11 +51,13 @@ const GalleryContainer = (props) => {
 					const imagesResponse = responses[0].data;
 					const topNavResponse = responses[1].data;
 
-					setContent(imagesResponse);
+					if (responses[0].data.length > 0) {
+						setContent(imagesResponse);
 
-					topNavResponse.galleries.length < 2
-						? setTopNavItems()
-						: setTopNavItems(topNavResponse);
+						topNavResponse.galleries.length < 2
+							? setTopNavItems()
+							: setTopNavItems(topNavResponse);
+					} else history.push('/error');
 				})
 			)
 			.then(() => setLoaded(true));

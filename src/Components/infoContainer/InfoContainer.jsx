@@ -6,6 +6,7 @@ import MainHeader from '../mainHeader/MainHeader';
 import Paragraph from '../paragraph/Paragraph';
 import C2ContentCard from '../c2ContentCard/C2ContentCard';
 import style from './InfoContainer.module.css';
+import Loading from '../loading/Loading';
 
 const InfoContainer = (props) => {
 	const { slug } = useParams();
@@ -15,7 +16,7 @@ const InfoContainer = (props) => {
 	useEffect(() => {
 		axios
 			.get(
-				`http://localhost:8000/wp-json/custom-api/v1/info_items?slug=${slug}`
+				`https://artportfoliocora.com/wp-json/custom-api/v1/info_items?slug=${slug}`
 			)
 			.then((res) => {
 				setContent(res.data);
@@ -24,7 +25,7 @@ const InfoContainer = (props) => {
 	}, [slug]);
 
 	if (!loaded) {
-		return <div>loading...</div>;
+		return <Loading />;
 	}
 
 	if (loaded) {

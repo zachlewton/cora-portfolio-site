@@ -1,4 +1,5 @@
 import React, { Component, useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { NavLink, useParams, useLocation } from 'react-router-dom';
 import style from './Nav.module.css';
 import SubNav from '../subNav/SubNav';
@@ -43,7 +44,7 @@ const Nav = (props) => {
 
 	useEffect(() => {
 		axios
-			.get(`http://localhost:8000/wp-json/custom-api/v1/get_nav_items`)
+			.get(`https://artportfoliocora.com/wp-json/custom-api/v1/get_nav_items`)
 			.then((res) => {
 				console.log(res.data);
 				setProjects(res.data.projects);
@@ -111,25 +112,68 @@ const Nav = (props) => {
 					</li>
 				</NavLink>
 			</ul>
+			<AnimatePresence exitBeforeEnter>
+				{subNavActive && (
+					<motion.div
+						key={subNavType}
+						initial="hidden"
+						animate="visible"
+						exit="exit"
+						variants={{
+							hidden: {
+								x: -100,
+								opacity: 0,
+							},
+							visible: {
+								x: 0,
+								opacity: 1,
+								transition: {
+									delay: 0.2,
+								},
+							},
+							exit: {},
+						}}
+					>
+						<SubNav
+							navItems={
+								subNavType === 'projects'
+									? projects
+									: subNavType === 'info'
+									? info
+									: works
+							}
+							type={subNavType}
+							subNavChild={subNavChild}
+							setSubNavChildActive={setSubNavChildActive}
+						/>
+					</motion.div>
+				)}
 
-			{subNavActive && (
-				<SubNav
-					navItems={
-						subNavType === 'projects'
-							? projects
-							: subNavType === 'info'
-							? info
-							: works
-					}
-					type={subNavType}
-					subNavChild={subNavChild}
-					setSubNavChildActive={setSubNavChildActive}
-				/>
-			)}
-
-			{subNavChildActive && (
-				<SubNavChildNav type={subNavType} subItems={subItems} />
-			)}
+				{subNavChildActive && (
+					<motion.div
+						key={subNavType}
+						initial="hidden"
+						animate="visible"
+						exit="exit"
+						variants={{
+							hidden: {
+								x: -100,
+								opacity: 0,
+							},
+							visible: {
+								x: 0,
+								opacity: 1,
+								transition: {
+									delay: 0.2,
+								},
+							},
+							exit: {},
+						}}
+					>
+						<SubNavChildNav type={subNavType} subItems={subItems} />
+					</motion.div>
+				)}
+			</AnimatePresence>
 		</nav>
 	);
 };

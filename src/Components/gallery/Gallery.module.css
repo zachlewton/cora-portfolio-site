@@ -46,7 +46,7 @@
 
 @media only screen and (max-width: 768px) {
 	.container {
-		margin: 1vh 5vw auto 5vw;
+		margin: 20vh 5vw auto 5vw;
 		width: 90vw;
 		height: 100%;
 		justify-content: center;
@@ -72,6 +72,9 @@
 		height: auto;
 		display: flex;
 		justify-content: center;
+	}
+	.galleryContainer img {
+		height: auto;
 	}
 
 	.galleryContainer {

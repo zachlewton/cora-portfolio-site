@@ -4,6 +4,7 @@ import style from '../nav/Nav.module.css';
 import SubNav from '../subNav/SubNav';
 import axios from 'axios';
 import SubNavChildNav from '../subNavChildNav/SubNavChildNav';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const MobileNav = (props) => {
 	const [subNavType, setSubNavType] = useState('');
@@ -44,7 +45,7 @@ const MobileNav = (props) => {
 
 	useEffect(() => {
 		axios
-			.get(`http://localhost:8000/wp-json/custom-api/v1/get_nav_items`)
+			.get(`https://artportfoliocora/wp-json/custom-api/v1/get_nav_items`)
 			.then((res) => {
 				console.log(res.data);
 				setProjects(res.data.projects);

@@ -24,6 +24,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import topNavContext from './topNavContext';
 import TopNav from './Components/topNav/TopNav';
 import logo from './images/logo.png';
+
 export default function App() {
 	const isTabletOrMobile = useMediaQuery({ query: '(max-width: 768px)' });
 	const [topNavItems, setTopNavItems] = useState({});
@@ -31,23 +32,48 @@ export default function App() {
 	const value = { topNavItems, setTopNavItems };
 	const { pathname } = useLocation();
 
+	const variants = {
+		enter: {
+			x: -1000,
+		},
+		center: {
+			// zIndex: 1,
+			x: 0,
+		},
+		exit: {
+			x: -1000,
+		},
+	};
+
 	return (
 		<>
 			<topNavContext.Provider value={value}>
 				<div className={style.noScroll}>
 					{isTabletOrMobile && (
-						<div
-							className={style.mobileNavContainer}
-							style={{ display: !active && 'none' }}
-						>
-							<div className={style.exitButton}>
-								<FontAwesomeIcon
-									icon={faTimes}
-									onClick={() => setActive(false)}
-								/>
-							</div>
-							<MobileNav hideNav={() => setActive(false)} />
-						</div>
+						<AnimatePresence exitBeforeEnter>
+							<motion.div
+								key="hi"
+								variants={variants}
+								initial="enter"
+								animate="center"
+								exit="exit"
+								transition={{
+									x: {
+										duration: 0.5,
+									},
+								}}
+								className={style.mobileNavContainer}
+								style={{ display: !active && 'none' }}
+							>
+								<div className={style.exitButton}>
+									<FontAwesomeIcon
+										icon={faTimes}
+										onClick={() => setActive(false)}
+									/>
+								</div>
+								<MobileNav hideNav={() => setActive(false)} />
+							</motion.div>
+						</AnimatePresence>
 					)}
 					<div
 						className={
@@ -69,14 +95,22 @@ export default function App() {
 							</>
 						)}
 						{isTabletOrMobile && (
-							<div className={style.burger}>
-								<Burger onClick={() => setActive(!active)} active={active} />
+							<div className={style.headerContainer}>
+								<div>
+									<Burger onClick={() => setActive(!active)} active={active} />
+								</div>
+								<a href={'/home'}>
+									<img src={logo} />
+								</a>
 							</div>
 						)}
 						<AnimatePresence exitBeforeEnter>
 							<div className={style.contentContainer}>
 								<div className={style.flipped}>
 									<Switch>
+										<Route exact path="error">
+											<ErrorPage />
+										</Route>
 										<Route exact path="/home">
 											<HomePage />
 										</Route>

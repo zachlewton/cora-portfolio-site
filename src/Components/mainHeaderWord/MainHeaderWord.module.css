@@ -1,0 +1,20 @@
+.lower {
+	display: flex;
+	width: auto;
+	margin-right: 0.472vw;
+}
+.upper {
+	margin-right: 0.472vw;
+	font-size: clamp(21pt, 1.373vw, 24pt);
+	font-weight: bold;
+	display: flex;
+	width: auto;
+	font-family: IowanOldStyle;
+	color: #925223;
+}
+
+.capital {
+	font-size: clamp(29pt, 1.845vw, 32pt);
+	text-transform: capitalize;
+	font-weight: bold;
+}

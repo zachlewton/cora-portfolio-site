@@ -1,9 +1,23 @@
+@keyframes menu {
+	0% {
+		left: -100vw;
+	}
+
+	100% {
+		left: 0;
+	}
+}
+
 nav {
 	margin: 0 0.815vw 0 3.818vw;
 	display: flex;
 	font-family: MYRIADPRO-REGULAR;
 	font-size: clamp(12px, 0.686vw, 12pt);
 	color: #9f9f9d;
+}
+
+nav li {
+	cursor: pointer;
 }
 
 ul {
@@ -13,6 +27,10 @@ ul {
 	padding: 0;
 	display: flex;
 	flex-direction: column;
+}
+
+.subNav {
+	animation: menu 8500ms ease-in-out;
 }
 
 .sideNav li {

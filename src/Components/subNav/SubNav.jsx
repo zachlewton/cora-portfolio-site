@@ -13,6 +13,7 @@ import ProjectTitle from '../projectTitle/ProjectTitle';
 import axios from 'axios';
 import SubNavChildNav from '../subNavChildNav/SubNavChildNav';
 import topNavContext from '../../topNavContext';
+import { motion } from 'framer-motion';
 import { useMediaQuery } from 'react-responsive';
 
 const SubNav = (props) => {
@@ -33,7 +34,7 @@ const SubNav = (props) => {
 	// 	setSubNavType(type);
 	// 	setSubItems(subs);
 	// };
-
+	// <motion.div initial={{ x: -100 }} animate={{ x: 0 }}></motion.div>;
 	const active = {
 		color: '#925223',
 		fontFamily: 'MYRIADPRO-BOLD',

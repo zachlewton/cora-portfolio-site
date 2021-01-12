@@ -10,7 +10,7 @@ const HomePage = () => {
 
 	useEffect(() => {
 		axios
-			.get('http://localhost:8000/wp-json/custom-api/v1/home_page')
+			.get('https://artportfoliocora.com/wp-json/custom-api/v1/home_page')
 			.then((res) => {
 				setImages(res.data);
 			})
