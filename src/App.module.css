@@ -39,6 +39,10 @@
 	}
 }
 
+:root {
+	scrollbar-width: none !important;
+}
+
 html,
 body {
 	padding: 0;
@@ -141,7 +145,6 @@ a:visited {
 	height: auto;
 	overflow: auto;
 	direction: rtl;
-	scrollbar-width: 5px;
 
 	/* max-width: 1072.02px; */
 	padding: 0 0 0 2.231vw;
