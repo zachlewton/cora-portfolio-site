@@ -59,6 +59,19 @@ svg {
 	width: 26.77vw;
 	height: auto;
 }
+a:visited {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: none;
+}
+a:focus {
+	text-decoration: none;
+}
+a:hover,
+a:active {
+	text-decoration: none;
+}
 
 li {
 	list-style: none;

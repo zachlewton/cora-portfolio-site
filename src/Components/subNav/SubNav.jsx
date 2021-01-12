@@ -19,7 +19,7 @@ import { useMediaQuery } from 'react-responsive';
 const SubNav = (props) => {
 	const type = props.type;
 	const navItems = props.navItems;
-	console.log(navItems);
+
 	const [subNavActive, setSubNavActive] = useState(false);
 	const [subNavType, setSubNavType] = useState('');
 	const [subItems, setSubItems] = useState({});

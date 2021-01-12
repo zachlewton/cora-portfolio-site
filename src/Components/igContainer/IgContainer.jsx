@@ -41,7 +41,7 @@ const IgContainer = (props) => {
 				`https://artportfoliocora.com/wp-json/custom-api/v1/ig?type=${type}&slug=${slug}&gallery_slug=${igSlug}`
 			)
 			.then((res) => {
-				if (res.data.length > 0) {
+				if (res.data) {
 					setContent(res.data);
 				} else history.push('/error');
 			})

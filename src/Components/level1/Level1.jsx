@@ -23,7 +23,7 @@ import { motion } from 'framer-motion';
 const Level1 = (props) => {
 	const params = useParams();
 	const type = params.type;
-	console.log(type);
+
 	const [loaded, setLoaded] = useState(false);
 	const [content, setContent] = useState([]);
 	const location = useLocation();
@@ -36,7 +36,7 @@ const Level1 = (props) => {
 		axios
 			.get(`https://artportfoliocora.com/wp-json/custom-api/v1/get_${type}`)
 			.then((res) => {
-				if (res.data.length > 0) {
+				if (res.data) {
 					setContent(res.data);
 				} else history.push('/error');
 			})

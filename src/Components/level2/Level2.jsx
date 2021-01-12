@@ -34,14 +34,13 @@ const Level2 = () => {
 				`https://artportfoliocora.com/wp-json/custom-api/v1/sub_${params.type}?slug=${params.slug}`
 			)
 			.then((res) => {
-				if (res.data.length > 0) {
+				if (res.data) {
 					setContent(res.data);
 					setSubs(res.data.subs);
 				} else history.push('/error');
 			})
 			.then(() => {
 				setLoaded(true);
-				console.log('loaded');
 			})
 			.catch((error) => <Redirect to="dfhkdsjfsjdkfskj" />);
 	}, []);

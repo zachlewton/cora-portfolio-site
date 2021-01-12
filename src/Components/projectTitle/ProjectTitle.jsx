@@ -23,7 +23,6 @@ const ProjectTitle = (props) => {
 				`http://localhost:8000/wp-json/custom-api/v1/sub_projects?slug=${project.slug}`
 			)
 			.then((res) => {
-				console.log(res.data);
 				setSubProjects(res.data);
 			});
 		// .then(() => setCurrentSubProjectId(id))

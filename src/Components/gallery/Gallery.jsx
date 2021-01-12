@@ -22,7 +22,7 @@ const Gallery = (props) => {
 	//
 
 	const isTabletOrMobile = useMediaQuery({ query: '(max-width: 768px)' });
-	console.log(images);
+
 	let index = images.findIndex((image) => image.id === imageRef);
 	const [currentIndex, setIndex] = useState(index);
 

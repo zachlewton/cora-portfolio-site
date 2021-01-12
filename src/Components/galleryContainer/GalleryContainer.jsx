@@ -51,7 +51,7 @@ const GalleryContainer = (props) => {
 					const imagesResponse = responses[0].data;
 					const topNavResponse = responses[1].data;
 
-					if (responses[0].data.length > 0) {
+					if (responses[0].data) {
 						setContent(imagesResponse);
 
 						topNavResponse.galleries.length < 2
@@ -71,7 +71,6 @@ const GalleryContainer = (props) => {
 	};
 
 	const raiseClick = (id) => {
-		console.log(id);
 		setImageRef(id);
 		toggleGalleryView(true);
 	};

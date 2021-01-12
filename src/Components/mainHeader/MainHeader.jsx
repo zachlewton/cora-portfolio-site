@@ -15,7 +15,7 @@ const MainHeader = (props) => {
 		}
 	});
 	const newHeader = parsedWords.join(' ');
-	console.log(newHeader);
+
 	return (
 		<div
 			className={style.header}

@@ -18,16 +18,9 @@ const MobileNav = (props) => {
 	const [info, setInfo] = useState([]);
 	const [activeLink, setActiveLink] = useState('');
 
-	console.log('subNavType:' + subNavType);
-	console.log('subNavChildType:' + subNavChildType);
-
 	const location = useLocation();
 
-	console.log(location.pathname.match('/').length);
-
 	const params = useParams();
-
-	location.pathname == '/works' && console.log('true');
 
 	// function setNavs() {
 	// 	if (location.pathname.match('/' || []).length >= 1) {
@@ -47,7 +40,6 @@ const MobileNav = (props) => {
 		axios
 			.get(`https://artportfoliocora/wp-json/custom-api/v1/get_nav_items`)
 			.then((res) => {
-				console.log(res.data);
 				setProjects(res.data.projects);
 				setWorks(res.data.works);
 				setInfo(res.data.info);
