@@ -33,6 +33,11 @@ ul {
 	animation: menu 8500ms ease-in-out;
 }
 
+a:visited {
+	text-decoration: none;
+	color: inherit;
+}
+
 .sideNav li {
 	margin: 0 0 1.5793848711554448vh 0;
 }

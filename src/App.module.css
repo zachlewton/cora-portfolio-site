@@ -73,6 +73,10 @@ a:active {
 	text-decoration: none;
 }
 
+a {
+	color: inherit;
+}
+
 li {
 	list-style: none;
 	text-decoration: none;
