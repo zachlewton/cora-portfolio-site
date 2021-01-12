@@ -12,7 +12,8 @@ nav {
 	margin: 0 0.815vw 0 3.818vw;
 	display: flex;
 	font-family: MYRIADPRO-REGULAR;
-	font-size: clamp(12px, 0.686vw, 12pt);
+	font-size: 0.686vw;
+
 	color: #9f9f9d;
 }
 
@@ -54,6 +55,12 @@ a:visited {
 .active {
 	color: #925223;
 	font-family: MYRIADPRO-BOLD;
+}
+
+@media only screen and (max-width: 1232px) {
+	nav {
+		font-size: 12px;
+	}
 }
 
 @media only screen and (max-width: 768px) {
