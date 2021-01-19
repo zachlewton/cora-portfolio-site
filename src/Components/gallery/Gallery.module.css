@@ -1,7 +1,7 @@
 .container img {
 	/* object-fit: fill; */
 	/* width: 100%; */
-	width: 54.783vw;
+	width: 100%;
 
 	height: auto;
 
@@ -10,6 +10,7 @@
 
 .imageContainer {
 	margin: 0 1.716vw 0 1.716vw;
+	width: 54.783vw;
 	/* width: 54.783vw;
 	height: 71.23857024106401vh; */
 }
@@ -66,7 +67,7 @@
 }
 
 @media only screen and (max-width: 1231px) {
-	.container img {
+	.imageContainer {
 		width: 50vw;
 	}
 }
