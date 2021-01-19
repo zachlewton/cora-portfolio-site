@@ -5,7 +5,7 @@
 
 	height: auto;
 
-	height: 71.23857024106401vh;
+	/* height: 71.23857024106401vh; */
 }
 
 .imageContainer {
@@ -29,6 +29,7 @@
 .container {
 	display: flex;
 	/* height: 71.23857024106401vh; */
+	width: 100%;
 
 	padding: 0 0 0 0;
 	margin: 3.7406483790523692vh 0 auto 0.901vw;
@@ -47,6 +48,8 @@
 .rightContainer {
 	display: flex;
 	flex-direction: column;
+	margin-right: 1vw;
+	min-width: 201.531px;
 }
 
 .captionContainer {
@@ -54,6 +57,18 @@
 	height: 100%;
 	flex-direction: column;
 	justify-content: flex-end;
+}
+
+@media only screen and (max-width: 981px) {
+	.imageContainer {
+		margin: 0 1vw 0 1vw;
+	}
+}
+
+@media only screen and (max-width: 1231px) {
+	.container img {
+		width: 50vw;
+	}
 }
 
 @media only screen and (max-width: 768px) {
@@ -80,6 +95,7 @@
 	.container img {
 		/* object-fit: contain; */
 		width: 100%;
+		height: auto;
 
 		/* height: 71.23857024106401vh; */
 	}

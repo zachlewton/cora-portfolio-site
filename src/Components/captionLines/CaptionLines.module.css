@@ -29,3 +29,21 @@
 		display: flex;
 	}
 } */
+
+@media only screen and (max-width: 1206px) {
+	.container li {
+		font-size: 12px;
+	}
+}
+
+@media only screen and (max-width: 1437px) {
+	.container li {
+		font-size: 11px;
+	}
+}
+
+@media only screen and (max-width: 12701px) {
+	.container li {
+		font-size: 10px;
+	}
+}

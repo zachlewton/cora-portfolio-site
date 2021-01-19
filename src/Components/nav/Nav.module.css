@@ -58,9 +58,9 @@ a:visited {
 }
 
 @media only screen and (max-width: 1232px) {
-	nav {
+	/* nav {
 		font-size: 12px;
-	}
+	} */
 }
 
 @media only screen and (max-width: 768px) {

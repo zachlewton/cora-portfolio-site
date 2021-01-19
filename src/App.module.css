@@ -96,7 +96,7 @@ a:visited {
 .container {
 	display: grid;
 	width: 100vw;
-	grid-template-columns: minmax(300px, 23.295vw) auto 23.295vw;
+	grid-template-columns: minmax(150px, 23.295vw) auto 23.295vw;
 	/* grid-template-columns: clamp(300px, 23.295vw, 542px) auto 23.295vw; */
 	grid-template-rows: 8.366vw calc(100vh - 8.366vw);
 	grid-template-areas:
