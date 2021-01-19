@@ -1,7 +1,7 @@
 .container img {
 	/* object-fit: fill; */
 	/* width: 100%; */
-	width: 100%;
+	width: 54.783vw;
 
 	height: auto;
 
@@ -10,9 +10,8 @@
 
 .imageContainer {
 	margin: 0 1.716vw 0 1.716vw;
-	width: 54.783vw;
-	/* width: 54.783vw;
-	height: 71.23857024106401vh; */
+	/* /* width: 54.783vw; */
+	/* height: 71.23857024106401vh; */
 }
 /* .exit svg {
 	float: right;
@@ -30,8 +29,7 @@
 .container {
 	display: flex;
 	/* height: 71.23857024106401vh; */
-	/* width: 100%; */
-	width: 54.783vw;
+	width: 100%;
 
 	padding: 0 0 0 0;
 	margin: 3.7406483790523692vh 0 auto 0.901vw;
@@ -68,7 +66,7 @@
 }
 
 @media only screen and (max-width: 1231px) {
-	.imageContainer {
+	.container img {
 		width: 50vw;
 	}
 }
