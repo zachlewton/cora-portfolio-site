@@ -30,7 +30,8 @@
 .container {
 	display: flex;
 	/* height: 71.23857024106401vh; */
-	width: 100%;
+	/* width: 100%; */
+	width: 54.783vw;
 
 	padding: 0 0 0 0;
 	margin: 3.7406483790523692vh 0 auto 0.901vw;
