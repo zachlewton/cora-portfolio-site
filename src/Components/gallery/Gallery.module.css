@@ -73,6 +73,12 @@
 }
 
 @media only screen and (max-width: 768px) {
+	.captionContainer {
+		display: flex;
+		height: 100%;
+		flex-direction: column;
+		justify-content: flex-start;
+	}
 	.container {
 		margin: 10vh 5vw auto 5vw;
 		width: 90vw;
@@ -114,6 +120,7 @@
 	.galleryContainer {
 		display: flex;
 		justify-content: center;
+		height: 55.33vw;
 	}
 
 	/* .captionContainer {
