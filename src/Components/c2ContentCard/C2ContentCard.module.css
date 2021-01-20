@@ -24,7 +24,7 @@
 		/* height: 100%; */
 		flex-direction: column;
 		justify-content: flex-start;
-		/* align-self: flex-end;  */
+		align-self: flex-start;
 		margin: 0 0 0 1.845vw;
 	}
 	.container {
