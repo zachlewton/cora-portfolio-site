@@ -107,7 +107,7 @@ a:visited {
 .mobileContainer {
 	display: grid;
 	grid-template-columns: 100vw;
-	grid-template-rows: 9vw 100vh;
+	grid-template-rows: 9vw auto;
 	grid-template-areas:
 		'header'
 		'main';
