@@ -215,7 +215,7 @@ a:visited {
 		left: 0;
 		animation: menu 850ms ease-in-out;
 
-		height: 100%;
+		height: auto;
 	}
 
 	.exitButton {
