@@ -21,10 +21,10 @@
 @media only screen and (max-width: 768px) {
 	.captionContainer {
 		display: flex;
-		/* height: 100%; */
+		height: auto;
 		flex-direction: column;
 		justify-content: flex-start;
-		align-self: flex-start;
+		align-self: none;
 		margin: 0 0 0 1.845vw;
 	}
 	.container {
