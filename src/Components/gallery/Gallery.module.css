@@ -76,7 +76,7 @@
 	.container {
 		margin: 10vh 5vw auto 5vw;
 		width: 90vw;
-		height: auto;
+		height: 100vh;
 		justify-content: center;
 		justify-items: center;
 		justify-self: center;
