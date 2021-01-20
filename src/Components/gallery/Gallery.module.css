@@ -94,9 +94,9 @@
 	}
 
 	.container img {
-		/* object-fit: contain; */
+		object-fit: contain;
 		width: 100%;
-		height: auto;
+		/* height: auto; */
 
 		/* height: 71.23857024106401vh; */
 	}
