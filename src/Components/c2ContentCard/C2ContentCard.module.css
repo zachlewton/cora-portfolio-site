@@ -29,6 +29,7 @@
 	}
 	.container {
 		margin: 0 0 3.1587697423108896vh 0;
+		max-height: 32.107vw;
 		/* justify-content: space-between; */
 	}
 
