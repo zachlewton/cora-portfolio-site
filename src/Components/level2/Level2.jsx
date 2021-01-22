@@ -18,6 +18,7 @@ import MainHeader from '../mainHeader/MainHeader';
 import topNavContext from '../../topNavContext';
 import style from './Level2.module.css';
 import Loading from '../loading/Loading';
+import Paragraph from '../paragraph/Paragraph';
 
 import { motion } from 'framer-motion';
 
@@ -76,17 +77,21 @@ const Level2 = () => {
 					)}
 				</div>
 
-				{subs.map((contentItem) =>
-					contentItem.galleries.length > 1 ? ( ////if navigate to ig
-						<div className={style.L2CardContainer}>
-							<L2ContentCard ig={true} content={contentItem} />
-						</div>
-					) : (
-						<div className={style.L2CardContainer}>
-							<L2ContentCard ig={false} content={contentItem} />
-						</div> /////if navigate straight to gallery
-					)
-				)}
+				<Paragraph content={content.description} />
+
+				<div className={style.images}>
+					{subs.map((contentItem) =>
+						contentItem.galleries.length > 1 ? ( ////if navigate to ig
+							<div className={style.L2CardContainer}>
+								<L2ContentCard ig={true} content={contentItem} />
+							</div>
+						) : (
+							<div className={style.L2CardContainer}>
+								<L2ContentCard ig={false} content={contentItem} />
+							</div> /////if navigate straight to gallery
+						)
+					)}
+				</div>
 			</motion.div>
 		);
 	}

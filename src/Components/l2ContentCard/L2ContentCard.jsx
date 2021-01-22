@@ -4,7 +4,14 @@ import { NavLink, useLocation } from 'react-router-dom';
 import style from './L2ContentCard.module.css';
 
 const L2ContentCard = (props) => {
-	const { title, description, galleries, id, slug } = props.content;
+	const {
+		title,
+		description,
+		galleries,
+		id,
+		slug,
+		featured_image,
+	} = props.content;
 	const location = useLocation();
 	const url = !props.ig
 		? `${location.pathname}/${slug}/${slug}`
@@ -12,23 +19,20 @@ const L2ContentCard = (props) => {
 
 	return (
 		<div className={style.container}>
-			<div className={style.paragraphContainer}>
+			<div className={style.image}>
 				<NavLink to={url}>
-					<C1Card title={title} paragraph={description} />
+					<h2 className={style.title}>{title}</h2>
+					<img src={featured_image.src} />
 				</NavLink>
 			</div>
 
-			<div className={style.images}>
-				{galleries.map((gallery) => (
-					<div className={style.image}>
-						<NavLink
-							to={`${location.pathname}/${slug}/${gallery.gallery_slug}`}
-						>
-							<img src={gallery.thumbnail} />
-						</NavLink>
-					</div>
-				))}
-			</div>
+			{/* <div className={}>
+				<div className={}>
+					<NavLink to={`${location.pathname}/${slug}/${gallery.gallery_slug}`}>
+						<img src={gallery.thumbnail} />
+					</NavLink>
+				</div>
+			</div> */}
 		</div>
 	);
 };

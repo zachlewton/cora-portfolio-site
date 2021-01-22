@@ -80,7 +80,7 @@
 		justify-content: flex-start;
 	}
 	.container {
-		margin: 10vh 5vw auto 5vw;
+		margin: 5vh 5vw auto 5vw;
 		width: 90vw;
 		height: 100vh;
 		justify-content: center;
@@ -91,12 +91,12 @@
 	}
 
 	.exit {
-		display: flex;
-		justify-content: flex-end;
+		/* display: flex;
+		justify-content: flex-end; */
 	}
 
 	.exit svg {
-		align-self: flex-end;
+		/* align-self: flex-end; */
 	}
 
 	.container img {

@@ -74,7 +74,7 @@ const Level1 = (props) => {
 					)}
 				</div>
 
-				<div>
+				<div className={style.images}>
 					{content.map((contentItem) =>
 						!contentItem.gallery ? (
 							<NavLink to={`/${type}/${contentItem.slug}`}>

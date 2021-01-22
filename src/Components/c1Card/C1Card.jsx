@@ -6,7 +6,7 @@ const C1Card = (props) => {
 	return (
 		<div className={style.container}>
 			<h2 className={style.c2Header}>{props.title}</h2>
-			<Paragraph content={props.paragraph} />
+			{props.paragraph && <Paragraph content={props.paragraph} />}
 		</div>
 	);
 };

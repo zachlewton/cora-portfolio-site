@@ -109,6 +109,14 @@ const Gallery = (props) => {
 				</div>
 
 				<div className={style.rightContainer}>
+					{location.pathname != '/home' ? (
+						<FontAwesomeIcon
+							style={{ height: '50px', width: '50px', color: '#6c7069' }}
+							icon={faTimes}
+							onClick={props.onClick}
+							className={style.exit}
+						/>
+					) : null}
 					<FontAwesomeIcon
 						onClick={() => {
 							handleNext();
@@ -123,15 +131,6 @@ const Gallery = (props) => {
 						<CaptionLines content={image.caption} />
 					</div>
 				</div>
-
-				{location.pathname != '/home' ? (
-					<FontAwesomeIcon
-						style={{ height: '50px', width: '50px', color: '#6c7069' }}
-						icon={faTimes}
-						onClick={props.onClick}
-						className={style.exit}
-					/>
-				) : null}
 			</div>
 		);
 	}

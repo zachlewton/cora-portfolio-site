@@ -1,3 +1,20 @@
 .container {
-	margin: 0 0 10vh 0;
+	margin: 0 0 0 0;
+}
+
+.image {
+	margin: 0 3.2vw 0 0;
+}
+
+.title {
+	font-family: MYRIADPRO-REGULAR;
+	font-size: 13pt;
+	font-weight: bold;
+	color: #6c7069;
+	margin: 0 0 1.163757273482959vh 0;
+}
+
+.l1Image:hover {
+	opacity: 0.9;
+	/* transform: scale(1.05); */
 }

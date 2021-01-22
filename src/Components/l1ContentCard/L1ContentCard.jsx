@@ -10,8 +10,13 @@ const Level1ContentCard = (props) => {
 
 	return (
 		<div className={style.container}>
-			<C1Card title={content.title} paragraph={content.description} />
-			<C2ContentCard image={content.featured_image} />
+			<div className={style.image}>
+				<h2 className={style.title}>{content.title}</h2>
+				<img className={style.l1Image} src={content.featured_image.src} />
+			</div>
+
+			{/* <C1Card title={content.title} paragraph={content.description} />
+			<C2ContentCard image={content.featured_image} /> */}
 		</div>
 	);
 };
