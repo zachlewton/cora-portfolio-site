@@ -32,7 +32,7 @@ const Level2 = () => {
 	useEffect(() => {
 		axios
 			.get(
-				`https://artportfoliocora.com/wp-json/custom-api/v1/sub_${params.type}?slug=${params.slug}`
+				`http://localhost:8000/wp-json/custom-api/v1/sub_${params.type}?slug=${params.slug}`
 			)
 			.then((res) => {
 				if (res.data) {
@@ -63,7 +63,7 @@ const Level2 = () => {
 
 				<div className={style.topNavContainer}>
 					{subs.map((sub) =>
-						sub.galleries.length > 1 ? (
+						sub.display_type == 'intro galleries' ? (
 							<NavLink to={`/${params.type}/${params.slug}/${sub.slug}`}>
 								<TopNav content={sub.title} />
 							</NavLink>
@@ -81,7 +81,7 @@ const Level2 = () => {
 
 				<div className={style.images}>
 					{subs.map((contentItem) =>
-						contentItem.galleries.length > 1 ? ( ////if navigate to ig
+						contentItem.display_type == 'intro galleries' ? ( ////if navigate to ig
 							<div className={style.L2CardContainer}>
 								<L2ContentCard ig={true} content={contentItem} />
 							</div>

@@ -37,7 +37,7 @@ const Nav = (props) => {
 
 	useEffect(() => {
 		axios
-			.get(`https://artportfoliocora.com/wp-json/custom-api/v1/get_nav_items`)
+			.get(`http://localhost:8000/wp-json/custom-api/v1/get_nav_items`)
 			.then((res) => {
 				setProjects(res.data.projects);
 				setWorks(res.data.works);
@@ -77,13 +77,6 @@ const Nav = (props) => {
 				>
 					Info
 				</li>
-
-				{/* <NavLink exact activeStyle={active} to="/projects">
-					<li onClick={() => subNav('projects')}>Projects</li>
-				</NavLink>
-				<NavLink exact activeStyle={active} to="/works">
-					<li onClick={() => subNav('works')}>Works</li>
-				</NavLink> */}
 
 				<NavLink exact activeClassName={style.active} to="/projects">
 					<li

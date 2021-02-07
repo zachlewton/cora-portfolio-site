@@ -38,7 +38,7 @@ const IgContainer = (props) => {
 		setLoaded(false);
 		axios
 			.get(
-				`https://artportfoliocora.com/wp-json/custom-api/v1/ig?type=${type}&slug=${slug}&gallery_slug=${igSlug}`
+				`http://localhost:8000/wp-json/custom-api/v1/ig?type=${type}&slug=${slug}&sub_slug=${igSlug}`
 			)
 			.then((res) => {
 				if (res.data) {
@@ -66,11 +66,11 @@ const IgContainer = (props) => {
 			>
 				<MainHeader content={content.title} />
 				<div className={style.topNavContainer}>
-					{content.galleries.map((gallery) => (
+					{content.sub_galleries.map((gallery) => (
 						<NavLink
 							exact
 							activeStyle={active}
-							to={`${location.pathname}/${gallery.gallery_slug}`}
+							to={`${location.pathname}/${gallery.slug}`}
 						>
 							<TopNav content={gallery.title} />
 						</NavLink>
@@ -79,11 +79,11 @@ const IgContainer = (props) => {
 
 				<Paragraph content={content.description} />
 				<div className={style.images}>
-					{content.galleries.map((gallery) => (
+					{content.sub_galleries.map((gallery) => (
 						<div className={style.image}>
-							<NavLink to={`${location.pathname}/${gallery.gallery_slug}`}>
+							<NavLink to={`${location.pathname}/${gallery.slug}`}>
 								<h2 className={style.title}>{gallery.title}</h2>
-								<img src={gallery.thumbnail} />
+								<img src={gallery.featured_image} />
 							</NavLink>
 						</div>
 					))}

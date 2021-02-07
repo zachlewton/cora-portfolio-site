@@ -22,7 +22,7 @@ const L2ContentCard = (props) => {
 			<div className={style.image}>
 				<NavLink to={url}>
 					<h2 className={style.title}>{title}</h2>
-					<img src={featured_image.src} />
+					<img src={featured_image} />
 				</NavLink>
 			</div>
 

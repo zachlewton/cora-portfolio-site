@@ -45,7 +45,7 @@ const SubNav = (props) => {
 			<div className={style.container}>
 				<ul>
 					{navItems.map((navItem) =>
-						!navItem.gallery ? (
+						navItem.subs ? (
 							<NavLink exact to={`/${type}/${navItem.slug}`}>
 								<li
 									className={

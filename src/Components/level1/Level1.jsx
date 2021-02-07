@@ -34,7 +34,7 @@ const Level1 = (props) => {
 	useEffect(() => {
 		setLoaded(false);
 		axios
-			.get(`https://artportfoliocora.com/wp-json/custom-api/v1/get_${type}`)
+			.get(`http://localhost:8000/wp-json/custom-api/v1/get_${type}`)
 			.then((res) => {
 				if (res.data) {
 					setContent(res.data);
@@ -60,7 +60,7 @@ const Level1 = (props) => {
 
 				<div className={style.topNavContainer}>
 					{content.map((navItem) =>
-						!navItem.gallery ? (
+						navItem.display_type === `sub ${type}` ? (
 							<NavLink to={`/${type}/${navItem.slug}`}>
 								<TopNav content={navItem.title} />
 							</NavLink>
@@ -76,7 +76,7 @@ const Level1 = (props) => {
 
 				<div className={style.images}>
 					{content.map((contentItem) =>
-						!contentItem.gallery ? (
+						contentItem.display_type == `sub ${type}` ? (
 							<NavLink to={`/${type}/${contentItem.slug}`}>
 								<L1ContentCard content={contentItem} />
 							</NavLink>
