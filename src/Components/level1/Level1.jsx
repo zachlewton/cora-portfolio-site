@@ -59,35 +59,19 @@ const Level1 = (props) => {
 				<MainHeader content={type} />
 
 				<div className={style.topNavContainer}>
-					{content.map((navItem) =>
-						navItem.display_type === `sub ${type}` ? (
-							<NavLink to={`/${type}/${navItem.slug}`}>
-								<TopNav content={navItem.title} />
-							</NavLink>
-						) : (
-							<NavLink
-								to={`/${type}/${navItem.slug}/${navItem.slug}/${navItem.slug}`}
-							>
-								<TopNav content={navItem.title} />
-							</NavLink>
-						)
-					)}
+					{content.map((navItem) => (
+						<NavLink to={`/${type}/${navItem.slug}`}>
+							<TopNav content={navItem.title} />
+						</NavLink>
+					))}
 				</div>
 
 				<div className={style.images}>
-					{content.map((contentItem) =>
-						contentItem.display_type == `sub ${type}` ? (
-							<NavLink to={`/${type}/${contentItem.slug}`}>
-								<L1ContentCard content={contentItem} />
-							</NavLink>
-						) : (
-							<NavLink
-								to={`/${type}/${contentItem.slug}/${contentItem.slug}/${contentItem.slug}`}
-							>
-								<L1ContentCard content={contentItem} />
-							</NavLink>
-						)
-					)}
+					{content.map((contentItem) => (
+						<NavLink to={`/${type}/${contentItem.slug}`}>
+							<L1ContentCard content={contentItem} />
+						</NavLink>
+					))}
 				</div>
 			</motion.div>
 		);

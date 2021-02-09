@@ -44,36 +44,19 @@ const SubNav = (props) => {
 		return (
 			<div className={style.container}>
 				<ul>
-					{navItems.map((navItem) =>
-						navItem.subs ? (
-							<NavLink exact to={`/${type}/${navItem.slug}`}>
-								<li
-									className={
-										location.pathname.startsWith(`/${type}/${navItem.slug}`) &&
-										style.active
-									}
-									onClick={() => props.subNavChild(type, navItem)}
-								>
-									{navItem.title}
-								</li>
-							</NavLink>
-						) : (
-							<NavLink
-								exact
-								to={`/${type}/${navItem.slug}/${navItem.slug}/${navItem.slug}`}
+					{navItems.map((navItem) => (
+						<NavLink exact to={`/${type}/${navItem.slug}`}>
+							<li
+								className={
+									location.pathname.startsWith(`/${type}/${navItem.slug}`) &&
+									style.active
+								}
+								onClick={() => props.subNavChild(type, navItem)}
 							>
-								<li
-									className={
-										location.pathname.startsWith(`/${type}/${navItem.slug}`) &&
-										style.active
-									}
-									onClick={() => props.setSubNavChildActive(false)}
-								>
-									{navItem.title}
-								</li>
-							</NavLink>
-						)
-					)}
+								{navItem.title}
+							</li>
+						</NavLink>
+					))}
 				</ul>
 			</div>
 		);

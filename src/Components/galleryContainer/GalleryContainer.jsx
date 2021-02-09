@@ -35,10 +35,10 @@ const GalleryContainer = (props) => {
 	const location = useLocation();
 
 	const imagesRequest = axios.get(
-		`https://artportfoliocora.com/wp-json/custom-api/v1/gallery_images?type=${type}&slug=${slug}&gallery_slug=${gallerySlug}`
+		`http://localhost:8000/wp-json/custom-api/v1/gallery_images?type=${type}&slug=${igSlug}&gallery_slug=${gallerySlug}`
 	);
 	const topNavRequest = axios.get(
-		`https://artportfoliocora.com/wp-json/custom-api/v1/ig?type=${type}&slug=${slug}&gallery_slug=${igSlug}`
+		`http://localhost:8000/wp-json/custom-api/v1/ig?type=${type}&slug=${slug}&sub_slug=${igSlug}`
 	);
 
 	useEffect(() => {
@@ -54,7 +54,7 @@ const GalleryContainer = (props) => {
 					if (responses[0].data) {
 						setContent(imagesResponse);
 
-						topNavResponse.galleries.length < 2
+						topNavResponse.sub_galleries.length == 0
 							? setTopNavItems()
 							: setTopNavItems(topNavResponse);
 					} else history.push('/error');
@@ -92,11 +92,11 @@ const GalleryContainer = (props) => {
 						<MainHeader content={content.title} />
 						<div className={style.topNavContainer}>
 							{topNavItems
-								? topNavItems.galleries.map((navItem) => (
+								? topNavItems.sub_galleries.map((navItem) => (
 										<NavLink
 											exact
 											activeStyle={active}
-											to={`/${type}/${slug}/${igSlug}/${navItem.gallery_slug}`}
+											to={`/${type}/${slug}/${igSlug}/${navItem.slug}`}
 										>
 											<TopNav
 												slug={navItem.gallery_slug}

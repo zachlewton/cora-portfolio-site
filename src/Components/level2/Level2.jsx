@@ -51,49 +51,51 @@ const Level2 = () => {
 	}
 
 	if (loaded) {
-		return (
-			<motion.div
-				initial={{ opacity: 0 }}
-				animate={{ opacity: 1 }}
-				transition={{ duration: 0.5 }}
-				exit={{ opacity: 0 }}
-				className={style.container}
-			>
-				<MainHeader content={content.title} />
+		if (content.display_type == `sub ${params.type}`) {
+			return (
+				<motion.div
+					initial={{ opacity: 0 }}
+					animate={{ opacity: 1 }}
+					transition={{ duration: 0.5 }}
+					exit={{ opacity: 0 }}
+					className={style.container}
+				>
+					<MainHeader content={content.title} />
 
-				<div className={style.topNavContainer}>
-					{subs.map((sub) =>
-						sub.display_type == 'intro galleries' ? (
-							<NavLink to={`/${params.type}/${params.slug}/${sub.slug}`}>
-								<TopNav content={sub.title} />
-							</NavLink>
-						) : (
-							<NavLink
-								to={`/${params.type}/${params.slug}/${sub.slug}/${sub.slug}`}
-							>
-								<TopNav content={sub.title} />
-							</NavLink>
-						)
-					)}
-				</div>
+					<div className={style.topNavContainer}>
+						{subs.map((sub) =>
+							sub.display_type == 'intro galleries' ? (
+								<NavLink to={`/${params.type}/${params.slug}/${sub.slug}`}>
+									<TopNav content={sub.title} />
+								</NavLink>
+							) : (
+								<NavLink
+									to={`/${params.type}/${params.slug}/${sub.slug}/${sub.slug}`}
+								>
+									<TopNav content={sub.title} />
+								</NavLink>
+							)
+						)}
+					</div>
 
-				<Paragraph content={content.description} />
+					<Paragraph content={content.description} />
 
-				<div className={style.images}>
-					{subs.map((contentItem) =>
-						contentItem.display_type == 'intro galleries' ? ( ////if navigate to ig
-							<div className={style.L2CardContainer}>
-								<L2ContentCard ig={true} content={contentItem} />
-							</div>
-						) : (
-							<div className={style.L2CardContainer}>
-								<L2ContentCard ig={false} content={contentItem} />
-							</div> /////if navigate straight to gallery
-						)
-					)}
-				</div>
-			</motion.div>
-		);
+					<div className={style.images}>
+						{subs.map((contentItem) =>
+							contentItem.display_type == 'intro galleries' ? ( ////if navigate to ig
+								<div className={style.L2CardContainer}>
+									<L2ContentCard ig={true} content={contentItem} />
+								</div>
+							) : (
+								<div className={style.L2CardContainer}>
+									<L2ContentCard ig={false} content={contentItem} />
+								</div> /////if navigate straight to gallery
+							)
+						)}
+					</div>
+				</motion.div>
+			);
+		}
 	}
 };
 
