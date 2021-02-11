@@ -1,9 +1,19 @@
 .container {
-	margin: 0 0 0 0;
+	/* margin: 0 0 0 0;
+	width: 13.085vw;
+	height: 8.108vw; */
 }
 
-.image {
-	margin: 0 3.2vw 0 0;
+.imageContainer {
+	width: 13.085vw;
+	height: 8.108vw;
+	/* margin: 0 0 0 0; */
+}
+
+.imageContainer img {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
 }
 
 .title {
@@ -12,9 +22,24 @@
 	font-weight: bold;
 	color: #6c7069;
 	margin: 0 0 1.163757273482959vh 0;
+	width: 100%;
+}
+
+.l1Image {
+	/* width: 100%;
+	height: 100%;
+	object-fit: cover; */
 }
 
 .l1Image:hover {
-	opacity: 0.9;
+	/* opacity: 0.9; */
 	/* transform: scale(1.05); */
+}
+
+@media only screen and (max-width: 932px) {
+	.imageContainer {
+		width: 25vw;
+		height: 15.783vw;
+		/* margin: 0 0 0 0; */
+	}
 }

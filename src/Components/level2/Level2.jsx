@@ -19,6 +19,10 @@ import topNavContext from '../../topNavContext';
 import style from './Level2.module.css';
 import Loading from '../loading/Loading';
 import Paragraph from '../paragraph/Paragraph';
+import Subs from '../displayTypes/subs/Subs';
+import ScrollingGallery from '../displayTypes/scrollingGallery/ScrollingGallery';
+import ReactPlayer from 'react-player';
+import Columns from '../displayTypes/columns/Columns';
 
 import { motion } from 'framer-motion';
 
@@ -51,51 +55,53 @@ const Level2 = () => {
 	}
 
 	if (loaded) {
-		if (content.display_type == `sub ${params.type}`) {
-			return (
-				<motion.div
-					initial={{ opacity: 0 }}
-					animate={{ opacity: 1 }}
-					transition={{ duration: 0.5 }}
-					exit={{ opacity: 0 }}
-					className={style.container}
-				>
-					<MainHeader content={content.title} />
+		return (
+			<motion.div
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 1 }}
+				transition={{ duration: 0.5 }}
+				exit={{ opacity: 0 }}
+				className={style.container}
+			>
+				<MainHeader content={content.title} />
 
-					<div className={style.topNavContainer}>
-						{subs.map((sub) =>
-							sub.display_type == 'intro galleries' ? (
+				{content.display_type == `sub ${params.type}` && (
+					<>
+						<div className={style.topNavContainer}>
+							{subs.map((sub) => (
 								<NavLink to={`/${params.type}/${params.slug}/${sub.slug}`}>
 									<TopNav content={sub.title} />
 								</NavLink>
-							) : (
-								<NavLink
-									to={`/${params.type}/${params.slug}/${sub.slug}/${sub.slug}`}
-								>
-									<TopNav content={sub.title} />
-								</NavLink>
-							)
-						)}
-					</div>
+							))}
+						</div>
 
-					<Paragraph content={content.description} />
+						<Subs className={style.subs} subs={subs} />
+					</>
+				)}
 
-					<div className={style.images}>
-						{subs.map((contentItem) =>
-							contentItem.display_type == 'intro galleries' ? ( ////if navigate to ig
-								<div className={style.L2CardContainer}>
-									<L2ContentCard ig={true} content={contentItem} />
-								</div>
-							) : (
-								<div className={style.L2CardContainer}>
-									<L2ContentCard ig={false} content={contentItem} />
-								</div> /////if navigate straight to gallery
-							)
-						)}
-					</div>
-				</motion.div>
-			);
-		}
+				{content.display_type == 'scrolling gallery' && (
+					<ScrollingGallery gallery={content.gallery} />
+				)}
+
+				{content.display_type == 'video' && (
+					<ReactPlayer url={content.video.video_link} />
+				)}
+
+				{content.display_type == '2 column' && (
+					<Columns
+						displayType={content.display_type}
+						gallery={content.gallery}
+					/>
+				)}
+
+				{content.display_type == '3 column' && (
+					<Columns
+						displayType={content.display_type}
+						gallery={content.gallery}
+					/>
+				)}
+			</motion.div>
+		);
 	}
 };
 

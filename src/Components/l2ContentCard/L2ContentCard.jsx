@@ -20,10 +20,7 @@ const L2ContentCard = (props) => {
 	return (
 		<div className={style.container}>
 			<div className={style.image}>
-				<NavLink to={url}>
-					<h2 className={style.title}>{title}</h2>
-					<img src={featured_image} />
-				</NavLink>
+				<h2 className={style.title}>{title}</h2>
 			</div>
 
 			{/* <div className={}>

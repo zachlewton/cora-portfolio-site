@@ -15,3 +15,8 @@ h1 {
 	height: auto;
 	font-size: small;
 } */
+
+.container {
+	height: 25vw;
+	width: 100%;
+}

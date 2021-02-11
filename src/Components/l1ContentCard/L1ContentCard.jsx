@@ -12,7 +12,9 @@ const Level1ContentCard = (props) => {
 		<div className={style.container}>
 			<div className={style.image}>
 				<h2 className={style.title}>{content.title}</h2>
-				<img className={style.l1Image} src={content.featured_image} />
+				<div className={style.imageContainer}>
+					<img src={content.featured_image} />
+				</div>
 			</div>
 
 			{/* <C1Card title={content.title} paragraph={content.description} />

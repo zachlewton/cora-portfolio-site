@@ -32,7 +32,7 @@ import TopNav from './Components/topNav/TopNav';
 import logo from './images/logo.png';
 
 export default function App() {
-	const isTabletOrMobile = useMediaQuery({ query: '(max-width: 768px)' });
+	const isTabletOrMobile = useMediaQuery({ query: '(max-width: 932px)' });
 	const [topNavItems, setTopNavItems] = useState({});
 	const [active, setActive] = useState(false);
 	const value = { topNavItems, setTopNavItems };

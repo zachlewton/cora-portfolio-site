@@ -31,7 +31,7 @@ const SubNavChildNav = (props) => {
 	return (
 		<div className={style.container}>
 			<ul>
-				{subs.map((sub) =>
+				{/* {subs.map((sub) =>
 					sub.galleries ? (
 						<NavLink to={`/${props.type}/${slug}/${sub.slug}`}>
 							<li
@@ -58,7 +58,8 @@ const SubNavChildNav = (props) => {
 							</li>
 						</NavLink>
 					)
-				)}
+				)} */}
+				active
 			</ul>
 		</div>
 	);

@@ -1,0 +1,15 @@
+.images {
+	/* display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between; */
+
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: auto;
+	column-gap: 3.561vw;
+	row-gap: 2vw;
+	width: 46.203vw;
+
+	/* max-width: 45.989vw; */
+	margin: 3vh 0 0 0;
+}
