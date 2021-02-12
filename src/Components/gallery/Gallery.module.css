@@ -9,20 +9,25 @@
 	padding: 0 0 0 0;
 }
 
+.scroller {
+	margin-left: -2vw;
+}
+
 .container img {
 	/* width: 100%;
 	height: auto; */
 	/* width: 54.783vw; */
 
-	width: 75%;
+	width: 55%;
 	height: 100%;
 	object-fit: contain;
+	margin: 0 1vw 0 1vw;
 
 	/* height: 71.23857024106401vh; */
 }
 
 .videoPlayer {
-	min-width: 55.855vw;
+	min-width: 42.8vw;
 	min-height: 27.999vw;
 	display: flex;
 	align-items: center;
@@ -166,7 +171,7 @@
 		/* width: 100%;
 		height: auto; */
 		/* width: 54.783vw; */
-		border: 3px solid green;
+		/* border: 3px solid green; */
 		width: 80%;
 		height: 100%;
 		object-fit: contain;

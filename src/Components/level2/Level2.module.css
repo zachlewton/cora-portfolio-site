@@ -1,7 +1,7 @@
 .container {
 	/* min-width: 1420px; */
 
-	margin: 4vh 0 0 0;
+	margin: 4vh 0 10vw 0;
 	/* max-width: 1077px; */
 	min-width: 700px;
 }
@@ -16,6 +16,11 @@
 	font-family: MYRIADPRO-REGULAR;
 	font-size: 12pt;
 	color: #9f9f9d;
+}
+
+.videoPlayer {
+	width: 13.085vw;
+	height: 100%;
 }
 
 /* .topNavContainer:not(:last-child) {
@@ -40,6 +45,9 @@
 		margin: 0 0 0 0;
 		/* max-width: 100vw;
 		min-width: 100vw; */
+		padding: 2vw 2vw 2vw 4vw;
+
+		min-width: 0;
 	}
 
 	.images {

@@ -1,12 +1,17 @@
 import React, { Component, useState } from 'react';
-import { HelpBlock } from 'react-bootstrap';
+
 import ProjectImage from '../../projectImage/ProjectImage';
 import ScrollingGallery from '../scrollingGallery/ScrollingGallery';
+import CaptionLines from '../../captionLines/CaptionLines';
+import ReactPlayer from 'react-player';
+import { useMediaQuery } from 'react-responsive';
 
 import style from './Columns.module.css';
 
 const Columns = (props) => {
 	const column = props.display_type == '2 column' ? 2 : 3;
+
+	const isTabletOrMobile = useMediaQuery({ query: '(max-width: 932px)' });
 
 	const [galleryView, toggleGalleryView] = useState(false);
 	const [imageRef, setImageRef] = useState(null);
@@ -38,20 +43,28 @@ const Columns = (props) => {
 	return !galleryView ? (
 		<div
 			className={
-				props.display_type == 'three column' ? style.threeGrid : style.twoGrid
+				props.displayType == '3 column' ? style.threeGrid : style.twoGrid
 			}
 		>
 			{imageArray.map((block) => (
 				<>
 					{block.type == 'video' ? (
-						<div className={style.videoContainer}>video</div>
+						<div className={style.videoContainer}>
+							<ReactPlayer
+								className={style.reactPlayer}
+								url={block.video_link}
+								width="100%"
+								height="100%"
+							/>
+						</div>
 					) : (
 						<div className={style.imageContainer}>
-							<ProjectImage
+							<img
+								src={block.src}
 								onClick={() => raiseClick(imageArray.indexOf(block))}
-								image={block}
 								key={imageArray.indexOf(block)}
 							/>
+							<CaptionLines content={block.caption} />
 						</div>
 					)}
 				</>

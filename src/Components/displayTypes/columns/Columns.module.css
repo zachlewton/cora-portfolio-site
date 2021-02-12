@@ -1,35 +1,125 @@
 .threeGrid {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-	grid-template-rows: auto;
-	column-gap: 3.561vw;
-	row-gap: 2vw;
-	width: 46.203vw;
+	grid-auto-rows: 17vw;
+	column-gap: 3vw;
+	row-gap: 3vw;
+	width: 55vw;
+	max-width: 1300px;
+	/* min-width: 675px; */
 
 	/* max-width: 45.989vw; */
-	margin: 3vh 0 0 0;
+	margin: 3vh 0 90px 0;
 }
 
 .twoGrid {
-	display: grid;
+	/* display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	grid-auto-rows: 30vw;
 	column-gap: 3.561vw;
 	row-gap: 2vw;
 	width: 70vw;
 
+	
+	margin: 3vh 0 0 0; */
+
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-auto-rows: 25vw;
+	column-gap: 3vw;
+	row-gap: 2vw;
+	width: 60vw;
+	max-width: 1500px;
+	/* min-width: 675px; */
+
 	/* max-width: 45.989vw; */
-	margin: 3vh 0 0 0;
+	margin: 3vh 0 90px 0;
 }
 
-.imageContainer {
-	width: 100%;
-	height: 100%;
-	/* margin: 0 0 0 0; */
+.twoGrid > .imageContainer {
+	height: 18vw;
+	cursor: pointer;
+}
+
+.threeGrid > .imageContainer {
+	height: 11vw;
+	cursor: pointer;
 }
 
 .imageContainer img {
 	height: 100%;
 	width: 100%;
-	object-fit: scale-down;
+	object-fit: cover;
+}
+
+.threeGrid > .videoContainer {
+	width: 100%;
+	height: 11vw;
+}
+
+.twoGrid > .videoContainer {
+	width: 100%;
+	height: 18vw;
+}
+
+@media only screen and (max-width: 932px) {
+	.threeGrid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		grid-auto-rows: 32vw;
+		column-gap: 3vw;
+		row-gap: 3vw;
+		width: 95%;
+
+		max-width: 1300px;
+		/* min-width: 675px; */
+
+		/* max-width: 45.989vw; */
+		margin: 3vh 0 90px 0;
+	}
+
+	.twoGrid {
+		/* display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		grid-auto-rows: 30vw;
+		column-gap: 3.561vw;
+		row-gap: 2vw;
+		width: 70vw;
+	
+		
+		margin: 3vh 0 0 0; */
+
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		grid-auto-rows: 43vw;
+		column-gap: 3vw;
+		row-gap: 2vw;
+		width: 95%;
+		max-width: 1500px;
+
+		/* min-width: 675px; */
+
+		/* max-width: 45.989vw; */
+		margin: 3vh 0 90px 0;
+	}
+
+	.twoGrid > .imageContainer {
+		height: 27vw;
+	}
+	.twoGrid > .videoContainer {
+		height: 27vw;
+	}
+	.threeGrid > .imageContainer {
+		height: 19vw;
+	}
+
+	.threeGrid > .videoContainer {
+		height: 19vw;
+	}
+
+	.imageContainer img {
+		height: 100%;
+		width: 100%;
+		object-fit: cover;
+	}
 }

@@ -93,6 +93,7 @@ const Gallery = (props) => {
 				</div>
 
 				{/* <div className={style.imageContainer}> */}
+
 				<AnimatePresence initial={false} custom={direction} exitBeforeEnter>
 					{image.type ? (
 						<motion.div

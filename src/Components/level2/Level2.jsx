@@ -66,17 +66,19 @@ const Level2 = () => {
 				<MainHeader content={content.title} />
 
 				{content.display_type == `sub ${params.type}` && (
-					<>
-						<div className={style.topNavContainer}>
-							{subs.map((sub) => (
-								<NavLink to={`/${params.type}/${params.slug}/${sub.slug}`}>
-									<TopNav content={sub.title} />
-								</NavLink>
-							))}
-						</div>
+					<div className={style.topNavContainer}>
+						{subs.map((sub) => (
+							<NavLink to={`/${params.type}/${params.slug}/${sub.slug}`}>
+								<TopNav content={sub.title} />
+							</NavLink>
+						))}
+					</div>
+				)}
 
-						<Subs className={style.subs} subs={subs} />
-					</>
+				{content.description && <Paragraph content={content.description} />}
+
+				{content.display_type == `sub ${params.type}` && (
+					<Subs className={style.subs} subs={subs} />
 				)}
 
 				{content.display_type == 'scrolling gallery' && (
@@ -84,7 +86,12 @@ const Level2 = () => {
 				)}
 
 				{content.display_type == 'video' && (
-					<ReactPlayer url={content.video.video_link} />
+					<ReactPlayer
+						url={content.video.video_link}
+						// width="100%"
+						// height="100%"
+						// className={style.videoPlayer}
+					/>
 				)}
 
 				{content.display_type == '2 column' && (

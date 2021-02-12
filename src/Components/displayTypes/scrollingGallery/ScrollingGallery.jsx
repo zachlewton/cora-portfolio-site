@@ -24,8 +24,8 @@ const ScrollingGallery = ({ gallery, imageRef, exitButton, raiseExit }) => {
 							marginRight: '2vw',
 					  }
 					: {
-							height: '80vw',
-							width: '100vw',
+							height: '50vw',
+							width: '90vw',
 							margin: '0',
 					  }
 			}
@@ -34,7 +34,7 @@ const ScrollingGallery = ({ gallery, imageRef, exitButton, raiseExit }) => {
 				images={imageArray}
 				imageRef={imageRef ? imageRef : 0}
 				onClick={() => raiseExit()}
-				exitButton
+				exitButton={exitButton ? true : false}
 			/>
 		</div>
 	);

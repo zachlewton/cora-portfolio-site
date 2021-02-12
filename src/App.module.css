@@ -111,6 +111,7 @@ a:visited {
 }
 
 .mobileContainer {
+	/* margin: 2vw 1vw 1vw 1vw; */
 	display: grid;
 	grid-template-columns: 100vw;
 	grid-template-rows: 15vw min(100vh);
@@ -167,8 +168,9 @@ a:visited {
 	width: 75vw; /* Change this to whatever width you want. */
 	position: absolute;
 	width: 90vw;
-	margin-right: 3vw;
+
 	right: 1.2vw;
+	left: 4vw;
 
 	/* This creates some space between the element and the border. */
 	border-bottom: 1px solid #231f20; /* This creates the border. Replace black with whatever color you want. */
@@ -188,9 +190,10 @@ a:visited {
 
 @media only screen and (max-width: 932px) {
 	.contentContainer {
-		width: 100vw;
+		width: 100%;
 		margin: 0 0 5vh 0;
 		padding: 0 0 0 0;
+		overflow: visible;
 	}
 
 	.headerContainer {
@@ -210,7 +213,7 @@ a:visited {
 		background-color: whitesmoke;
 		position: fixed;
 		z-index: 1;
-		overflow: hidden;
+
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -226,7 +229,13 @@ a:visited {
 
 	.flipped {
 		direction: none;
-		overflow: visible;
+		/* overflow: visible; */
+		margin-left: 1vw;
+		margin-right: 1vw;
+	}
+
+	.noScroll {
+		overflow: auto;
 	}
 
 	.exitButton {

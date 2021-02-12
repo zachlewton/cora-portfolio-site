@@ -7,7 +7,7 @@
 	color: #6c7069;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 932px) {
 	.container {
 		max-width: 85vw;
 	}

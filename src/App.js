@@ -54,7 +54,7 @@ export default function App() {
 	return (
 		<>
 			<topNavContext.Provider value={value}>
-				<div className={style.noScroll}>
+				<div className={!isTabletOrMobile ? style.noScroll : null}>
 					{isTabletOrMobile && (
 						<AnimatePresence exitBeforeEnter>
 							<motion.div
