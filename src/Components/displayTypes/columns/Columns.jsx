@@ -11,17 +11,32 @@ import style from './Columns.module.css';
 const Columns = (props) => {
 	const column = props.display_type == '2 column' ? 2 : 3;
 
+	console.log(props.display_type);
+
 	const isTabletOrMobile = useMediaQuery({ query: '(max-width: 932px)' });
 
 	const [galleryView, toggleGalleryView] = useState(false);
 	const [imageRef, setImageRef] = useState(null);
 
 	let imageArray = [];
+	console.log(props.gallery);
+
+	// props.gallery.map((node) => {
+	// 	node.type == 'image block'
+	// 		? node.block.map((block) => imageArray.push(block))
+	// 		: imageArray.push(node);
+	// });
 
 	props.gallery.map((node) => {
-		node.type == 'image block'
-			? node.block.map((block) => imageArray.push(block))
-			: imageArray.push(node);
+		if (node.type == 'image block') {
+			node.block.map((block) => imageArray.push(block));
+		} else {
+			if (node.type == 'image_block') {
+				node.block.map((block) => imageArray.push(block));
+			} else {
+				imageArray.push(node);
+			}
+		}
 	});
 
 	// for (var i = 0; i < props.gallery.length; i++) {
@@ -33,6 +48,8 @@ const Columns = (props) => {
 	//             ))
 	// 		: imageArray.push(node);
 	// }
+
+	console.log(imageArray);
 
 	const raiseClick = (obj) => {
 		console.log('clicked');

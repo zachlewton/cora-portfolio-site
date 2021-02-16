@@ -18,7 +18,11 @@ import topNavContext from '../../topNavContext';
 import TopNav from '../topNav/TopNav';
 import Loading from '../loading/Loading';
 import { motion } from 'framer-motion';
-import style from './IgContainer.module.css';
+import style from './IgContainer2.module.css';
+import ScrollingGallery from '../displayTypes/scrollingGallery/ScrollingGallery';
+import ReactPlayer from 'react-player';
+import Columns from '../displayTypes/columns/Columns';
+import L1ContentCard from '../l1ContentCard/L1ContentCard';
 
 const IgContainer = (props) => {
 	const { type, slug, igSlug } = useParams();
@@ -65,29 +69,61 @@ const IgContainer = (props) => {
 				className={style.container}
 			>
 				<MainHeader content={content.title} />
-				<div className={style.topNavContainer}>
-					{content.sub_galleries.map((gallery) => (
-						<NavLink
-							exact
-							activeStyle={active}
-							to={`${location.pathname}/${gallery.slug}`}
-						>
-							<TopNav content={gallery.title} />
-						</NavLink>
-					))}
-				</div>
 
-				<Paragraph content={content.description} />
-				<div className={style.images}>
-					{content.sub_galleries.map((gallery) => (
-						<div className={style.image}>
-							<NavLink to={`${location.pathname}/${gallery.slug}`}>
-								<h2 className={style.title}>{gallery.title}</h2>
-								<img src={gallery.featured_image} />
+				{content.display_type == 'intro galleries' && (
+					<div className={style.topNavContainer}>
+						{content.sub_galleries.map((gallery) => (
+							<NavLink
+								exact
+								activeStyle={active}
+								to={`${location.pathname}/${gallery.slug}`}
+							>
+								<TopNav content={gallery.title} />
 							</NavLink>
-						</div>
-					))}
-				</div>
+						))}
+					</div>
+				)}
+
+				{content.description && <Paragraph content={content.description} />}
+
+				{content.display_type == 'intro galleries' && (
+					<div className={style.images}>
+						{content.sub_galleries.map((gallery) => (
+							<div className={style.image}>
+								<NavLink to={`${location.pathname}${gallery.slug}`}>
+									<L1ContentCard content={gallery} />
+								</NavLink>
+							</div>
+						))}
+					</div>
+				)}
+
+				{content.display_type == 'scrolling gallery' && (
+					<ScrollingGallery gallery={content.gallery} />
+				)}
+
+				{content.display_type == 'video' && (
+					<ReactPlayer
+						url={content.video_link}
+						// width="100%"
+						// height="100%"
+						// className={style.videoPlayer}
+					/>
+				)}
+
+				{content.display_type == '2 column' && (
+					<Columns
+						displayType={content.display_type}
+						gallery={content.gallery}
+					/>
+				)}
+
+				{content.display_type == '3 column' && (
+					<Columns
+						displayType={content.display_type}
+						gallery={content.gallery}
+					/>
+				)}
 			</motion.div>
 		);
 	}

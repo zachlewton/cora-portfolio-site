@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import ProjectImage from '../projectImage/ProjectImage';
-
+import ReactPlayer from 'react-player';
+import Columns from '../displayTypes/columns/Columns';
 import axios from 'axios';
 import Gallery from '../gallery/Gallery';
 import style from './GalleryContainer.module.css';
@@ -24,7 +25,7 @@ import { motion } from 'framer-motion';
 
 const GalleryContainer = (props) => {
 	const { type, slug, gallerySlug, igSlug } = useParams();
-	const [galleryView, toggleGalleryView] = useState(false);
+	// const [galleryView, toggleGalleryView] = useState(false);
 	const [content, setContent] = useState([]);
 	const [loaded, setLoaded] = useState(false);
 	const [imageRef, setImageRef] = useState(null);
@@ -70,122 +71,48 @@ const GalleryContainer = (props) => {
 		fontFamily: 'MYRIADPRO-BOLD',
 	};
 
-	const raiseClick = (id) => {
-		setImageRef(id);
-		toggleGalleryView(true);
-	};
+	// const raiseClick = (id) => {
+	// 	setImageRef(id);
+	// 	toggleGalleryView(true);
+	// };
 	if (!loaded) {
 		return <Loading />;
 	}
 
 	if (loaded) {
-		if (!isTabletOrMobile) {
-			if (!galleryView) {
-				return (
-					<motion.div
-						initial={{ opacity: 0 }}
-						animate={{ opacity: 1 }}
-						transition={{ duration: 0.5 }}
-						exit={{ opacity: 0 }}
-						className={style.container}
-					>
-						<MainHeader content={content.title} />
-						<div className={style.topNavContainer}>
-							{topNavItems
-								? topNavItems.sub_galleries.map((navItem) => (
-										<NavLink
-											exact
-											activeStyle={active}
-											to={`/${type}/${slug}/${igSlug}/${navItem.slug}`}
-										>
-											<TopNav
-												slug={navItem.gallery_slug}
-												content={navItem.title}
-											/>
-										</NavLink>
-								  ))
-								: null}
-						</div>
+		return (
+			<motion.div
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 1 }}
+				transition={{ duration: 0.5 }}
+				exit={{ opacity: 0 }}
+				className={style.container}
+			>
+				<MainHeader content={content.title} />
+				<div className={style.topNavContainer}>
+					{topNavItems
+						? topNavItems.sub_galleries.map((navItem) => (
+								<NavLink
+									exact
+									activeStyle={active}
+									to={`/${type}/${slug}/${igSlug}/${navItem.slug}`}
+								>
+									<TopNav slug={navItem.gallery_slug} content={navItem.title} />
+								</NavLink>
+						  ))
+						: null}
+				</div>
 
-						<div className={style.images}>
-							{content.images.map((image) => (
-								<div className={style.image}>
-									<ProjectImage
-										onClick={() => raiseClick(image.id)}
-										image={image}
-										key={image.id}
-									/>
-								</div>
-							))}
-						</div>
-					</motion.div>
-				);
-			}
-
-			if (galleryView) {
-				return (
-					<Gallery
-						onClick={() => toggleGalleryView(false)}
-						images={content.images}
-						imageRef={imageRef}
+				{content.display_type == 'video' ? (
+					<ReactPlayer url={content.video_link} />
+				) : (
+					<Columns
+						displayType={content.display_type}
+						gallery={content.images}
 					/>
-				);
-			}
-		}
-
-		if (isTabletOrMobile) {
-			if (!galleryView) {
-				return (
-					<motion.div
-						initial={{ opacity: 0 }}
-						animate={{ opacity: 1 }}
-						transition={{ duration: 0.5 }}
-						exit={{ opacity: 0 }}
-						className={style.container}
-					>
-						<MainHeader content={content.title} />
-						<div className={style.topNavContainer}>
-							{topNavItems
-								? topNavItems.galleries.map((navItem) => (
-										<NavLink
-											exact
-											activeStyle={active}
-											to={`/${type}/${slug}/${igSlug}/${navItem.gallery_slug}`}
-										>
-											<TopNav
-												slug={navItem.gallery_slug}
-												content={navItem.title}
-											/>
-										</NavLink>
-								  ))
-								: null}
-						</div>
-
-						<div className={style.images}>
-							{content.images.map((image) => (
-								<div className={style.image}>
-									<ProjectImage
-										onClick={() => raiseClick(image.id)}
-										image={image}
-										key={image.id}
-									/>
-								</div>
-							))}
-						</div>
-					</motion.div>
-				);
-			}
-
-			if (galleryView) {
-				return (
-					<Gallery
-						onClick={() => toggleGalleryView(false)}
-						images={content.images}
-						imageRef={imageRef}
-					/>
-				);
-			}
-		}
+				)}
+			</motion.div>
+		);
 	}
 };
 

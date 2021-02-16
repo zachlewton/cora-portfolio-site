@@ -16,9 +16,6 @@ const Level1ContentCard = (props) => {
 					<img src={content.featured_image} />
 				</div>
 			</div>
-
-			{/* <C1Card title={content.title} paragraph={content.description} />
-			<C2ContentCard image={content.featured_image} /> */}
 		</div>
 	);
 };

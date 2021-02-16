@@ -11,7 +11,7 @@ const Subs = ({ subs }) => {
 		<div className={style.images}>
 			{subs.map((contentItem) => (
 				////if navigate to ig
-				<NavLink to={`${location.pathname}/${contentItem.slug}`}>
+				<NavLink to={`${location.pathname}${contentItem.slug}`}>
 					<div className={style.L2CardContainer}>
 						<L1ContentCard ig={true} content={contentItem} />
 					</div>
