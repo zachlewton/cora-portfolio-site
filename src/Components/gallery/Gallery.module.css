@@ -29,18 +29,27 @@
 .videoPlayer {
 	min-width: 42.8vw;
 	min-height: 27.999vw;
+
 	display: flex;
 	align-items: center;
 	height: 100%;
 }
 
-.reactPlayer {
-	position: relative;
+.videoPlayer {
+	width: 100%;
+	display: flex;
+	justify-content: center;
 }
 
-.reactPlayer > div {
+/* .reactPlayer {
+	position: relative;
+	height: 100%;
+	width: 50vw;
+} */
+
+/* .reactPlayer > div {
 	position: absolute;
-}
+} */
 
 /* .imageContainer {
 	margin: 0 1.716vw 0 1.716vw;
@@ -57,12 +66,6 @@
 }
 .exit :hover {
 	transform: scale(1.2);
-}
-
-.videoPlayer {
-	width: 100%;
-	display: flex;
-	justify-content: center;
 }
 
 .container svg {
@@ -154,6 +157,16 @@
 		flex-direction: column;
 		justify-content: flex-end;
 	} */
+
+	.videoPlayer {
+		/* min-width: 42.8vw;
+		min-height: 27.999vw; */
+		width: 76vw;
+
+		display: flex;
+		align-items: center;
+		height: 100%;
+	}
 
 	.leftButton {
 		width: 10%;

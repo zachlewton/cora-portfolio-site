@@ -73,6 +73,7 @@ const Columns = (props) => {
 								width="100%"
 								height="100%"
 							/>
+							{block.caption && <CaptionLines content={block.caption} />}
 						</div>
 					) : (
 						<div className={style.imageContainer}>
@@ -88,12 +89,14 @@ const Columns = (props) => {
 			))}
 		</div>
 	) : (
-		<ScrollingGallery
-			raiseExit={() => toggleGalleryView(!galleryView)}
-			gallery={imageArray}
-			imageRef={imageRef}
-			exitButton
-		/>
+		<>
+			<ScrollingGallery
+				raiseExit={() => toggleGalleryView(!galleryView)}
+				gallery={imageArray}
+				imageRef={imageRef}
+				exitButton
+			/>
+		</>
 	);
 };
 

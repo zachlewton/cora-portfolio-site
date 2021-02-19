@@ -55,7 +55,7 @@ const GalleryContainer = (props) => {
 					if (responses[0].data) {
 						setContent(imagesResponse);
 
-						topNavResponse.sub_galleries.length == 0
+						!topNavResponse.sub_galleries
 							? setTopNavItems()
 							: setTopNavItems(topNavResponse);
 					} else history.push('/error');

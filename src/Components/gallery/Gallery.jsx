@@ -116,6 +116,8 @@ const Gallery = (props) => {
 								<ReactPlayer
 									className={style.reactPlayer}
 									controls={true}
+									width="95%"
+									height="100%"
 									url={image.video_link}
 								/>
 							</div>

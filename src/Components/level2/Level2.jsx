@@ -34,6 +34,7 @@ const Level2 = () => {
 	const [subs, setSubs] = useState([]);
 
 	useEffect(() => {
+		setLoaded(false);
 		axios
 			.get(
 				`http://localhost:8000/wp-json/custom-api/v1/sub_${params.type}?slug=${params.slug}`
@@ -48,7 +49,7 @@ const Level2 = () => {
 				setLoaded(true);
 			})
 			.catch((error) => <Redirect to="dfhkdsjfsjdkfskj" />);
-	}, []);
+	}, [params.slug]);
 
 	if (!loaded) {
 		return <Loading />;

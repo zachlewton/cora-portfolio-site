@@ -3,6 +3,7 @@ import axios from 'axios';
 import Gallery from '../gallery/Gallery';
 import { motion } from 'framer-motion';
 import Loading from '../loading/Loading';
+import ScrollingGallery from '../displayTypes/scrollingGallery/ScrollingGallery';
 
 const HomePage = () => {
 	const [images, setImages] = useState();
@@ -10,7 +11,7 @@ const HomePage = () => {
 
 	useEffect(() => {
 		axios
-			.get('https://artportfoliocora.com/wp-json/custom-api/v1/home_page')
+			.get('http://localhost:8000/wp-json/custom-api/v1/home_page')
 			.then((res) => {
 				setImages(res.data);
 			})
@@ -24,8 +25,9 @@ const HomePage = () => {
 				animate={{ opacity: 1 }}
 				transition={{ duration: 0.5 }}
 				exit={{ opacity: 0 }}
+				style={{ marginTop: '5vw' }}
 			>
-				<Gallery imageRef={images[0].id} images={images} />
+				<ScrollingGallery exitButton={false} gallery={images} />
 			</motion.div>
 		);
 	} else return <Loading />;

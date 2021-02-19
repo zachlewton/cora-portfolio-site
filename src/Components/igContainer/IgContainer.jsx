@@ -52,7 +52,7 @@ const IgContainer = (props) => {
 			.then(() => {
 				setLoaded(true);
 			});
-	}, []);
+	}, [igSlug]);
 
 	if (!loaded) {
 		return <Loading />;
@@ -90,7 +90,7 @@ const IgContainer = (props) => {
 					<div className={style.images}>
 						{content.sub_galleries.map((gallery) => (
 							<div className={style.image}>
-								<NavLink to={`${location.pathname}${gallery.slug}`}>
+								<NavLink to={`${location.pathname}/${gallery.slug}`}>
 									<L1ContentCard content={gallery} />
 								</NavLink>
 							</div>

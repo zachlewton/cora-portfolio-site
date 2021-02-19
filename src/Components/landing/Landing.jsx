@@ -15,6 +15,7 @@ const Landing = (props) => {
 		backgroundImage: `url(${backgroundImage})`,
 		backgroundRepeat: 'no-repeat',
 		backgroundAttachment: 'fixed',
+		objectFit: 'cover',
 		backgroundSize: '100% 100%',
 	};
 

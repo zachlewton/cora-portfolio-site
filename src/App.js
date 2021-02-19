@@ -73,10 +73,13 @@ export default function App() {
 							>
 								<div className={style.exitButton}>
 									<FontAwesomeIcon
+										className="fa-3x"
+										style={{ float: 'left' }}
 										icon={faTimes}
 										onClick={() => setActive(false)}
 									/>
 								</div>
+
 								<MobileNav hideNav={() => setActive(false)} />
 							</motion.div>
 						</AnimatePresence>

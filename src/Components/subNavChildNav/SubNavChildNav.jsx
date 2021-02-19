@@ -28,41 +28,26 @@ const SubNavChildNav = (props) => {
 		return exp.test(path);
 	}
 
-	return (
+	return subs ? (
 		<div className={style.container}>
 			<ul>
-				{/* {subs.map((sub) =>
-					sub.galleries ? (
-						<NavLink to={`/${props.type}/${slug}/${sub.slug}`}>
-							<li
-								className={testLink(sub.slug) && style.active}
-								// className={activeSubNavChild == sub.slug && style.active}
-								onClick={() => {
-									isTabletOrMobile && props.raiseClick();
-									setActiveSubNavChild(sub.slug);
-								}}
-							>
-								{sub.title}
-							</li>
-						</NavLink>
-					) : (
-						<NavLink to={`/${props.type}/${slug}/${sub.slug}/${sub.slug}`}>
-							<li
-								className={location.pathname.endsWith(sub.slug) && style.active}
-								onClick={() => {
-									setActiveSubNavChild(sub.slug);
-									isTabletOrMobile && props.raiseClick();
-								}}
-							>
-								{sub.title}
-							</li>
-						</NavLink>
-					)
-				)} */}
-				active
+				{subs.map((sub) => (
+					<NavLink to={`/${props.type}/${slug}/${sub.slug}`}>
+						<li
+							className={testLink(sub.slug) && style.active}
+							// className={activeSubNavChild == sub.slug && style.active}
+							onClick={() => {
+								isTabletOrMobile && props.raiseClick();
+								setActiveSubNavChild(sub.slug);
+							}}
+						>
+							{sub.title}
+						</li>
+					</NavLink>
+				))}
 			</ul>
 		</div>
-	);
+	) : null;
 };
 
 export default SubNavChildNav;
